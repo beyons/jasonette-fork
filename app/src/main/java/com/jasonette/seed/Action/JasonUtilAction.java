@@ -16,9 +16,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.provider.ContactsContract;
 import android.telephony.SmsManager;
 import android.text.InputType;
@@ -162,6 +165,30 @@ public class JasonUtilAction {
                         Log.d("Warning", ex.getStackTrace()[0].getMethodName() + " : " + ex.toString());
                     }
 
+
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+    public void vibrate(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+                    } else {
+                        v.vibrate(500);
+                    }
 
                 } catch (Exception e){
                     Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());

@@ -337,6 +337,23 @@
                                         "height": "20"
                                     }
                                 }
+                            ,
+                                {
+                                    "type": "button",
+                                    "text": "VIBRATE",
+                                    "style": {
+                                        "width": "220",
+                                        "height": "50",
+                                        "background": "#00d2d3",
+                                        "color": "#ffffff",
+                                        "font": "Roboto",
+                                        "corner_radius": "3",
+                                        "size": "15"
+                                    },
+                                    "action": {
+                                        "type": "$util.vibrate"
+                                    }
+                                }
                             ]
                         }
                     ]
