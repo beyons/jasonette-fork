@@ -16,6 +16,7 @@ Documentation and examples in the [documentation repository](https://github.com/
 
 ## New functionalities
 
+
 ### new api
 * Vibrate
 * Send Email
