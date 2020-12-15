@@ -10,6 +10,7 @@ this fork allows the call of all the Jsonette functionalities and APIs
   * Radio component
   * Spinner
   * Progressbar
+  * Dial
 
 ## This is a functional android project based entirely on Json interfaces
 ## The logic of the application is done by Json calls and javascript Agents
@@ -28,3 +29,5 @@ this fork allows the call of all the Jsonette functionalities and APIs
   `{"type": "spinner","name": "gender","data": "choix1|choix2|choix3|choix4","style": {"width": "220","height": "50","background": "#3498db","color": "#ffffff","font": "Roboto","size": "15"}}`
 * Progressbar : 
   `{"type": "progressBar"}`
+* Make dial :
+  `"action": {"type": "$util.dial","options": {"url": "tel:50702547858214"}}`
