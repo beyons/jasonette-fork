@@ -12,6 +12,7 @@ this fork allows the call of all the Jsonette functionalities and APIs
   * Progressbar
   * Dial
   * Sms
+  * Email
 
 ## This is a functional android project based entirely on Json interfaces
 ## The logic of the application is done by Json calls and javascript Agents
@@ -27,10 +28,12 @@ this fork allows the call of all the Jsonette functionalities and APIs
 * Radio component :
   `{"type": "radio","name": "radio","hint": "my hint text","value": "false","style": {"color": "white","background": "#0E111F","align": "center"}}`
 * Spinner :
-  `{"type": "spinner","name": "gender","data": "choix1|choix2|choix3|choix4","style": {"width": "220","height": "50","background": "#3498db","color": "#ffffff","font": "Roboto","size": "15"}}`
+  `{"type": "spinner","name": "gender","data": "choice1|choice2|choice3|choice4","style": {"width": "220","height": "50","background": "#3498db","color": "#ffffff","font": "Roboto","size": "15"}}`
 * Progressbar : 
   `{"type": "progressBar"}`
 * Make dial :
-  `"action": {"type": "$util.dial","options": {"url": "50702547858214"}}`
+  `"action": {"type": "$util.dial","options": {"url": "000000000000"}}`
 * Make sms :
-  `"action": {"type": "$util.sms","options": {"url": "50702547858214"}}`
+  `"action": {"type": "$util.sms","options": {"url": "0000000000"}}`
+* Make Email :
+  `"action": {"type": "$util.emails","options": {"email": "myemail@gmail.com","subject": "test","message": "my test"}}`
