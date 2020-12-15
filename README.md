@@ -9,7 +9,7 @@ Create your own native *Android* app with *JSON*. Then send it over `http(s)://`
 
 Releases are made in the [Jasonelle Repo](https://github.com/jasonelle/jasonelle/releases).
 
-- a fork of [Jasonette v1.0.0](https://github.com/jasonelle/jasonelle/releases/tag/v1.0).
+- a fork of [Jasonette](https://github.com/jasonelle/jasonelle/releases/tag/v1.0).
 * New functionnalities : 
   * Adding dials call, 
   * local notification, 
@@ -19,6 +19,8 @@ Releases are made in the [Jasonelle Repo](https://github.com/jasonelle/jasonelle
   * radio button, 
   * spinner,
   * progressBar component
+  
+## All Jasonette API and functionnalities are compatible.
 
 ## [Documentation](https://jasonelle.com/docs)
 
