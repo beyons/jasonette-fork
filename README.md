@@ -34,4 +34,4 @@ Documentation and examples in the [documentation repository](https://github.com/
 
 ## [License](LICENSE)
 
-*Jasonette* is released under the [MPL 2.0 License](https://opensource.org/licenses/MPL-2.0).0
+*Jasonette* is released under the [MPL 2.0 License](https://opensource.org/licenses/MPL-2.0)
