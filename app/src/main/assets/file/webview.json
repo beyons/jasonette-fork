@@ -1,0 +1,16 @@
+{
+  "$jason": {
+    "head": {
+    },
+    "body": {
+
+      "background": {
+        "type": "html",
+        "url": "https://ld3d.com/backend-appli/dist/htmlVersion/",
+        "action": {
+          "type": "$default"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$jason": {
+    "head": {
+    },
+    "body": {
+      "header": {
+        "title": "Page Maps MapBox",
+        "style": {
+          "font": "Roboto",
+          "size": "25"
+        }
+      },
+      "background": {
+        "type": "html",
+        "url": "file://maps.html",
+        "action": {
+          "type": "$default"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,651 @@
+package com.jasonette.seed.Action;
+
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.TimePickerDialog;
+import android.content.ContentResolver;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
+import android.net.wifi.WifiManager;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.provider.ContactsContract;
+import android.text.InputType;
+import android.text.format.DateFormat;
+import android.util.Base64;
+import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TimePicker;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.fragment.app.DialogFragment;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import com.jasonette.seed.Core.JasonViewActivity;
+import com.jasonette.seed.Helper.JasonHelper;
+import com.jasonette.seed.Helper.JasonImageHelper;
+import com.google.android.material.snackbar.Snackbar;
+import com.jasonette.seed.R;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import android.Manifest;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.os.Environment;
+import android.view.View;
+import androidx.core.app.ActivityCompat;
+import java.io.File;
+import java.io.FileOutputStream;
+
+
+public class JasonUtilAction {
+    private int counter; // general purpose counter;
+    private Intent callback_intent;  // general purpose intent;
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
+    public void banner(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject options = action.getJSONObject("options");
+                    String title = "Notice";
+                    String result = "";
+                    if (options.has("title")) {
+                        title = options.get("title").toString();
+                    }
+                    if (options.has("description")) {
+                        result = title + "\n" + options.get("description").toString();
+                    } else {
+                        result = title;
+                    }
+                    Snackbar snackbar = Snackbar.make(((JasonViewActivity)context).rootLayout, result, Snackbar.LENGTH_LONG);
+                    snackbar.show();
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+    public void toast(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject options = action.getJSONObject("options");
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(context, (CharSequence)options.get("text").toString(), duration);
+                    toast.show();
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+    public void wifiState(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    ConnectivityManager conMan = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo netInfo = conMan.getActiveNetworkInfo();
+                    if (netInfo != null && netInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+                        Log.d("WifiReceiver", "Have Wifi Connection");
+                        try {
+                            JasonHelper.next("success", action, true, event, context);
+                        } catch (Exception e) {
+                            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                        }
+                    } else {
+                        Log.d("WifiReceiver", "Don't have Wifi Connection");
+                        try {
+                            JasonHelper.next("success", action, false, event, context);
+                        } catch (Exception e) {
+                            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                        }
+                    }
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+    }
+
+    public void screenshot(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        final Date now = new Date();
+        android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);
+
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    int permission = ActivityCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+                    if (permission != PackageManager.PERMISSION_GRANTED) {
+                        // We don't have permission so prompt the user
+                        ActivityCompat.requestPermissions(
+                                ((JasonViewActivity)context),
+                                PERMISSIONS_STORAGE,
+                                REQUEST_EXTERNAL_STORAGE
+                        );
+                    }
+
+                    try {
+                        // image naming and path  to include sd card  appending name you choose for file
+                        String mPath = Environment.getExternalStorageDirectory().toString() + "/DCIM/Screenshots/" + now + ".jpg";
+
+                        // create bitmap screen capture
+                        View v1 = ((JasonViewActivity)context).getWindow().getDecorView().getRootView();
+                        v1.setDrawingCacheEnabled(true);
+                        Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
+                        v1.setDrawingCacheEnabled(false);
+
+                        File imageFile = new File(mPath);
+
+                        FileOutputStream outputStream = new FileOutputStream(imageFile);
+                        int quality = 100;
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
+                        outputStream.flush();
+                        outputStream.close();
+
+                    } catch (Throwable e) {
+                        // Several error may come out with file handling or DOM
+                        e.printStackTrace();
+                    }
+
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, "/DCIM/Screenshots/" + now + ".jpg", event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+
+    public void localNotification(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject options = action.getJSONObject("options");
+
+                    NotificationChannel notificationChannel = new NotificationChannel("rtrr" , "rtrr", NotificationManager.IMPORTANCE_HIGH);
+                    notificationChannel.enableLights(true);
+                    notificationChannel.enableVibration(true);
+                    notificationChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
+                    NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                    notificationManager.createNotificationChannel(notificationChannel);
+
+                    NotificationCompat.Builder notification = new NotificationCompat.Builder(context, "rtrr")
+                            .setContentTitle((CharSequence)options.get("title").toString())
+                            .setContentText((CharSequence)options.get("text").toString())
+                            .setSmallIcon(R.mipmap.ic_launcher);
+
+                    notificationManager.notify(1, notification.build());
+
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+
+    public void alert(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                try {
+                    JSONObject options = new JSONObject();
+                    final ArrayList<EditText> textFields = new ArrayList<EditText>();
+                    if (action.has("options")) {
+                        options = action.getJSONObject("options");
+                        String title = options.get("title").toString();
+                        String description = options.get("description").toString();
+                        builder.setTitle(title);
+                        builder.setMessage(description);
+
+                        if(options.has("form"))
+                        {
+                            LinearLayout lay = new LinearLayout(context);
+                            lay.setOrientation(LinearLayout.VERTICAL);
+                            lay.setPadding(20,5,20,5);
+                            JSONArray formArr =  options.getJSONArray("form");
+                            for (int i=0; i<formArr.length();i++) {
+                                JSONObject obj = formArr.getJSONObject(i);
+                                final EditText textBox = new EditText(context);
+                                if(obj.has("placeholder")){
+                                    textBox.setHint(obj.getString("placeholder"));
+                                }
+                                if(obj.has("type") && obj.getString("type").equals("secure")){
+                                    textBox.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                                }
+                                if(obj.has("value")){
+                                    textBox.setText(obj.getString("value"));
+                                }
+                                textBox.setTag(obj.get("name"));
+                                lay.addView(textBox);
+                                textFields.add(textBox);
+                                builder.setView(lay);
+                            }
+                            // Set focous on first text field
+                            final EditText focousedTextField = (EditText)textFields.get(0);
+                            focousedTextField.post(new Runnable() {
+                                public void run() {
+                                    focousedTextField.requestFocus();
+                                    InputMethodManager lManager = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                    lManager.showSoftInput(focousedTextField, 0);
+                                }
+                            });
+
+
+                        }
+
+
+                    }
+                    builder.setPositiveButton("OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    try {
+                                        if (action.has("success")) {
+                                            JSONObject postObject = new JSONObject();
+                                            if(action.getJSONObject("options").has("form")){
+                                                for(int i = 0; i<textFields.size();i++){
+
+                                                    EditText textField = (EditText) textFields.get(i);
+                                                    postObject.put(textField.getTag().toString(),textField.getText().toString());
+                                                }
+                                            }
+                                            JasonHelper.next("success", action, postObject, event, context);
+                                        }
+                                    } catch (Exception err) {
+
+                                    }
+                                }
+                            });
+                    builder.setNeutralButton("CANCEL",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int which) {
+                                    JasonHelper.next("error", action, new JSONObject(), event, context);
+                                }
+                            });
+                    builder.show();
+                } catch (Exception e) {
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+    }
+    public void picker(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject options = action.getJSONObject("options");
+                    if(options.has("items")){
+                        final JSONArray items = options.getJSONArray("items");
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                        if(options.has("title")){
+                            String title = options.get("title").toString();
+                            builder.setTitle(title);
+                        }
+
+                        ArrayList<String> listItems = new ArrayList<String>();
+                        for (int i = 0; i < items.length() ; i++) {
+                            JSONObject item = (JSONObject)items.get(i);
+                            if(item.has("text")){
+                               listItems.add(item.getString("text"));
+                            } else {
+                                listItems.add("");
+                            }
+                        }
+                        final CharSequence[] charSequenceItems = listItems.toArray(new CharSequence[listItems.size()]);
+                        builder.setItems(charSequenceItems, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int val) {
+                                JSONObject item;
+                                try {
+                                    item = items.getJSONObject(val);
+                                    if(item.has("action")){
+                                        Intent intent = new Intent("call");
+                                        intent.putExtra("action", item.get("action").toString());
+                                        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+                                    } else if(item.has("href")){
+                                        Intent intent = new Intent("call");
+                                        JSONObject href = new JSONObject();
+                                        href.put("type", "$href");
+                                        href.put("options", item.get("href"));
+                                        intent.putExtra("action", href.toString());
+                                        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
+                                    }
+                                } catch (Exception e){
+                                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                                }
+                            }
+                        });
+                        builder.setNeutralButton("CANCEL",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int val) {
+                                }
+                            }
+                        );
+                        builder.create().show();
+                    }
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+
+    public static class TimePickerFragment extends DialogFragment
+            implements TimePickerDialog.OnTimeSetListener {
+
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the current time as the default values for the picker
+            final Calendar c = Calendar.getInstance();
+            int hour = c.get(Calendar.HOUR_OF_DAY);
+            int minute = c.get(Calendar.MINUTE);
+
+            // Create a new instance of TimePickerDialog and return it
+            return new TimePickerDialog(getActivity(), this, hour, minute,
+                    DateFormat.is24HourFormat(getActivity()));
+        }
+
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            // Do something with the time chosen by the user
+        }
+    }
+
+    public void datepicker(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    final Calendar c = Calendar.getInstance();
+                    int mYear = c.get(Calendar.YEAR);
+                    int mMonth = c.get(Calendar.MONTH);
+                    int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(context,
+                            new DatePickerDialog.OnDateSetListener() {
+
+                                @Override
+                                public void onDateSet(DatePicker view, int year,
+                                                      int monthOfYear, int dayOfMonth) {
+
+                                    showTimePickerDialog(action, event, year, monthOfYear, dayOfMonth, context);
+                                }
+                            }, mYear, mMonth, mDay);
+                    datePickerDialog.setTitle("Select Date");
+                    datePickerDialog.show();
+
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+
+    private void showTimePickerDialog(final JSONObject action, final JSONObject event, final int year, final int monthOfYear, final int dayOfMonth, final Context context) {
+        Calendar mcurrentTime = Calendar.getInstance();
+        final int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+        final int minute = mcurrentTime.get(Calendar.MINUTE);
+        TimePickerDialog mTimePicker;
+        mTimePicker = new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
+            @Override
+            public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                Date date = new Date(year, monthOfYear, dayOfMonth, selectedHour, selectedMinute);
+
+                try {
+                    String val = String.valueOf(date.getTime()/1000);
+                    JSONObject value = new JSONObject();
+                    value.put("value", val);
+                    JasonHelper.next("success", action, value, event, context);
+                } catch (Exception e) {
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+
+            }
+        }, hour, minute, true);//Yes 24 hour time
+        mTimePicker.setTitle("Select Time");
+        mTimePicker.show();
+    }
+
+
+    public void addressbook(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                ActivityCompat.requestPermissions((JasonViewActivity)context,
+                        new String[]{Manifest.permission.READ_CONTACTS},
+                        10);
+                getContacts(action, data, event, context);
+            }
+        }).start();
+    }
+    private void getContacts(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        JSONArray contactList = new JSONArray();
+        String phoneNumber = null;
+        String email = null;
+        ContentResolver contentResolver = ((JasonViewActivity)context).getContentResolver();
+        try {
+            final Cursor cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, null);
+            if (cursor.getCount() > 0) {
+                counter = 0;
+                while (cursor.moveToNext()) {
+                    JSONObject contact = new JSONObject();
+                    String contact_id = cursor.getString(cursor.getColumnIndex( ContactsContract.Contacts._ID ));
+                    String name = cursor.getString(cursor.getColumnIndex( ContactsContract.Contacts.DISPLAY_NAME ));
+                    try {
+                        // name
+                        contact.put("name", name);
+
+                        // phone
+                        Cursor phoneCursor = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?", new String[]{contact_id}, null);
+                        while (phoneCursor.moveToNext()) {
+                            phoneNumber = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+                            if(phoneNumber != null) {
+                                contact.put("phone", phoneNumber);
+                            }
+                        }
+                        if(!contact.has("phone")){
+                            contact.put("phone", "");
+                        }
+                        phoneCursor.close();
+
+                        // email
+                        Cursor emailCursor = contentResolver.query(ContactsContract.CommonDataKinds.Email.CONTENT_URI, null, ContactsContract.CommonDataKinds.Email.CONTACT_ID + " = ?", new String[]{contact_id}, null);
+                        while (emailCursor.moveToNext()) {
+                            email = emailCursor.getString(emailCursor.getColumnIndex(ContactsContract.CommonDataKinds.Email.DATA));
+                            if(email != null) {
+                                contact.put("email", email);
+                            }
+                        }
+                        if(!contact.has("email")){
+                            contact.put("email", "");
+                        }
+                        emailCursor.close();
+
+                        // Add to array
+                        contactList.put(contact);
+                    } catch (Exception e){
+                        Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                    }
+                }
+                try {
+                    JasonHelper.next("success", action, contactList, event, context);
+                } catch (Exception e) {
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        } catch (SecurityException e){
+            JasonHelper.permission_exception("$util.addressbook", context);
+        }
+    }
+
+    public void share(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject options = action.getJSONObject("options");
+                    if (options.has("items")) {
+                        callback_intent = new Intent();
+                        callback_intent.setAction(Intent.ACTION_SEND);
+
+                        final JSONArray items = options.getJSONArray("items");
+                        counter = 0;
+                        final int l = items.length();
+                        for (int i = 0; i < l; i++) {
+                            JSONObject item = (JSONObject) items.get(i);
+                            if (item.has("type")) {
+                                String type = item.getString("type");
+                                if (type.equalsIgnoreCase("text")) {
+                                    callback_intent.putExtra(Intent.EXTRA_TEXT, item.get("text").toString());
+                                    if (callback_intent.getType() == null) {
+                                        callback_intent.setType("text/plain");
+                                    }
+                                    counter++;
+                                    if (counter == l) {
+                                        JasonHelper.next("success", action, new JSONObject(), event, context);
+                                        context.startActivity(Intent.createChooser(callback_intent, "Share"));
+                                    }
+                                } else if (type.equalsIgnoreCase("image")) {
+                                    // Fetch remote url
+                                    // Turn it into Bitmap
+                                    // Create a file
+                                    // Share the url
+                                    if (item.has("url")) {
+                                        JasonImageHelper helper = new JasonImageHelper(item.getString("url"), context);
+                                        helper.setListener(new JasonImageHelper.JasonImageDownloadListener() {
+                                            @Override
+                                            public void onLoaded(byte[] data, Uri uri) {
+                                                callback_intent.putExtra(Intent.EXTRA_STREAM, uri);
+                                                // override with image type if one of the items is an image
+                                                callback_intent.setType("image/*");
+                                                callback_intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                                counter++;
+                                                if (counter == l) {
+                                                    JasonHelper.next("success", action, new JSONObject(), event, context);
+                                                    context.startActivity(Intent.createChooser(callback_intent, "Share"));
+                                                }
+                                            }
+                                        });
+                                        helper.fetch();
+                                    } else if (item.has("data")) {
+                                        // "data" is a byte[] stored as string
+                                        // so we need to restore it back to byte[] before working with it.
+                                        byte[] d = Base64.decode(item.getString("data"), Base64.DEFAULT);
+
+                                        JasonImageHelper helper = new JasonImageHelper(d, context);
+                                        helper.setListener(new JasonImageHelper.JasonImageDownloadListener() {
+                                            @Override
+                                            public void onLoaded(byte[] data, Uri uri) {
+                                                callback_intent.putExtra(Intent.EXTRA_STREAM, uri);
+                                                // override with image type if one of the items is an image
+                                                callback_intent.setType("image/*");
+                                                callback_intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                                counter++;
+                                                if (counter == l) {
+                                                    JasonHelper.next("success", action, new JSONObject(), event, context);
+                                                    context.startActivity(Intent.createChooser(callback_intent, "Share"));
+                                                }
+                                            }
+                                        });
+                                        helper.load();
+                                    }
+                                } else if (type.equalsIgnoreCase("video")){
+                                    if(item.has("file_url")){
+                                        Uri uri = Uri.parse(item.getString("file_url"));
+                                        callback_intent.putExtra(Intent.EXTRA_STREAM, uri);
+                                        // override with image type if one of the items is an image
+                                        callback_intent.setType("video/*");
+                                        callback_intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                        counter++;
+                                        if (counter == l) {
+                                            JasonHelper.next("success", action, new JSONObject(), event, context);
+                                            context.startActivity(Intent.createChooser(callback_intent, "Share"));
+                                        }
+                                    }
+                                } else if (type.equalsIgnoreCase("audio")){
+                                    if(item.has("file_url")){
+                                        Uri uri = Uri.parse(item.getString("file_url"));
+                                        callback_intent.putExtra(Intent.EXTRA_STREAM, uri);
+                                        callback_intent.setType("audio/*");
+                                        callback_intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                                        counter++;
+                                        if (counter == l) {
+                                            JasonHelper.next("success", action, new JSONObject(), event, context);
+                                            context.startActivity(Intent.createChooser(callback_intent, "Share"));
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } catch (Exception e) {
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        }).start();
+    }
+}
