@@ -1,5 +1,4 @@
-[![logo](https://user-images.githubusercontent.com/292738/59071387-61da3480-888c-11e9-9d77-d495852231e7.png)](http://www.jasonelle.com)
-
+# Fork of Jasonette project
 # [Jasonette Android](https://www.jasonelle.com)
 
 [https://www.jasonelle.com](https://www.jasonelle.com)
@@ -16,13 +15,6 @@ Releases are made in the [Jasonelle Repo](https://github.com/jasonelle/jasonelle
 ## [Documentation](https://jasonelle.com/docs)
 
 Documentation and examples in the [documentation repository](https://github.com/jasonelle/docs).
-
-
-## Questions and Support
-
-Follow or join these channels for questions and support, and to keep updated on latest releases and announcements.
-
-[Telegram Group](https://t.me/jasonelle)
 
 ## [License](LICENSE)
 
