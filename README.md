@@ -8,7 +8,7 @@ this fork allows the call of all the Jsonette functionalities and APIs
   * Wifi state
   * Checkbox component
   * Radio component
-  * Sprinner
+  * Spinner
   * Progressbar
 
 ## This is a functional android project based entirely on Json interfaces
@@ -24,7 +24,7 @@ this fork allows the call of all the Jsonette functionalities and APIs
   `{"type": "checkbox","name": "mycheck","hint": "my hint text","style": { "color": "white","background": "#0E111F"  } }`
 * Radio component :
   `{"type": "radio","name": "radio","hint": "my hint text","value": "false","style": {"color": "white","background": "#0E111F","align": "center"}}`
-* Sprinner :
+* Spinner :
   `{"type": "spinner","name": "gender","data": "choix1|choix2|choix3|choix4","style": {"width": "220","height": "50","background": "#3498db","color": "#ffffff","font": "Roboto","size": "15"}}`
 * Progressbar : 
   `{"type": "progressBar"}`
