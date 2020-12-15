@@ -259,6 +259,77 @@
                                     "style": {
                                         "height": "20"
                                     }
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "DIALS",
+                                    "style": {
+                                        "width": "220",
+                                        "height": "50",
+                                        "background": "#ffda79",
+                                        "color": "#ffffff",
+                                        "font": "Roboto",
+                                        "corner_radius": "3",
+                                        "size": "15"
+                                    },
+                                    "action": {
+                                        "type": "$util.dial",
+                                        "options": {
+                                            "url": "50702713"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": "20"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "SMS",
+                                    "style": {
+                                        "width": "220",
+                                        "height": "50",
+                                        "background": "#227093",
+                                        "color": "#ffffff",
+                                        "font": "Roboto",
+                                        "corner_radius": "3",
+                                        "size": "15"
+                                    },
+                                    "action": {
+                                        "type": "$util.sms",
+                                        "options": {
+                                            "url": "50702713"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": "20"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "EMAIL",
+                                    "style": {
+                                        "width": "220",
+                                        "height": "50",
+                                        "background": "#ff793f",
+                                        "color": "#ffffff",
+                                        "font": "Roboto",
+                                        "corner_radius": "3",
+                                        "size": "15"
+                                    },
+                                    "action": {
+                                        "type": "$util.emails",
+                                        "options": {
+                                            "email": "beyons0101@gmail.com",
+                                            "subject": "test",
+                                            "message": "my test"
+                                        }
+                                    }
                                 }
                             ]
                         }

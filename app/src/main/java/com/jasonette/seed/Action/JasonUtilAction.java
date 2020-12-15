@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.provider.ContactsContract;
+import android.telephony.SmsManager;
 import android.text.InputType;
 import android.text.format.DateFormat;
 import android.util.Base64;
@@ -34,6 +35,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
@@ -107,6 +109,87 @@ public class JasonUtilAction {
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, (CharSequence)options.get("text").toString(), duration);
                     toast.show();
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+    public void sms(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    JSONObject options = action.getJSONObject("options");
+                    String number = options.get("url").toString();  // The number on which you want to send SMS
+                    ContextCompat.startActivity(context,new Intent(Intent.ACTION_VIEW, Uri.fromParts("sms", number, null)),null);
+
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+    public void emails(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+
+                    JSONObject options = action.getJSONObject("options");
+
+                    final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+                    emailIntent.setType("text/plain");
+                    emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{   options.get("email").toString()});
+                    emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,  options.get("subject").toString());
+                    emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,  options.get("message").toString());
+
+
+                    try {
+                        ContextCompat.startActivity(context,emailIntent,null);
+                    } catch (android.content.ActivityNotFoundException ex) {
+                        Log.d("Warning", ex.getStackTrace()[0].getMethodName() + " : " + ex.toString());
+                    }
+
+
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+    public void dial(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    int permissionCheck = ContextCompat.checkSelfPermission((JasonViewActivity)context, Manifest.permission.CALL_PHONE);
+                    if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
+                        ActivityCompat.requestPermissions(
+                                (JasonViewActivity)context,
+                                new String[]{Manifest.permission.CALL_PHONE},123);
+                    }
+                    else{
+                        JSONObject options = action.getJSONObject("options");
+                        Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+(CharSequence)options.get("url").toString()));
+                        ContextCompat.startActivity((JasonViewActivity)context,callIntent,null);
+                    }
                 } catch (Exception e){
                     Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
                 }
