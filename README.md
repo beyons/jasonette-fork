@@ -11,6 +11,7 @@ this fork allows the call of all the Jsonette functionalities and APIs
   * Spinner
   * Progressbar
   * Dial
+  * Sms
 
 ## This is a functional android project based entirely on Json interfaces
 ## The logic of the application is done by Json calls and javascript Agents
@@ -30,4 +31,6 @@ this fork allows the call of all the Jsonette functionalities and APIs
 * Progressbar : 
   `{"type": "progressBar"}`
 * Make dial :
-  `"action": {"type": "$util.dial","options": {"url": "tel:50702547858214"}}`
+  `"action": {"type": "$util.dial","options": {"url": "50702547858214"}}`
+* Make sms :
+  `"action": {"type": "$util.sms","options": {"url": "50702547858214"}}`
