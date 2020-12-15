@@ -49,9 +49,7 @@
             android:theme="@style/CameraTheme"/>
 
         <!-- Uncomment below line and add your Google Maps API key -->
-        <!--
-        <meta-data android:name="com.google.android.geo.API_KEY" android:value="YOUR GOOGLE MAPS API KEY HERE"/>
-         -->
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCFicyFgJNcDeW3WZiRHTFKHBL5RijaiGY"/>
 
         <!-- Uncomment below to support push notification -->
         <!--

@@ -330,6 +330,12 @@
                                             "message": "my test"
                                         }
                                     }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": "20"
+                                    }
                                 }
                             ]
                         }
@@ -339,10 +345,10 @@
             "layers": [
                 {
                     "type": "button",
-                    "url": "file://notification.png",
+                    "url": "file://images/notification.png",
                     "style": {
-                        "width": "50",
-                        "height": "50",
+                        "width": "40",
+                        "height": "40",
                         "right": "20",
                         "bottom": "160",
                         "background": "#7ed6df",
@@ -361,7 +367,7 @@
                 },
                 {
                     "type": "button",
-                    "url": "file://qrcode.png",
+                    "url": "file://images/qrcode.png",
                     "style": {
                         "width": "50",
                         "height": "50",

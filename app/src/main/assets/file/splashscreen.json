@@ -36,7 +36,7 @@
                       "background": "#0E111F",
                       "layers": [{
                         "type": "image",
-                        "url": "file://preload.gif",
+                        "url": "file://images/preload.gif",
                         "style": {
                           "top": "50%-25",
                           "left": "50%-25",
@@ -73,7 +73,7 @@
       "layers": [
         {
           "type": "image",
-          "url": "file://loading.gif",
+          "url": "file://images/loading.gif",
           "style": {
             "width": "400",
             "height": "400",

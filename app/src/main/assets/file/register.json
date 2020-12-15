@@ -34,7 +34,7 @@
                 },
                 {
                   "type": "button",
-                  "url": "file://attaching.png",
+                  "url": "file://images/attaching.png",
                   "style": {
                     "width": "70",
                     "height": "70",
@@ -275,7 +275,7 @@
       "layers": [
         {
           "type": "button",
-          "url": "file://back.png",
+          "url": "file://images/back.png",
           "style": {
             "width": "70",
             "height": "70",
