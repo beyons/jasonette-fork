@@ -25,6 +25,7 @@ Documentation and examples in the [documentation repository](https://github.com/
 * Local notification
 * Get wifi state
 * Screenshot
+* Flashlight
 
 ## new componment
 * checkbox
