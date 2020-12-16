@@ -132,26 +132,19 @@ public class JasonMediaAction {
 
     }
     public void camera(final JSONObject action, JSONObject data, final JSONObject event, final Context context) {
-
-
-
         try {
 
-            if (ContextCompat.checkSelfPermission(context,
+            if (ContextCompat.checkSelfPermission((JasonViewActivity)context,
                     Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 
                 if (ActivityCompat.shouldShowRequestPermissionRationale((Activity)
-                        context, Manifest.permission.CAMERA)) {
-
-
+                        (JasonViewActivity)context, Manifest.permission.CAMERA)) {
                 } else {
                     ActivityCompat.requestPermissions((Activity) context,
                             new String[]{Manifest.permission.CAMERA},
                             50);
                 }
-
             }
-
 
             AbstractCameraActivity.Quality q = AbstractCameraActivity.Quality.LOW;
             String type = "photo";

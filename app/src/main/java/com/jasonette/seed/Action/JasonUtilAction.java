@@ -1,5 +1,6 @@
 package com.jasonette.seed.Action;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.Notification;
@@ -12,6 +13,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.hardware.Camera;
+import android.hardware.camera2.CameraManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -112,6 +115,44 @@ public class JasonUtilAction {
                     int duration = Toast.LENGTH_SHORT;
                     Toast toast = Toast.makeText(context, (CharSequence)options.get("text").toString(), duration);
                     toast.show();
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+    public void flashlight(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    if (ContextCompat.checkSelfPermission((JasonViewActivity)context,
+                            Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+
+                        if (ActivityCompat.shouldShowRequestPermissionRationale((Activity)
+                                (JasonViewActivity)context, Manifest.permission.CAMERA)) {
+                        } else {
+                            ActivityCompat.requestPermissions((Activity) context,
+                                    new String[]{Manifest.permission.CAMERA},
+                                    50);
+                        }
+                    }
+
+                    CameraManager camManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
+                    String cameraId = null;
+                    try {
+                        cameraId = camManager.getCameraIdList()[0];
+                        camManager.setTorchMode(cameraId, true);   //Turn ON
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+
                 } catch (Exception e){
                     Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
                 }
