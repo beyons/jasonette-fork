@@ -17,7 +17,7 @@ Documentation and examples in the [documentation repository](https://github.com/
 ## New functionalities
 
 
-### new api
+### Apis
 * util.vibrate
 * util.email
 * util.sms
@@ -58,7 +58,7 @@ Documentation and examples in the [documentation repository](https://github.com/
 * timer
 * conversion
 
-## new componment
+## Componments
 * checkbox
 * spinner
 * radio button
