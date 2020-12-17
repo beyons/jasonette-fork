@@ -18,20 +18,60 @@ Documentation and examples in the [documentation repository](https://github.com/
 
 
 ### new api
-* Vibrate
-* Send Email
-* Send sms
-* Make a call
-* Local notification
-* Get wifi state
-* Screenshot
-* Flashlight
+* util.vibrate
+* util.email
+* util.sms
+* util.dial
+* util.localnotification
+* util.wifistate
+* util.screenshot
+* util.flashlight
+* reload
+* render
+* snapshot
+* href
+* close
+* back
+* ok
+* scroll
+* network.request
+* network.upload
+* session.set
+* session.reset
+* set
+* get
+* cache
+* global
+* util.banner
+* util.toast
+* util.alert
+* util.share
+* util.picker
+* util.datepicker
+* util.adressbook
+* media.camera
+* media.picker
+* media.play
+* vision.scan (qrcode)
+* audio
+* geo
+* timer
+* conversion
 
 ## new componment
 * checkbox
 * spinner
 * radio button
 * progress bar
+* label
+* image
+* button
+* textfiel
+* slider
+* switch
+* html
+* space
+* map
 
 ## [License](LICENSE)
 
