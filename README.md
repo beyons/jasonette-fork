@@ -17,7 +17,7 @@ Documentation and examples in the [documentation repository](https://github.com/
 ## New functionalities
 
 
-### Apis
+### Apis ( actions )
 * $util.vibrate
 * $util.email
 * $util.sms
