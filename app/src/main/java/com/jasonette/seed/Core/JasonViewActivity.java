@@ -1,6 +1,7 @@
 package com.jasonette.seed.Core;
 
 import android.Manifest;
+import android.app.ActivityOptions;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -168,6 +169,7 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
 
         loaded = false;
         event_queue = new ArrayList<>();
@@ -1564,12 +1566,15 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                     }
                     intent.putExtra("depth", depth+1);
 
+
                     // Start an Intent with a callback option:
                     // 1. call dispatchIntent
                     // 2. the intent will return with JasonCallback.href
                     JSONObject callback = new JSONObject();
                     callback.put("class", "JasonCallback");
                     callback.put("method", "href");
+
+
                     JasonHelper.dispatchIntent(action, data, event, context, intent, callback);
                 }
             }

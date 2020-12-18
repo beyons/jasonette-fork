@@ -54,6 +54,11 @@ import com.jasonette.seed.R;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -66,6 +71,7 @@ import android.view.View;
 import androidx.core.app.ActivityCompat;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
 
 
 public class JasonUtilAction {
@@ -152,7 +158,6 @@ public class JasonUtilAction {
                         e.printStackTrace();
                     }
 
-
                 } catch (Exception e){
                     Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
                 }
@@ -199,13 +204,11 @@ public class JasonUtilAction {
                     emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,  options.get("subject").toString());
                     emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,  options.get("message").toString());
 
-
                     try {
                         ContextCompat.startActivity(context,emailIntent,null);
                     } catch (android.content.ActivityNotFoundException ex) {
                         Log.d("Warning", ex.getStackTrace()[0].getMethodName() + " : " + ex.toString());
                     }
-
 
                 } catch (Exception e){
                     Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
@@ -297,7 +300,136 @@ public class JasonUtilAction {
             }
         });
     }
+    public void fileCreate(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
 
+                    List<String> listPermissionsNeeded = new ArrayList<>();
+                    int writepermission = ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                    if (writepermission != PackageManager.PERMISSION_GRANTED) {
+                        listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                    }
+                    if (!listPermissionsNeeded.isEmpty()) {
+                        ActivityCompat.requestPermissions((JasonViewActivity)context, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), REQUEST_EXTERNAL_STORAGE);
+                    }
+
+                    JSONObject options = action.getJSONObject("options");
+                    File file = new File(Environment.getExternalStorageDirectory() + "/" + File.separator + (CharSequence)options.get("name").toString());
+                    file.createNewFile();
+                    try {
+                        JasonHelper.next("success", action, "File Created", event, context);
+                    } catch (Exception e) {
+                        Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                    }
+
+                    boolean temporary = (boolean)options.get("temporary");
+                    if(temporary  ==  true){
+                        //deleting the file
+                        file.delete();
+                        System.out.println();
+                        Log.d("Warning", "file deleted");
+                        try {
+                            JasonHelper.next("success", action, "File deleted", event, context);
+                        } catch (Exception e) {
+                            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                        }
+                    }
+
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+    public void fileWrite(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    List<String> listPermissionsNeeded = new ArrayList<>();
+                    int writepermission = ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                    if (writepermission != PackageManager.PERMISSION_GRANTED) {
+                        listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                    }
+                    if (!listPermissionsNeeded.isEmpty()) {
+                        ActivityCompat.requestPermissions((JasonViewActivity)context, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), REQUEST_EXTERNAL_STORAGE);
+                    }
+
+                    JSONObject options = action.getJSONObject("options");
+                    String string = options.get("text").toString();
+                    File gpxfile = new File(Environment.getExternalStorageDirectory() + "/" + File.separator + (CharSequence)options.get("file").toString());
+                    FileWriter writer = new FileWriter(gpxfile,true);
+                    writer.append(string+"\n\n");
+                    writer.flush();
+                    writer.close();
+
+                    try {
+                        JasonHelper.next("success", action, "Writing file", event, context);
+                    } catch (Exception ex) {
+                        Log.d("Warning", ex.getStackTrace()[0].getMethodName() + " : " + ex.toString());
+                    }
+
+                } catch (Exception e){
+                    try {
+                        JasonHelper.next("success", action, "Error writing file", event, context);
+                    } catch (Exception ep) {
+                        Log.d("Warning", ep.getStackTrace()[0].getMethodName() + " : " + ep.toString());
+                    }
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+    public void fileRead(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    List<String> listPermissionsNeeded = new ArrayList<>();
+                    int writepermission = ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                    if (writepermission != PackageManager.PERMISSION_GRANTED) {
+                        listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                    }
+                    if (!listPermissionsNeeded.isEmpty()) {
+                        ActivityCompat.requestPermissions((JasonViewActivity)context, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), REQUEST_EXTERNAL_STORAGE);
+                    }
+
+                    JSONObject options = action.getJSONObject("options");
+                    File fileEvents = new File(Environment.getExternalStorageDirectory() + "/" + File.separator + (CharSequence)options.get("file").toString());
+                    StringBuilder text = new StringBuilder();
+                    try {
+                        BufferedReader br = new BufferedReader(new FileReader(fileEvents));
+                        String line;
+                        while ((line = br.readLine()) != null) {
+                            text.append(line);
+                        }
+                        br.close();
+                    }catch(IOException e){}
+
+                    String result = text.toString();
+                    data.put("resultat",result);
+                    try {
+                        JasonHelper.next("success", action, data, event, context);
+                    } catch (Exception e) {
+                        Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                    }
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+    }
     public void screenshot(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
         final Date now = new Date();
         android.text.format.DateFormat.format("yyyy-MM-dd_hh:mm:ss", now);

@@ -9,9 +9,6 @@
           "size": "13",
           "align": "center",
           "spacing": "15"
-        },
-        "image": {
-          "width": "100%"
         }
       },
       "actions": {
@@ -30,18 +27,18 @@
                   "type": "$href",
                   "options": {
                     "url": "file://login.json",
-                    "transition": "push",
+                    "transition": "replace",
                     "view": "jason",
                     "preload": {
                       "background": "#0E111F",
                       "layers": [{
                         "type": "image",
-                        "url": "file://images/preload.gif",
+                        "url": "file://preload.gif",
                         "style": {
-                          "top": "50%-25",
-                          "left": "50%-25",
-                          "width": "50",
-                          "height": "50"
+                          "top": "50%-100",
+                          "left": "50%-100",
+                          "width": "200",
+                          "height": "200"
                         }
                       }]
                     }
@@ -73,7 +70,7 @@
       "layers": [
         {
           "type": "image",
-          "url": "file://images/loading.gif",
+          "url": "file://loading.gif",
           "style": {
             "width": "400",
             "height": "400",

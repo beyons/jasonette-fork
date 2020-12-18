@@ -57,6 +57,12 @@ Documentation and examples in the [documentation repository](https://github.com/
 * geo
 * timer
 * conversion
+<<<<<<< Updated upstream
+=======
+* $util.fileCreate
+* $util.fileWrite
+* $util.fileRead
+>>>>>>> Stashed changes
 
 ## Componments
 * checkbox

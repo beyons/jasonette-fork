@@ -4,7 +4,6 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorControlActivated">#3498db</item>
         <item name="android:windowDisablePreview">true</item>
-        <item name="android:windowIsTranslucent">true</item>
     </style>
     <style name="CameraTheme" parent="android:Theme.DeviceDefault">
     </style>

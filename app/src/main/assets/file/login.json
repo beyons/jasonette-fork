@@ -374,6 +374,90 @@
                                     "action": {
                                         "type": "$util.flashlight"
                                     }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": "20"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "FILE CREATE",
+                                    "style": {
+                                        "width": "220",
+                                        "height": "50",
+                                        "background": "#10ac84",
+                                        "color": "#ffffff",
+                                        "font": "Roboto",
+                                        "corner_radius": "3",
+                                        "size": "15"
+                                    },
+                                    "action": {
+                                        "type": "$util.fileCreate",
+                                        "options":{
+                                            "name": "mytemporary.txt",
+                                            "temporary":false
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": "20"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "FILE WRITE",
+                                    "style": {
+                                        "width": "220",
+                                        "height": "50",
+                                        "background": "#f6e58d",
+                                        "color": "#000000",
+                                        "font": "Roboto",
+                                        "corner_radius": "3",
+                                        "size": "15"
+                                    },
+                                    "action": {
+                                        "type": "$util.fileWrite",
+                                        "options":{
+                                            "file": "mytemporary.txt",
+                                            "text": "my text is here"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": "20"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "FILE READ",
+                                    "style": {
+                                        "width": "220",
+                                        "height": "50",
+                                        "background": "#f6e58d",
+                                        "color": "#000000",
+                                        "font": "Roboto",
+                                        "corner_radius": "3",
+                                        "size": "15"
+                                    },
+                                    "action": {
+                                        "type": "$util.fileRead",
+                                        "options": {
+                                            "file": "mytemporary.txt"
+                                        },
+                                        "success": {
+                                            "type": "$util.banner",
+                                            "options": {
+                                                "title": "The result is",
+                                                "description": "{{$jason.resultat}}"
+                                            }
+                                        }
+                                    }
                                 }
                             ]
                         }
@@ -383,7 +467,7 @@
             "layers": [
                 {
                     "type": "button",
-                    "url": "file://images/notification.png",
+                    "url": "file://notification.png",
                     "style": {
                         "width": "40",
                         "height": "40",
@@ -405,7 +489,7 @@
                 },
                 {
                     "type": "button",
-                    "url": "file://images/qrcode.png",
+                    "url": "file://qrcode.png",
                     "style": {
                         "width": "50",
                         "height": "50",
@@ -458,18 +542,9 @@
                         "type": "$href",
                         "options": {
                             "url": "file://register.json",
+                            "transition": "push",
                             "preload": {
-                                "background": "#0E111F",
-                                "layers": [{
-                                    "type": "image",
-                                    "url": "file://preload.gif",
-                                    "style": {
-                                        "top": "50%-25",
-                                        "left": "50%-25",
-                                        "width": "50",
-                                        "height": "50"
-                                    }
-                                }]
+                                "background": "#0E111F"
                             }
                         }
                     },
