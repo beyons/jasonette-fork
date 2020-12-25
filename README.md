@@ -63,7 +63,7 @@ Documentation and examples in the [documentation repository](https://github.com/
 
 * $util.bluetoothState
 
-## DATABASE ANDROID NOSQL
+#### DATABASE ANDROID NOSQL
 * $util.saveData
 * $util.getByPathData
 * $util.removeByPathData
