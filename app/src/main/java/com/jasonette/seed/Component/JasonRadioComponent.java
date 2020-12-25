@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.view.View;
+import android.widget.Toast;
 
 import com.jasonette.seed.Core.JasonViewActivity;
 import com.jasonette.seed.Helper.JasonHelper;
@@ -56,6 +57,7 @@ public class JasonRadioComponent { public static View build(View view, final JSO
                 public void onClick(View v) {
                     try {
                         ((JasonViewActivity) context).model.var.put(component.getString("name"), "true");
+
                     } catch (JSONException e) {
                         Log.e("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
                     }

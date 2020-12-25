@@ -48,6 +48,8 @@ public class JasonComponentFactory {
                 view = JasonCheckboxComponent.build(prototype, component, parent, context);
             }else if(type.equalsIgnoreCase("radio")) {
                 view = JasonRadioComponent.build(prototype, component, parent, context);
+            }else if(type.equalsIgnoreCase("radioGroup")) {
+                view = JasonRadioGroupComponent.build(prototype, component, parent, context);
             }else {
                 // Non-existent component warning
                 JSONObject error_component = new JSONObject(component.toString());

@@ -103,4 +103,6 @@
     <permission android:name="android.permission.FLASHLIGHT"
         android:permissionGroup="android.permission-group.HARDWARE_CONTROLS"
         android:protectionLevel="normal"/>
+    <!-- Uncomment below lines to enable Bluetooth -->
+    <uses-permission android:name="android.permission.BLUETOOTH" android:required="false" />
 </manifest>

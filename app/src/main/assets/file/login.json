@@ -164,17 +164,29 @@
                                         "color": "white",
                                         "background": "#0E111F"
                                     }
-                                }, {
-                                    "type": "space",
-                                    "style": {
-                                        "height": "30"
-                                    }
                                 },
                                 {
                                     "type": "radio",
                                     "name": "radio",
                                     "hint": "my hint text",
                                     "value": "false",
+                                    "style": {
+                                        "color": "white",
+                                        "background": "#0E111F",
+                                        "align": "center"
+                                    }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": "30"
+                                    }
+                                },
+                                {
+                                    "type": "radioGroup",
+                                    "name": "radio2",
+                                    "data": "text1|text2|text3|text4|text5",
+                                    "checked": 1,
                                     "style": {
                                         "color": "white",
                                         "background": "#0E111F",
@@ -387,7 +399,7 @@
                                     "style": {
                                         "width": "220",
                                         "height": "50",
-                                        "background": "#10ac84",
+                                        "background": "#FEA47F",
                                         "color": "#ffffff",
                                         "font": "Roboto",
                                         "corner_radius": "3",
@@ -439,8 +451,8 @@
                                     "style": {
                                         "width": "220",
                                         "height": "50",
-                                        "background": "#f6e58d",
-                                        "color": "#000000",
+                                        "background": "#B33771",
+                                        "color": "#ffffff",
                                         "font": "Roboto",
                                         "corner_radius": "3",
                                         "size": "15"
@@ -455,6 +467,35 @@
                                             "options": {
                                                 "title": "The result is",
                                                 "description": "{{$jason.resultat}}"
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": "20"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "BLUETOOTH STATUS",
+                                    "style": {
+                                        "width": "220",
+                                        "height": "50",
+                                        "background": "#9AECDB",
+                                        "color": "#000000",
+                                        "font": "Roboto",
+                                        "corner_radius": "3",
+                                        "size": "15"
+                                    },
+                                    "action": {
+                                        "type": "$util.bluetoothState",
+                                        "success": {
+                                            "type": "$util.banner",
+                                            "options": {
+                                                "title": "The result is",
+                                                "description": "{{$jason}}"
                                             }
                                         }
                                     }

@@ -8,6 +8,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.bluetooth.BluetoothAdapter;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -293,6 +294,25 @@ public class JasonUtilAction {
                         } catch (Exception e) {
                             Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
                         }
+                    }
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+    }
+    public void bluetoothState(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                    if (mBluetoothAdapter == null) {
+                        // Device does not support Bluetooth
+                    } else if (!mBluetoothAdapter.isEnabled()) {
+                        JasonHelper.next("success", action, false, event, context);
+                    } else {
+                        JasonHelper.next("success", action, true, event, context);
                     }
                 } catch (Exception e){
                     Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());

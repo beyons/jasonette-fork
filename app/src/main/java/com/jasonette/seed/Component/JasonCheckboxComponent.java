@@ -44,6 +44,8 @@ public class JasonCheckboxComponent {
                     checkBox.setTextColor(colors);
                 }
 
+                ((JasonViewActivity) context).model.var.put(component.getString("name"), false);
+
                 String hintText = component.getString("hint");
                 checkBox.setText(hintText);
 
