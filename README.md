@@ -84,6 +84,7 @@ Documentation and examples in the [documentation repository](https://github.com/
 * space
 * map
 * radiobutton group
+* ratingstar
 
 ## [License](LICENSE)
 
