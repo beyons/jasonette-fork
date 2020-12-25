@@ -39,6 +39,7 @@ public class JasonSpinnerComponent {
                             JSONObject style = component.getJSONObject("style");
                             int colors = JasonHelper.parse_color(style.getString("color"));
                             ((TextView)parent.getChildAt(0)).setTextColor(colors);
+                            ((TextView)parent.getChildAt(0)).setTextSize(Float.parseFloat(style.getString("size")));
                             ((JasonViewActivity) context).model.var.put(component.getString("name"), spinnerData[position]);
                         } catch (JSONException e) {
                             Log.e("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());

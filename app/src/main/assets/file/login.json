@@ -36,7 +36,7 @@
                     "font": "Roboto",
                     "size": 13,
                     "align": "center",
-                    "spacing": "15"
+                    "spacing": 15
                 }
             }
         },
@@ -57,7 +57,7 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "30"
+                                        "height": 30
                                     }
                                 },
                                 {
@@ -70,7 +70,7 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "70"
+                                        "height": 70
                                     }
                                 },
                                 {
@@ -86,14 +86,14 @@
                                         "align": "left",
                                         "width": "70%",
                                         "color": "#ffffff",
-                                        "height": "60",
-                                        "size": "15"
+                                        "height": 60,
+                                        "size": 15
                                     }
                                 },
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "30"
+                                        "height": 30
                                     }
                                 },
                                 {
@@ -109,9 +109,9 @@
                                         "color": "black",
                                         "align": "left",
                                         "width": "70%",
-                                        "height": "60",
-                                        "secure": "true",
-                                        "size": "15"
+                                        "height": 60,
+                                        "secure": true,
+                                        "size": 15
                                     },
                                     "action": {
                                         "store": {
@@ -125,7 +125,7 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "30"
+                                        "height": 30
                                     }
                                 },
                                 {
@@ -133,18 +133,18 @@
                                     "name": "gender",
                                     "data": "choix1|choix2|choix3|choix4",
                                     "style": {
-                                        "width": "220",
-                                        "height": "50",
+                                        "width": 220,
+                                        "height": 50,
                                         "background": "#3498db",
                                         "color": "#ffffff",
                                         "font": "Roboto",
-                                        "size": "15"
+                                        "size": 15
                                     }
                                 },
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "30"
+                                        "height": 30
                                     }
                                 },
                                 {
@@ -153,7 +153,7 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "30"
+                                        "height": 30
                                     }
                                 },
                                 {
@@ -162,24 +162,26 @@
                                     "hint": "my hint text",
                                     "style": {
                                         "color": "white",
-                                        "background": "#0E111F"
+                                        "background": "#0E111F",
+                                        "size": 15
                                     }
                                 },
                                 {
                                     "type": "radio",
                                     "name": "radio",
                                     "hint": "my hint text",
-                                    "value": "false",
+                                    "value": false,
                                     "style": {
                                         "color": "white",
                                         "background": "#0E111F",
-                                        "align": "center"
+                                        "align": "center",
+                                        "size": 15
                                     }
                                 },
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "30"
+                                        "height": 30
                                     }
                                 },
                                 {
@@ -190,13 +192,33 @@
                                     "style": {
                                         "color": "white",
                                         "background": "#0E111F",
-                                        "align": "center"
+                                        "align": "center",
+                                        "size": 15
                                     }
                                 },
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "70"
+                                        "height": 30
+                                    }
+                                },
+                                {
+                                    "type": "rating",
+                                    "name": "rating",
+                                    "step":  0.25,
+                                    "number": 3,
+                                    "rating": 3,
+                                    "scale": 0.5,
+                                    "style": {
+                                        "background": "#0E111F",
+                                        "firstColor": "#54a0ff",
+                                        "secondColor": "#ff6b6b"
+                                    }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": 70
                                     }
                                 },
                                 {
@@ -235,20 +257,20 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "20"
+                                        "height": 20
                                     }
                                 },
                                 {
                                     "type": "button",
                                     "text": "WiFi State",
                                     "style": {
-                                        "width": "220",
-                                        "height": "50",
+                                        "width": 220,
+                                        "height": 50,
                                         "background": "#44bd32",
                                         "color": "#ffffff",
                                         "font": "Roboto",
-                                        "corner_radius": "3",
-                                        "size": "15"
+                                        "corner_radius": 3,
+                                        "size": 15
                                     },
                                     "action": {
                                         "type": "$util.wifiState",
@@ -269,20 +291,20 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "20"
+                                        "height": 20
                                     }
                                 },
                                 {
                                     "type": "button",
                                     "text": "DIALS",
                                     "style": {
-                                        "width": "220",
-                                        "height": "50",
+                                        "width": 220,
+                                        "height": 50,
                                         "background": "#ffda79",
                                         "color": "#ffffff",
                                         "font": "Roboto",
-                                        "corner_radius": "3",
-                                        "size": "15"
+                                        "corner_radius": 3,
+                                        "size": 15
                                     },
                                     "action": {
                                         "type": "$util.dial",
@@ -294,20 +316,20 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "20"
+                                        "height": 20
                                     }
                                 },
                                 {
                                     "type": "button",
                                     "text": "SMS",
                                     "style": {
-                                        "width": "220",
-                                        "height": "50",
+                                        "width": 220,
+                                        "height": 50,
                                         "background": "#227093",
                                         "color": "#ffffff",
                                         "font": "Roboto",
-                                        "corner_radius": "3",
-                                        "size": "15"
+                                        "corner_radius": 3,
+                                        "size": 15
                                     },
                                     "action": {
                                         "type": "$util.sms",
@@ -319,20 +341,20 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "20"
+                                        "height": 20
                                     }
                                 },
                                 {
                                     "type": "button",
                                     "text": "EMAIL",
                                     "style": {
-                                        "width": "220",
-                                        "height": "50",
+                                        "width": 220,
+                                        "height": 50,
                                         "background": "#ff793f",
                                         "color": "#ffffff",
                                         "font": "Roboto",
-                                        "corner_radius": "3",
-                                        "size": "15"
+                                        "corner_radius": 3,
+                                        "size": 15
                                     },
                                     "action": {
                                         "type": "$util.emails",
@@ -346,20 +368,20 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "20"
+                                        "height": 20
                                     }
                                 },
                                 {
                                     "type": "button",
                                     "text": "VIBRATE",
                                     "style": {
-                                        "width": "220",
-                                        "height": "50",
+                                        "width": 220,
+                                        "height": 50,
                                         "background": "#00d2d3",
                                         "color": "#ffffff",
                                         "font": "Roboto",
-                                        "corner_radius": "3",
-                                        "size": "15"
+                                        "corner_radius": 3,
+                                        "size": 15
                                     },
                                     "action": {
                                         "type": "$util.vibrate"
@@ -368,20 +390,20 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "20"
+                                        "height": 20
                                     }
                                 },
                                 {
                                     "type": "button",
                                     "text": "FLASHLIGHT",
                                     "style": {
-                                        "width": "220",
-                                        "height": "50",
+                                        "width": 220,
+                                        "height": 50,
                                         "background": "#ecf0f1",
                                         "color": "#000000",
                                         "font": "Roboto",
-                                        "corner_radius": "3",
-                                        "size": "15"
+                                        "corner_radius": 3,
+                                        "size": 15
                                     },
                                     "action": {
                                         "type": "$util.flashlight"
@@ -390,33 +412,33 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "20"
+                                        "height": 20
                                     }
                                 },
                                 {
                                     "type": "button",
                                     "text": "FILE CREATE",
                                     "style": {
-                                        "width": "220",
-                                        "height": "50",
+                                        "width": 220,
+                                        "height": 50,
                                         "background": "#FEA47F",
                                         "color": "#ffffff",
                                         "font": "Roboto",
-                                        "corner_radius": "3",
-                                        "size": "15"
+                                        "corner_radius": 3,
+                                        "size": 15
                                     },
                                     "action": {
                                         "type": "$util.fileCreate",
                                         "options":{
                                             "name": "mytemporary.txt",
-                                            "temporary":false
+                                            "temporary": false
                                         }
                                     }
                                 },
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "20"
+                                        "height": 20
                                     }
                                 },
                                 {
@@ -428,8 +450,8 @@
                                         "background": "#f6e58d",
                                         "color": "#000000",
                                         "font": "Roboto",
-                                        "corner_radius": "3",
-                                        "size": "15"
+                                        "corner_radius": 3,
+                                        "size": 15
                                     },
                                     "action": {
                                         "type": "$util.fileWrite",
@@ -442,20 +464,20 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "20"
+                                        "height": 20
                                     }
                                 },
                                 {
                                     "type": "button",
                                     "text": "FILE READ",
                                     "style": {
-                                        "width": "220",
-                                        "height": "50",
+                                        "width": 220,
+                                        "height": 50,
                                         "background": "#B33771",
                                         "color": "#ffffff",
                                         "font": "Roboto",
-                                        "corner_radius": "3",
-                                        "size": "15"
+                                        "corner_radius": 3,
+                                        "size": 15
                                     },
                                     "action": {
                                         "type": "$util.fileRead",
@@ -474,20 +496,20 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "20"
+                                        "height": 20
                                     }
                                 },
                                 {
                                     "type": "button",
                                     "text": "BLUETOOTH STATUS",
                                     "style": {
-                                        "width": "220",
-                                        "height": "50",
+                                        "width": 220,
+                                        "height": 50,
                                         "background": "#9AECDB",
                                         "color": "#000000",
                                         "font": "Roboto",
-                                        "corner_radius": "3",
-                                        "size": "15"
+                                        "corner_radius": 3,
+                                        "size": 15
                                     },
                                     "action": {
                                         "type": "$util.bluetoothState",
@@ -503,20 +525,20 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "20"
+                                        "height": 20
                                     }
                                 },
                                 {
                                     "type": "button",
                                     "text": "DataBase Save",
                                     "style": {
-                                        "width": "220",
-                                        "height": "50",
+                                        "width": 220,
+                                        "height": 50,
                                         "background": "#4b4b4b",
                                         "color": "#ffffff",
                                         "font": "Roboto",
-                                        "corner_radius": "3",
-                                        "size": "15"
+                                        "corner_radius": 3,
+                                        "size": 15
                                     },
                                     "action": {
                                         "type": "$util.saveData",
@@ -529,20 +551,20 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "20"
+                                        "height": 20
                                     }
                                 },
                                 {
                                     "type": "button",
                                     "text": "DataBase ByPath",
                                     "style": {
-                                        "width": "220",
-                                        "height": "50",
+                                        "width": 220,
+                                        "height": 50,
                                         "background": "#4b4b4b",
                                         "color": "#ffffff",
                                         "font": "Roboto",
-                                        "corner_radius": "3",
-                                        "size": "15"
+                                        "corner_radius": 3,
+                                        "size": 15
                                     },
                                     "action": {
                                         "type": "$util.getByPathData",
@@ -562,25 +584,51 @@
                                 {
                                     "type": "space",
                                     "style": {
-                                        "height": "20"
+                                        "height": 20
                                     }
                                 },
                                 {
                                     "type": "button",
                                     "text": "DataBase RemoveDataByPath",
                                     "style": {
-                                        "width": "220",
-                                        "height": "50",
+                                        "width": 220,
+                                        "height": 50,
                                         "background": "#4b4b4b",
                                         "color": "#ffffff",
                                         "font": "Roboto",
-                                        "corner_radius": "3",
-                                        "size": "15"
+                                        "corner_radius": 3,
+                                        "size": 15
                                     },
                                     "action": {
                                         "type": "$util.removeByPathData",
                                         "options": {
                                             "uri": "/utilisateur/"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": 20
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "RATING VALUE",
+                                    "style": {
+                                        "width": 220,
+                                        "height": 50,
+                                        "background": "#4b4b4b",
+                                        "color": "#ffffff",
+                                        "font": "Roboto",
+                                        "corner_radius": 3,
+                                        "size": 15
+                                    },
+                                    "action": {
+                                        "type": "$util.banner",
+                                        "options": {
+                                            "title": "The result is",
+                                            "description": "{{$get.rating}}"
                                         }
                                     }
                                 }
@@ -594,15 +642,15 @@
                     "type": "button",
                     "url": "file://notification.png",
                     "style": {
-                        "width": "40",
-                        "height": "40",
-                        "right": "20",
-                        "bottom": "160",
+                        "width": 40,
+                        "height": 40,
+                        "right": 20,
+                        "bottom": 160,
                         "background": "#7ed6df",
                         "color": "#ffffff",
                         "font": "Roboto",
-                        "size": "30",
-                        "corner_radius": "75"
+                        "size": 30,
+                        "corner_radius": 75
                     },
                     "action": {
                     "type": "$util.localNotification",
@@ -616,15 +664,15 @@
                     "type": "button",
                     "url": "file://qrcode.png",
                     "style": {
-                        "width": "50",
-                        "height": "50",
-                        "right": "20",
-                        "bottom": "100",
+                        "width": 50,
+                        "height": 50,
+                        "right": 20,
+                        "bottom": 100,
                         "background": "#273c75",
                         "color": "#ffffff",
                         "font": "Roboto",
-                        "size": "30",
-                        "corner_radius": "75"
+                        "size": 30,
+                        "corner_radius": 75
                     },
                     "action": {
                         "type": "$href",
@@ -638,8 +686,8 @@
                                     "style": {
                                         "top": "50%-25",
                                         "left": "50%-25",
-                                        "width": "50",
-                                        "height": "50"
+                                        "width": 50,
+                                        "height": 50
                                     }
                                 }]
                             }
@@ -653,15 +701,15 @@
                     "type": "button",
                     "text": "+",
                     "style": {
-                        "width": "60",
-                        "height": "60",
-                        "right": "40",
-                        "bottom": "30",
+                        "width": 60,
+                        "height": 60,
+                        "right": 40,
+                        "bottom": 30,
                         "background": "#D980FA",
                         "color": "#ffffff",
                         "font": "Roboto",
-                        "size": "30",
-                        "corner_radius": "75"
+                        "size": 30,
+                        "corner_radius": 75
                     },
                     "action": {
                         "type": "$href",

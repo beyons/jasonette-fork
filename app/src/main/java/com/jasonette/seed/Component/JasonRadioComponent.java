@@ -43,6 +43,7 @@ public class JasonRadioComponent { public static View build(View view, final JSO
                 );
                 radioButton.setButtonTintList(colorStateList);
                 radioButton.setTextColor(colors);
+                radioButton.setTextSize(Float.parseFloat(style.getString("size")));
             }
 
             try {

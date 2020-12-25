@@ -28,6 +28,8 @@ public class JasonCheckboxComponent {
                     checkBox.setBackgroundColor(background);
                 }
 
+                checkBox.setTextSize(Float.parseFloat(style.getString("size")));
+
                 if (style.has("color")) {
                     int colors = JasonHelper.parse_color(style.getString("color"));
                     ColorStateList colorStateList = new ColorStateList(

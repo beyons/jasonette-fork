@@ -29,6 +29,7 @@ public class JasonRadioGroupComponent { public static View build(View view, fina
                 final RadioButton radioButton = new RadioButton(context);
                 radioButton.setText(websitesArray[i]);
                 radioButton.setId(i);
+                radioButton.setTextSize(Float.parseFloat(style.getString("size")));
                 if (style.has("background")) {
                     int background = JasonHelper.parse_color(style.getString("background"));
                     radioButton.setBackgroundColor(background);
