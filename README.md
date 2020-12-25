@@ -57,11 +57,19 @@ Documentation and examples in the [documentation repository](https://github.com/
 * geo
 * timer
 * conversion
-<<<<<<< Updated upstream
-=======
 * $util.fileCreate
 * $util.fileWrite
 * $util.fileRead
+
+<<<<<<< Updated upstream
+=======
+* $util.bluetoothState
+
+## DATABASE ANDROID NOSQL
+* $util.saveData
+* $util.getByPathData
+* $util.removeByPathData
+
 >>>>>>> Stashed changes
 
 ## Componments
@@ -78,6 +86,7 @@ Documentation and examples in the [documentation repository](https://github.com/
 * html
 * space
 * map
+* radiobutton group
 
 ## [License](LICENSE)
 

@@ -62,6 +62,7 @@ import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.target.SizeReadyCallback;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
+import com.github.florent37.androidnosql.AndroidNoSql;
 import com.jasonette.seed.Component.JasonComponentFactory;
 import com.jasonette.seed.Component.JasonImageComponent;
 import com.jasonette.seed.Helper.JasonHelper;
@@ -169,7 +170,8 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
+        // Initialize database nosql
+        AndroidNoSql.initWithDefault(this);
 
         loaded = false;
         event_queue = new ArrayList<>();

@@ -499,6 +499,90 @@
                                             }
                                         }
                                     }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": "20"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "DataBase Save",
+                                    "style": {
+                                        "width": "220",
+                                        "height": "50",
+                                        "background": "#4b4b4b",
+                                        "color": "#ffffff",
+                                        "font": "Roboto",
+                                        "corner_radius": "3",
+                                        "size": "15"
+                                    },
+                                    "action": {
+                                        "type": "$util.saveData",
+                                        "options": {
+                                            "uri": "/utilisateur/user/",
+                                            "value": "{{$get.login}}"
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": "20"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "DataBase ByPath",
+                                    "style": {
+                                        "width": "220",
+                                        "height": "50",
+                                        "background": "#4b4b4b",
+                                        "color": "#ffffff",
+                                        "font": "Roboto",
+                                        "corner_radius": "3",
+                                        "size": "15"
+                                    },
+                                    "action": {
+                                        "type": "$util.getByPathData",
+                                        "options": {
+                                            "uri": "/utilisateur/user/",
+                                            "type": "String"
+                                        },
+                                        "success": {
+                                            "type": "$util.banner",
+                                            "options": {
+                                                "title": "The result is",
+                                                "description": "{{$jason}}"
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": "20"
+                                    }
+                                },
+                                {
+                                    "type": "button",
+                                    "text": "DataBase RemoveDataByPath",
+                                    "style": {
+                                        "width": "220",
+                                        "height": "50",
+                                        "background": "#4b4b4b",
+                                        "color": "#ffffff",
+                                        "font": "Roboto",
+                                        "corner_radius": "3",
+                                        "size": "15"
+                                    },
+                                    "action": {
+                                        "type": "$util.removeByPathData",
+                                        "options": {
+                                            "uri": "/utilisateur/"
+                                        }
+                                    }
                                 }
                             ]
                         }

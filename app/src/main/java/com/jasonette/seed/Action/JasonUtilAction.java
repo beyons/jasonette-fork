@@ -46,6 +46,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.github.florent37.androidnosql.NoSql;
 import com.jasonette.seed.Core.JasonViewActivity;
 import com.jasonette.seed.Helper.JasonHelper;
 import com.jasonette.seed.Helper.JasonImageHelper;
@@ -73,6 +74,9 @@ import androidx.core.app.ActivityCompat;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.List;
+
+
+
 
 
 public class JasonUtilAction {
@@ -129,6 +133,86 @@ public class JasonUtilAction {
         });
         try {
             JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+    public void saveData(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    NoSql noSql;
+                    noSql = NoSql.getInstance();
+                    JSONObject options = action.getJSONObject("options");
+                    String uri = options.get("uri").toString();
+                    String value = options.get("value").toString();
+                    noSql.put(uri, value);
+                    noSql.save();
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, true, event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
+    public void getByPathData(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    NoSql noSql;
+                    noSql = NoSql.getInstance();
+                    JSONObject options = action.getJSONObject("options");
+                    String uri = options.get("uri").toString();
+                    String type = options.get("type").toString();
+
+                    if(type.equals("String")== true) {
+                        String result = noSql.get(uri).toString();
+                        try {
+                            JasonHelper.next("success", action, result, event, context);
+                        } catch (Exception e) {
+                            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                        }
+                    }
+                    else {
+                        int result = noSql.get(uri).integer();
+                        try {
+                            JasonHelper.next("success", action, ""+result, event, context);
+                        } catch (Exception e) {
+                            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                        }
+                    }
+
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+    }
+
+    public void removeByPathData(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    NoSql noSql;
+                    noSql = NoSql.getInstance();
+                    JSONObject options = action.getJSONObject("options");
+                    String uri = options.get("uri").toString();
+                    noSql.remove(uri);
+
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, true, event, context);
         } catch (Exception e) {
             Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
         }
