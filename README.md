@@ -53,10 +53,10 @@ Documentation and examples in the [documentation repository](https://github.com/
 * $media.picker
 * $media.play
 * $vision.scan (qrcode)
-* audio
-* geo
-* timer
-* conversion
+* $audio
+* $geo.get
+* $timer.start
+* $convert
 * $util.fileCreate
 * $util.fileWrite
 * $util.fileRead
