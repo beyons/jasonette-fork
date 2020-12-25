@@ -61,11 +61,13 @@ Documentation and examples in the [documentation repository](https://github.com/
 * $util.fileWrite
 * $util.fileRead
 
-<<<<<<< Updated upstream
-=======
 * $util.bluetoothState
 
->>>>>>> Stashed changes
+## DATABASE ANDROID NOSQL
+* $util.saveData
+* $util.getByPathData
+* $util.removeByPathData
+
 
 ## Componments
 * checkbox
