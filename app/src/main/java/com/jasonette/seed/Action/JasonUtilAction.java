@@ -194,7 +194,6 @@ public class JasonUtilAction {
             }
         });
     }
-
     public void removeByPathData(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override

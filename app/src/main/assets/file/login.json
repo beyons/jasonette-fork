@@ -43,7 +43,10 @@
         "body": {
             "style": {
                 "border": "none",
-                "background": "#0E111F"
+                "background": {
+                    "type": "html",
+                    "url": "file://agent/animation.html"
+                }
             },
             "sections": [
                 {
@@ -79,8 +82,8 @@
                                     "placeholder": "Votre login",
                                     "keyborad": "email",
                                     "style": {
-                                        "hintColor": "#ffffff",
-                                        "borderColor": "#3498db",
+                                        "hintColor": "#3498db",
+                                        "borderColor": "#ff7979",
                                         "placeholder_color": "#cecece",
                                         "font": "Roboto",
                                         "align": "left",
@@ -102,8 +105,8 @@
                                     "placeholder": "Votre mot de passe",
                                     "keyborad": "text",
                                     "style": {
-                                        "hintColor": "#ffffff",
-                                        "borderColor": "#3498db",
+                                        "hintColor": "#3498db",
+                                        "borderColor": "#ff7979",
                                         "placeholder_color": "#cecece",
                                         "font": "Roboto",
                                         "color": "black",
@@ -159,10 +162,10 @@
                                 {
                                     "type": "checkbox",
                                     "name": "mycheck",
-                                    "hint": "my hint text",
+                                    "hint": "my first text",
                                     "style": {
                                         "color": "white",
-                                        "background": "#0E111F",
+                                        "background": "transparent",
                                         "size": 15
                                     }
                                 },
@@ -213,6 +216,21 @@
                                         "background": "#0E111F",
                                         "firstColor": "#54a0ff",
                                         "secondColor": "#ff6b6b"
+                                    }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": 70
+                                    }
+                                },
+                                {
+                                    "type": "toggle",
+                                    "name": "toggle",
+                                    "checked": true,
+                                    "style": {
+                                        "background": "#ffeaa7",
+                                        "color": "#54a0ff"
                                     }
                                 },
                                 {
@@ -699,7 +717,7 @@
                 },
                 {
                     "type": "button",
-                    "text": "+",
+                    "url": "file://add.png",
                     "style": {
                         "width": 60,
                         "height": 60,
