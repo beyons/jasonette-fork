@@ -30,10 +30,10 @@
                     "transition": "replace",
                     "view": "jason",
                     "preload": {
-                      "background": "#0E111F",
+                      "background": "#85B0A6",
                       "layers": [{
                         "type": "image",
-                        "url": "file://preload.gif",
+                        "url": "file://images/loading.gif",
                         "style": {
                           "top": "50%-100",
                           "left": "50%-100",
@@ -64,13 +64,13 @@
     },
     "body": {
       "style": {
-        "background": "#0E111F",
+        "background": "#85B0A6",
         "border": "none"
       },
       "layers": [
         {
           "type": "image",
-          "url": "file://loading.gif",
+          "url": "file://images/loading.gif",
           "style": {
             "width": "400",
             "height": "400",

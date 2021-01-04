@@ -2,7 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorControlActivated">#3498db</item>
+        <item name="colorControlActivated">#feca57</item>
         <item name="android:windowDisablePreview">true</item>
     </style>
     <style name="CameraTheme" parent="android:Theme.DeviceDefault">

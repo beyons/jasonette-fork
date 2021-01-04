@@ -21,10 +21,10 @@ public class JasonToggleComponent {
                 JSONObject style = component.getJSONObject("style");
                 ToggleButton toggle = new ToggleButton(context);
                 boolean checked = (boolean) component.getBoolean("checked");
-                if(checked == true)
-                    toggle.setChecked(true);
-                else
-                    toggle.setChecked(false);
+
+                if(checked == true) toggle.setChecked(true);
+                else toggle.setChecked(false);
+
                 toggle.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
                 if (style.has("background")) {
                     int background = JasonHelper.parse_color(style.getString("background"));

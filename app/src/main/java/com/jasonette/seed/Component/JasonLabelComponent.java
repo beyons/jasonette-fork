@@ -55,8 +55,19 @@ public class JasonLabelComponent {
                 }
 
                 ((TextView)view).setGravity(g);
+                if (style.has("fontWeight")) {
+                    String weight = style.getString("fontWeight");
+                    if (weight.equalsIgnoreCase("bold")){
+                        ((TextView) view).setTypeface(null, Typeface.BOLD);
+                    } else if(weight.equalsIgnoreCase("italic")){
+                        ((TextView) view).setTypeface(null, Typeface.ITALIC);
+                    } else if(weight.equalsIgnoreCase("boldItalic")){
+                        ((TextView) view).setTypeface(null, Typeface.BOLD_ITALIC);
+                    } else {
+                        ((TextView) view).setTypeface(null, Typeface.NORMAL);
+                    }
 
-
+                }
                 if (style.has("size")) {
                     ((TextView)view).setTextSize(Float.parseFloat(style.getString("size")));
                 }
