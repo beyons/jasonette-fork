@@ -60,8 +60,8 @@ Documentation and examples in the [documentation repository](https://github.com/
 * $util.fileCreate
 * $util.fileWrite
 * $util.fileRead
-
 * $util.bluetoothState
+* $websocket
 
 #### DATABASE ANDROID NOSQL
 * $util.saveData
