@@ -33,6 +33,7 @@ public class JasonCardComponent {
                 JSONObject image = component.getJSONObject("image");
                 JSONObject title = component.getJSONObject("title");
                 JSONObject description = component.getJSONObject("description");
+                JSONObject date = component.getJSONObject("date");
                 CardView card = new CardView(context);
 
                 if (style.has("background")) {
@@ -112,7 +113,7 @@ public class JasonCardComponent {
                 }
                 //Define the color
                 if (description.has("color")) {
-                    int colorD = JasonHelper.parse_color(title.getString("color"));
+                    int colorD = JasonHelper.parse_color(description.getString("color"));
                     descriptions.setTextColor(colorD);
                 }
                 //Define the fontWeight
@@ -148,6 +149,56 @@ public class JasonCardComponent {
                 params1.setLayoutDirection(LinearLayout.VERTICAL);
                 params1.setMargins(description.getInt("margin-left"), description.getInt("margin-top"), description.getInt("margin-right"), description.getInt("margin-bottom"));
                 descriptions.setLayoutParams(params1);
+                //Create the textView
+                TextView dates = new TextView(context);
+                dates.setText(date.getString("text"));
+                //Define the size
+                if (date.has("size")) {
+                    dates.setTextSize(Float.parseFloat(date.getString("size")));
+                }
+                //Define the color
+                if (date.has("color")) {
+                    int colorD = JasonHelper.parse_color(date.getString("color"));
+                    dates.setTextColor(colorD);
+                }
+                //Define the fontWeight
+                if (date.has("fontWeight")) {
+                    String weight = date.getString("fontWeight");
+                    if (weight.equalsIgnoreCase("bold")){
+                        dates.setTypeface(null, Typeface.BOLD);
+                    } else if(weight.equalsIgnoreCase("italic")){
+                        dates.setTypeface(null, Typeface.ITALIC);
+                    } else if(weight.equalsIgnoreCase("boldItalic")){
+                        dates.setTypeface(null, Typeface.BOLD_ITALIC);
+                    } else {
+                        dates.setTypeface(null, Typeface.NORMAL);
+                    }
+                }
+                //Define the alignement
+
+                if (date.has("align")) {
+                    int g = 0;
+                    String align = date.getString("align");
+                    if (align.equalsIgnoreCase("center")) {
+                        g = g | Gravity.CENTER_HORIZONTAL;
+                        dates.setGravity(Gravity.CENTER_HORIZONTAL);
+                    } else if (align.equalsIgnoreCase("right")) {
+                        g = g | Gravity.RIGHT;
+                        dates.setGravity(Gravity.RIGHT);
+                    } else if (align.equalsIgnoreCase("left")) {
+                        g = g | Gravity.LEFT;
+                        dates.setGravity(Gravity.LEFT);
+                    }
+                }
+                //Define the description margin
+                LinearLayout.LayoutParams params2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                params2.setLayoutDirection(LinearLayout.HORIZONTAL);
+                params2.setMargins(description.getInt("margin-left"), description.getInt("margin-top"), description.getInt("margin-right"), description.getInt("margin-bottom"));
+                dates.setLayoutParams(params2);
+
+
+
+
                 //Define LinearLayout
                 LinearLayout lay =new LinearLayout(context);
                 lay.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
@@ -159,16 +210,18 @@ public class JasonCardComponent {
                     lay.addView(myImage);
                     lay.addView(titles);
                     lay.addView(descriptions);
-                    card.addView(lay);
+                    lay.addView(dates);
                 }
                 else {
                     if (positionImg == 2 && positionTit == 1) {
                         lay.addView(titles);
                         lay.addView(myImage);
                         lay.addView(descriptions);
-                        card.addView(lay);
+                        lay.addView(dates);
                     }
                 }
+                card.addView(lay);
+
                 //Return the card
                 return card;
             } catch (Exception e){

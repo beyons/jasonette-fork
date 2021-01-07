@@ -74,7 +74,7 @@
                   "type": "card",
                   "name": "card",
                   "style": {
-                    "background": "#e67e22",
+                    "background": "#ecf0f1",
                     "min-width": 250,
                     "min-height": 170
                   },
@@ -102,6 +102,18 @@
                     "fontWeight": "italic",
                     "align": "left",
                     "color": "#2d3436",
+                    "margin-left": 20,
+                    "margin-right": 20,
+                    "margin-top": 0,
+                    "margin-bottom": 20
+                  },
+                  "date": {
+                    "text": "10/10/2021",
+                    "align": "left",
+                    "color": "#2980b9",
+                    "font": "Roboto",
+                    "size": "13",
+                    "fontWeight": "bold",
                     "margin-left": 20,
                     "margin-right": 20,
                     "margin-top": 0,
