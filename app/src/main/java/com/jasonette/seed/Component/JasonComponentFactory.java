@@ -54,6 +54,8 @@ public class JasonComponentFactory {
                 view = JasonRatingBarComponent.build(prototype, component, parent, context);
             }else if(type.equalsIgnoreCase("toggle")) {
                 view = JasonToggleComponent.build(prototype, component, parent, context);
+            }else if(type.equalsIgnoreCase("card")) {
+                view = JasonCardComponent.build(prototype, component, parent, context);
             }else {
                 // Non-existent component warning
                 JSONObject error_component = new JSONObject(component.toString());

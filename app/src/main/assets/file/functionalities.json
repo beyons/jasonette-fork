@@ -132,6 +132,39 @@
                                     }
                                 },
                                 {
+                                    "type": "card",
+                                    "name": "card",
+                                    "style": {
+                                        "background": "#e67e22",
+                                        "min-width": 250,
+                                        "min-height": 170
+                                    },
+                                    "title": {
+                                        "text": "Restez protégé tout en gardant le contrôle",
+                                        "font": "Roboto",
+                                        "size": "22",
+                                        "fontWeight": "bold",
+                                        "align": "left",
+                                        "color": "#2d3436",
+                                        "margin": 20
+                                    },
+                                    "description": {
+                                        "text": "Bénéficiez de Google Play Protect et de mises à jour de sécurité régulières, et contrôlez la manière dont vos données sont partagées. Chaque jour, nous protégeons plus de 2,5 milliards d'appareils Android actifs et assurons la confidentialité des informations.",
+                                        "font": "Roboto",
+                                        "size": "13",
+                                        "fontWeight": "italic",
+                                        "align": "left",
+                                        "color": "#2d3436",
+                                        "margin": 20
+                                    }
+                                },
+                                {
+                                    "type": "space",
+                                    "style": {
+                                        "height": 30
+                                    }
+                                },
+                                {
                                     "type": "spinner",
                                     "name": "gender",
                                     "data": "choix1|choix2|choix3|choix4",
