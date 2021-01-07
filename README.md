@@ -86,6 +86,7 @@ Documentation and examples in the [documentation repository](https://github.com/
 * radiobutton group
 * ratingstar
 * toggle button
+* cardView
 
 ## [License](LICENSE)
 
