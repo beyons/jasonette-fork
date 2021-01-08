@@ -1,31 +1,28 @@
 package com.jasonette.seed.Component;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Rect;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 
-import com.google.android.gms.vision.text.Line;
+import com.jasonette.seed.Core.JasonModel;
+import com.jasonette.seed.Core.JasonViewActivity;
 import com.jasonette.seed.Helper.JasonHelper;
 import org.json.JSONObject;
-
-import java.io.File;
 import java.io.InputStream;
 
-public class JasonCardComponent {
+public class JasonCardComponent extends JasonComponent {
     public static View build(View view, final JSONObject component, final JSONObject parent, final Context context) {
         if(view == null) {
             try {
@@ -34,8 +31,8 @@ public class JasonCardComponent {
                 JSONObject title = component.getJSONObject("title");
                 JSONObject description = component.getJSONObject("description");
                 JSONObject date = component.getJSONObject("date");
-                CardView card = new CardView(context);
-
+                final JSONObject href = component.getJSONObject("href");
+                final CardView card = new CardView(context);
                 if (style.has("background")) {
                     int background = JasonHelper.parse_color(style.getString("background"));
                     card.setCardBackgroundColor(background);
@@ -195,10 +192,6 @@ public class JasonCardComponent {
                 params2.setLayoutDirection(LinearLayout.HORIZONTAL);
                 params2.setMargins(description.getInt("margin-left"), description.getInt("margin-top"), description.getInt("margin-right"), description.getInt("margin-bottom"));
                 dates.setLayoutParams(params2);
-
-
-
-
                 //Define LinearLayout
                 LinearLayout lay =new LinearLayout(context);
                 lay.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
@@ -220,12 +213,37 @@ public class JasonCardComponent {
                         lay.addView(dates);
                     }
                 }
-                card.addView(lay);
 
+
+                card.setOnClickListener(new View.OnClickListener() {
+                    @Override public void onClick(View v) {
+                        try {
+
+                            Integer depth;
+                            depth = 0;
+                            String url = href.getString("url");
+                            String transition = "push";
+                            String params = null;
+                            Intent intent = new Intent(context, JasonViewActivity.class);
+                            intent.putExtra("url", url);
+                            if(params != null) {
+                                intent.putExtra("params", params);
+                            }
+                            intent.putExtra("depth", depth+1);
+                            JSONObject callback = new JSONObject();
+                            callback.put("class", "JasonCallback");
+                            callback.put("method", "href");
+                            JasonHelper.dispatchIntent(null, null, null, context, intent, callback);
+                        } catch (Exception e) {
+                            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                        }
+                    }
+                });
                 //Return the card
+                card.addView(lay);
                 return card;
             } catch (Exception e){
-                return new View(context);
+                Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
             }
         }
         return new View(context);

@@ -75,7 +75,7 @@ public class JasonRadioGroupComponent { public static View build(View view, fina
 
             return radioGrp;
         } catch (Exception e){
-            return new View(context);
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
         }
     }
     return new View(context);

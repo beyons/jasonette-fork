@@ -73,6 +73,9 @@
                 {
                   "type": "card",
                   "name": "card",
+                  "href": {
+                    "url": "file://register.json"
+                  },
                   "style": {
                     "background": "#ecf0f1",
                     "min-width": 250,
@@ -108,7 +111,66 @@
                     "margin-bottom": 20
                   },
                   "date": {
-                    "text": "10/10/2021",
+                    "text": "#Android #Jasonette",
+                    "align": "left",
+                    "color": "#2980b9",
+                    "font": "Roboto",
+                    "size": "13",
+                    "fontWeight": "bold",
+                    "margin-left": 20,
+                    "margin-right": 20,
+                    "margin-top": 0,
+                    "margin-bottom": 20
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 30
+                  }
+                },
+                {
+                  "type": "card",
+                  "name": "card2",
+                  "href": {
+                    "url": "file://register.json"
+                  },
+                  "style": {
+                    "background": "#ecf0f1",
+                    "min-width": 250,
+                    "min-height": 170
+                  },
+                  "image": {
+                    "url": "file/images/wallpaper1.png",
+                    "position": 1
+                  },
+                  "title": {
+                    "text": "Tout ce qu’il faut savoir sur le Covid-19",
+                    "font": "Roboto",
+                    "size": "22",
+                    "fontWeight": "bold",
+                    "align": "left",
+                    "color": "#2d3436",
+                    "margin-left": 20,
+                    "margin-right": 20,
+                    "margin-top": 20,
+                    "margin-bottom": 20,
+                    "position": 2
+                  },
+                  "description": {
+                    "text": "Tout le monde parle de la maladie à coronavirus 2019 (COVID-19) et vous êtes submergé(e) d’informations sur le virus et la manière de s’en protéger. Pour vous préparer correctement et vous protéger, vos proches et vous, il est essentiel que vous disposiez de données factuelles. Malheureusement, les fausses informations foisonnent. En période de crise sanitaire, ce type d’informations risque de priver certaines personnes de protection et d’accroître leur vulnérabilité à la maladie, en plus de favoriser la peur et la stigmatisation.\n\n Veillez à vous informer auprès de sources de confiance, telles que l’UNICEF et l’Organisation mondiale de la Santé. L’UNICEF travaille sans relâche avec des spécialistes de la santé du monde entier afin de vous fournir des informations exactes.",
+                    "font": "Roboto",
+                    "size": "13",
+                    "fontWeight": "italic",
+                    "align": "left",
+                    "color": "#2d3436",
+                    "margin-left": 20,
+                    "margin-right": 20,
+                    "margin-top": 0,
+                    "margin-bottom": 20
+                  },
+                  "date": {
+                    "text": "#Android #Jasonette",
                     "align": "left",
                     "color": "#2980b9",
                     "font": "Roboto",

@@ -31,7 +31,7 @@ public class JasonProgressBarComponent {
                 layout.addView(progressBar,params);
                 return view;
             } catch (Exception e){
-            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
             return new View(context);
             }
         }
