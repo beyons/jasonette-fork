@@ -27,6 +27,7 @@ Documentation and examples in the [documentation repository](https://github.com/
 * $util.screenshot
 * $util.flashlight
 * $reload
+* $pull
 * $render
 * $snapshot
 * $href
