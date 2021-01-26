@@ -86,13 +86,10 @@ public class JasonCardComponent extends JasonComponent {
                     int g1 = 0;
                     String align = description.getString("align");
                     if (align.equalsIgnoreCase("center")) {
-                        g1 = g1 | Gravity.CENTER_HORIZONTAL;
                         titles.setGravity(Gravity.CENTER_HORIZONTAL);
                     } else if (align.equalsIgnoreCase("right")) {
-                        g1 = g1 | Gravity.RIGHT;
                         titles.setGravity(Gravity.RIGHT);
                     } else if (align.equalsIgnoreCase("left")) {
-                        g1 = g1 | Gravity.LEFT;
                         titles.setGravity(Gravity.LEFT);
                     }
                 }
@@ -131,13 +128,10 @@ public class JasonCardComponent extends JasonComponent {
                     int g = 0;
                     String align = description.getString("align");
                     if (align.equalsIgnoreCase("center")) {
-                        g = g | Gravity.CENTER_HORIZONTAL;
                         descriptions.setGravity(Gravity.CENTER_HORIZONTAL);
                     } else if (align.equalsIgnoreCase("right")) {
-                        g = g | Gravity.RIGHT;
                         descriptions.setGravity(Gravity.RIGHT);
                     } else if (align.equalsIgnoreCase("left")) {
-                        g = g | Gravity.LEFT;
                         descriptions.setGravity(Gravity.LEFT);
                     }
                 }
@@ -172,7 +166,6 @@ public class JasonCardComponent extends JasonComponent {
                     }
                 }
                 //Define the alignement
-
                 if (date.has("align")) {
                     int g = 0;
                     String align = date.getString("align");
@@ -214,29 +207,28 @@ public class JasonCardComponent extends JasonComponent {
                     }
                 }
 
-
                 card.setOnClickListener(new View.OnClickListener() {
                     @Override public void onClick(View v) {
-                        try {
+                    try {
 
-                            Integer depth;
-                            depth = 0;
-                            String url = href.getString("url");
-                            String transition = "push";
-                            String params = null;
-                            Intent intent = new Intent(context, JasonViewActivity.class);
-                            intent.putExtra("url", url);
-                            if(params != null) {
-                                intent.putExtra("params", params);
-                            }
-                            intent.putExtra("depth", depth+1);
-                            JSONObject callback = new JSONObject();
-                            callback.put("class", "JasonCallback");
-                            callback.put("method", "href");
-                            JasonHelper.dispatchIntent(null, null, null, context, intent, callback);
-                        } catch (Exception e) {
-                            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                        Integer depth;
+                        depth = 0;
+                        String url = href.getString("url");
+                        String transition = "push";
+                        String params = null;
+                        Intent intent = new Intent(context, JasonViewActivity.class);
+                        intent.putExtra("url", url);
+                        if(params != null) {
+                            intent.putExtra("params", params);
                         }
+                        intent.putExtra("depth", depth+1);
+                        JSONObject callback = new JSONObject();
+                        callback.put("class", "JasonCallback");
+                        callback.put("method", "href");
+                        JasonHelper.dispatchIntent(null, null, null, context, intent, callback);
+                    } catch (Exception e) {
+                        Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                    }
                     }
                 });
                 //Return the card

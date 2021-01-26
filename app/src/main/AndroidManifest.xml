@@ -105,4 +105,5 @@
         android:protectionLevel="normal"/>
     <!-- Uncomment below lines to enable Bluetooth -->
     <uses-permission android:name="android.permission.BLUETOOTH" android:required="false" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 </manifest>

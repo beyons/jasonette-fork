@@ -73,9 +73,6 @@
                 {
                   "type": "card",
                   "name": "card",
-                  "href": {
-                    "url": "file://register.json"
-                  },
                   "style": {
                     "background": "#ecf0f1",
                     "min-width": 250,
@@ -121,6 +118,9 @@
                     "margin-right": 20,
                     "margin-top": 0,
                     "margin-bottom": 20
+                  },
+                  "href": {
+                    "url": "file://register.json"
                   }
                 },
                 {
@@ -132,9 +132,6 @@
                 {
                   "type": "card",
                   "name": "card2",
-                  "href": {
-                    "url": "file://register.json"
-                  },
                   "style": {
                     "background": "#ecf0f1",
                     "min-width": 250,
@@ -180,6 +177,9 @@
                     "margin-right": 20,
                     "margin-top": 0,
                     "margin-bottom": 20
+                  },
+                  "href": {
+                    "url": "file://register.json"
                   }
                 },
                 {

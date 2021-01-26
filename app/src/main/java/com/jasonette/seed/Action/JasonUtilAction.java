@@ -9,7 +9,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -397,6 +399,30 @@ public class JasonUtilAction {
                     } else {
                         JasonHelper.next("success", action, true, event, context);
                     }
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+    }
+    public void bluetoothSend(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject options = action.getJSONObject("options");
+
+                    String path = Environment.getExternalStorageDirectory() + "/"
+                            + options.get("filename").toString();
+
+                    File file = new File(path);
+
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_SEND);
+                    intent.setType(options.get("mime").toString());
+                    intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(file));
+
+                    ContextCompat.startActivity((JasonViewActivity)context,intent,null);
                 } catch (Exception e){
                     Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
                 }
