@@ -64,6 +64,7 @@ Documentation and examples in the [documentation repository](https://github.com/
 * $util.bluetoothState
 * $websocket
 * $util.bluetoothSend
+* $util.recaptcha
 
 #### DATABASE ANDROID NOSQL
 * $util.saveData
