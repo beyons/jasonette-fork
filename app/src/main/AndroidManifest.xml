@@ -87,22 +87,30 @@
         <uses-permission android:name="android.permission.RECORD_AUDIO"/>
         <uses-permission android:name="android.permission.WAKE_LOCK" />
     -->
+
     <!-- Uncomment below lines to enable barcode scanner -->
     <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="barcode"/>
+
     <!-- Uncomment below lines to enable camera -->
     <uses-permission android:name="android.permission.CAMERA" />
+
     <!-- Uncomment below lines to enable external storage -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <!-- Uncomment below lines to access to wifi state -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <!-- Uncomment below lines to enable call phone -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <!-- Uncomment below lines to enable send sms -->
     <uses-permission android:name="android.permission.SEND_SMS" />
+
     <!-- Uncomment below lines to enable Flashlight -->
     <permission android:name="android.permission.FLASHLIGHT"
         android:permissionGroup="android.permission-group.HARDWARE_CONTROLS"
         android:protectionLevel="normal"/>
+
     <!-- Uncomment below lines to enable Bluetooth -->
     <uses-permission android:name="android.permission.BLUETOOTH" android:required="false" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />

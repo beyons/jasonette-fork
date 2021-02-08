@@ -35,12 +35,19 @@ import android.text.format.DateFormat;
 import android.util.Base64;
 import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
+import android.webkit.CookieManager;
+import android.webkit.JavascriptInterface;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -49,6 +56,11 @@ import androidx.fragment.app.DialogFragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.github.florent37.androidnosql.NoSql;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.safetynet.SafetyNet;
+import com.google.android.gms.safetynet.SafetyNetApi;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.jasonette.seed.Core.JasonViewActivity;
 import com.jasonette.seed.Helper.JasonHelper;
 import com.jasonette.seed.Helper.JasonImageHelper;
@@ -76,9 +88,7 @@ import androidx.core.app.ActivityCompat;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.List;
-
-
-
+import java.util.concurrent.Executor;
 
 
 public class JasonUtilAction {
@@ -138,6 +148,49 @@ public class JasonUtilAction {
         } catch (Exception e) {
             Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
         }
+    }
+    public void recaptcha(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    SafetyNet.getClient(context).verifyWithRecaptcha("6LdEMU8aAAAAADfKZvnbTldG2qJritMQwMsCAn-k")
+                            .addOnSuccessListener(((JasonViewActivity)context) ,
+                                    new OnSuccessListener<SafetyNetApi.RecaptchaTokenResponse>() {
+                                        @Override
+                                        public void onSuccess(SafetyNetApi.RecaptchaTokenResponse response) {
+                                            // Indicates communication with reCAPTCHA service was
+                                            // successful.
+                                            String userResponseToken = response.getTokenResult();
+                                            if (!userResponseToken.isEmpty()) {
+                                                // Validate the user response token using the
+                                                // reCAPTCHA siteverify API.
+                                                JasonHelper.next("success", action, true, event, context);
+                                                Log.d("Result", ""+true);
+                                            }
+                                        }
+                                    })
+                            .addOnFailureListener(( (JasonViewActivity)context), new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    if (e instanceof ApiException) {
+                                        // An error occurred when communicating with the
+                                        // reCAPTCHA service. Refer to the status code to
+                                        // handle the error appropriately.
+                                        ApiException apiException = (ApiException) e;
+                                        int statusCode = apiException.getStatusCode();
+                                        Log.d("Error", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                                    } else {
+                                        // A different, unknown type of error occurred.
+                                        Log.d("Error", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                                    }
+                                }
+                            });
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
     }
     public void saveData(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -1059,5 +1112,12 @@ public class JasonUtilAction {
                 }
             }
         }).start();
+    }
+}
+
+class MyJavaScriptInterface {
+    @JavascriptInterface
+    public void onUrlChange(String url) {
+        Log.d("hydrated", "onUrlChange" + url);
     }
 }

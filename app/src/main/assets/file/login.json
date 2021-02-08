@@ -45,7 +45,7 @@
         "border": "none",
         "background": {
           "type": "html",
-          "url": "file://agent/animation.html"
+          "text": "<html><style>body,html {height: 100%}body {background: #fff;overflow: hidden}.ocean {height: 5%;width: 100%;position: absolute;bottom: 0;left: 0;background: #015871}.wave {background: url(https://cdn.kcak11.com/codepen_assets/wave_animation/wave.svg) repeat-x;position: absolute;top: -198px;width: 6400px;height: 198px;animation: wave 7s cubic-bezier(.36, .45, .63, .53) infinite;transform: translate3d(0, 0, 0)}.wave:nth-of-type(2) {top: -175px;animation: wave 7s cubic-bezier(.36, .45, .63, .53) -125ms infinite, swell 7s ease -1.25s infinite;opacity: 1}.endWave {display: none}</style><div class=\"ocean\"><div class=\"wave\"></div><div class=\"wave\"></div></div></html>"
         }
       },
       "sections": [
@@ -329,7 +329,55 @@
                 {
                   "type": "space",
                   "style": {
-                    "height": 6
+                    "height": 20
+                  }
+                },
+                {
+                  "type": "button",
+                  "text": "Blutooth send",
+                  "style": {
+                    "width": 220,
+                    "height": 50,
+                    "background": "#00b894",
+                    "color": "#ffffff",
+                    "font": "Roboto-Bold",
+                    "corner_radius": 35,
+                    "size": 15
+                  },
+                  "action": {
+                    "type": "$util.bluetoothSend",
+                    "options": {
+                      "filename": "text.txt",
+                      "mime": "text/plain"
+                    }
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 20
+                  }
+                },
+                {
+                  "type": "button",
+                  "text": "Captcha",
+                  "style": {
+                    "width": 220,
+                    "height": 50,
+                    "background": "#ffbe76",
+                    "color": "#000000",
+                    "font": "Roboto-Bold",
+                    "corner_radius": 35,
+                    "size": 15
+                  },
+                  "action": {
+                    "type": "$util.recaptcha"
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 20
                   }
                 },
                 {
