@@ -63,6 +63,7 @@ Documentation and examples in the [documentation repository](https://github.com/
 * $util.fileRead
 * $util.bluetoothState
 * $websocket
+* $util.bluetoothSend
 
 #### DATABASE ANDROID NOSQL
 * $util.saveData
