@@ -63,16 +63,16 @@ import com.bumptech.glide.request.target.SizeReadyCallback;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
 import com.github.florent37.androidnosql.AndroidNoSql;
-import com.jasonette.seed.Component.JasonComponentFactory;
-import com.jasonette.seed.Component.JasonImageComponent;
-import com.jasonette.seed.Helper.JasonHelper;
-import com.jasonette.seed.Launcher.Launcher;
-import com.jasonette.seed.Service.agent.JasonAgentService;
-import com.jasonette.seed.Service.vision.JasonVisionService;
-import com.jasonette.seed.Lib.JasonToolbar;
-import com.jasonette.seed.Lib.MaterialBadgeTextView;
+
+import com.jasonette.seed.Helper.*;
+import com.jasonette.seed.Component.*;
+import com.jasonette.seed.Launcher.*;
+import com.jasonette.seed.Service.agent.*;
+import com.jasonette.seed.Service.vision.*;
+import com.jasonette.seed.Lib.*;
+import com.jasonette.seed.Lib.*;
 import com.jasonette.seed.R;
-import com.jasonette.seed.Section.ItemAdapter;
+import com.jasonette.seed.Section.*;
 import com.yqritc.recyclerviewflexibledivider.HorizontalDividerItemDecoration;
 
 import org.json.JSONArray;
@@ -1493,6 +1493,7 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                 resumed = false;
                 String url = action.getJSONObject("options").getString("url");
                 String transition = "push";
+                String animations = "left";
                 if(action.getJSONObject("options").has("transition")){
                     transition = action.getJSONObject("options").getString("transition");
                 }
@@ -1530,6 +1531,7 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                 editor.commit();
 
                 if(transition.equalsIgnoreCase("switchtab")) {
+                    Log.d("Warning", "switchtab");
                     if (action.getJSONObject("options").has("preload")) {
                         preload = action.getJSONObject("options").getJSONObject("preload");
                     }
@@ -1543,6 +1545,7 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                         onSwitchTab(url, params, intent);
                     }
                 } else if(transition.equalsIgnoreCase("replace")){
+                    Log.d("Warning", "replace");
                     // remove all touch listeners before replacing
                     // Use case : Tab bar
                     removeListViewOnItemTouchListeners();
@@ -1557,7 +1560,8 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                         preload = action.getJSONObject("options").getJSONObject("preload");
                     }
                     onRefresh();
-                } else {
+                } else if(transition.equalsIgnoreCase("modal")){
+                    Log.d("Warning", "modal");
                     Intent intent = new Intent(this, JasonViewActivity.class);
                     intent.putExtra("url", url);
                     if(params != null) {
@@ -1578,6 +1582,31 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
 
 
                     JasonHelper.dispatchIntent(action, data, event, context, intent, callback);
+                } else {
+                    Log.d("Warning", "push");
+                    Intent intent = new Intent(this, JasonViewActivity.class);
+                    intent.putExtra("url", url);
+                    if(params != null) {
+                        intent.putExtra("params", params);
+                    }
+                    if (action.getJSONObject("options").has("preload")) {
+                        intent.putExtra("preload", action.getJSONObject("options").getJSONObject("preload").toString());
+                    }
+                    intent.putExtra("depth", depth+1);
+
+
+                    // Start an Intent with a callback option:
+                    // 1. call dispatchIntent
+                    // 2. the intent will return with JasonCallback.href
+                    JSONObject callback = new JSONObject();
+                    callback.put("class", "JasonCallback");
+                    callback.put("method", "href");
+
+                    if(action.getJSONObject("options").has("animation")){
+                        animations = action.getJSONObject("options").getString("animation");
+                    }
+                    JasonHelper.dispatchPushIntent(animations,"Push", action, data, event, context, intent, callback);
+
                 }
             }
 
@@ -2808,10 +2837,14 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
 
                     // Now creating the menuButton and itemview
                     FrameLayout itemView;
+
                     View menuButton;
+
+
                     if(item.getActionView() == null){
                         // Create itemView if it doesn't exist yet
                         itemView = new FrameLayout(this);
+
                         menuButton = JasonComponentFactory.build(null, json, null, JasonViewActivity.this);
                         JasonComponentFactory.build(menuButton, json, null, JasonViewActivity.this);
                         itemView.addView(menuButton);
@@ -2867,6 +2900,7 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                             top = (int)JasonHelper.pixels(this, String.valueOf(Integer.parseInt(badge_style.getString("top"))), "vertical");
                         }
                         layoutParams.setMargins(left,top,0,0);
+
                         itemView.addView(v);
                         v.setLayoutParams(layoutParams);
                         itemView.setClipChildren(false);

@@ -1,0 +1,113 @@
+{
+  "$jason": {
+    "head": {
+      "title": "TEST JAVASCRIPT",
+      "description": "Test javascript implementation for Jasonette",
+      "styles": {
+        "caption": {
+          "font": "Roboto",
+          "size": "13",
+          "align": "center",
+          "spacing": "15"
+        },
+        "image": {
+          "width": "100%"
+        }
+      }
+    },
+    "body": {
+      "style": {
+        "background": "#ffffff",
+        "border": "none"
+      },
+      "header": {
+        "title": "Page d'accueil",
+        "search": {
+          "name": "query_text",
+          "placeholder": "Que recherchez-vous ?",
+          "style": {
+            "background": "#6c5ce7",
+            "color": "white"
+          },
+          "action": {
+            "type": "$util.alert",
+            "options": {
+              "title": "You've entered:",
+              "description": "{{$get.query_text}}"
+            }
+          }
+        },
+        "style": {
+          "font": "Roboto",
+          "size": "25",
+          "background": "#6c5ce7",
+          "color": "white"
+        },
+        "menu": {
+          "image": "file://images/hamburger.png",
+          "style": {
+            "color": "white",
+            "align": "left"
+          },
+          "action": {
+            "type": "$util.picker",
+            "options": {
+              "items": [{
+                "text": "Afficher Snackbar",
+                "action": {
+                  "type": "$util.banner",
+                  "options": {
+                    "title": "Success",
+                    "description": "This is a banner"
+                  }
+                }
+              },{
+                "text": "Afficher Alert Dialog",
+                "action": {
+                  "type": "$util.alert",
+                  "options": {
+                    "title": "Alert",
+                    "description": "This is an alert triggered by $util.picker"
+                  }
+                }
+              },{
+                "text": "Afficher Toast",
+                "action": {
+                  "type": "$util.toast",
+                  "options": {
+                    "text": "I'm a toast. I display a simple text.",
+                    "type": "warning"
+                  }
+                }
+              },
+
+                {
+                  "text": "SHARING",
+                  "action": {
+                    "type": "$media.camera",
+                    "success": {
+                      "type": "$util.share",
+                      "options": {
+                        "items": [{
+                          "type": "video",
+                          "file_url": "{{$jason.file_url}}"
+                        }]
+                      }
+                    }
+                  }
+
+                }]
+            }
+          }
+        }
+      },
+      "sections": [{
+        "items": [{
+
+        }]
+      }],
+      "footer": {
+      }
+    }
+  }
+}

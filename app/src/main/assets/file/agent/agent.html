@@ -8,19 +8,19 @@
         var result = re.test(email);
 
         if(result == true){
-            if(email.trim() == bd1.trim() && pass.trim() == bd2.trim()) {
+            if(email== bd1 && pass == bd2) {
                 $agent.response(true);
-                $agent.trigger("marche", {});
+                $agent.trigger("pageSuivante", {});
             }
             else {
                 $agent.response(false);
-                $agent.trigger("marchepas", {});
+                $agent.trigger("erreurLogin", {});
             }
         }
         else
         {
             $agent.response(result);
-            $agent.trigger("mailInvaliede", {});
+            $agent.trigger("mailInvalide", {});
         }
     }
 </script>

@@ -1,0 +1,60 @@
+{
+  "$jason": {
+    "head": {
+      "title": "REGISTER PAGE WITH LOCAL DATABASE JSON KEY/VALUE",
+      "description": "Jasonelle database key/value",
+      "styles": {
+        "caption": {
+          "font": "Roboto",
+          "size": "13",
+          "align": "center",
+          "spacing": "15"
+        }
+      }
+    },
+    "body": {
+      "style": {
+        "border": "none",
+        "background": "#0E111F"
+      },
+      "sections": [
+        {
+          "items": [
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center"
+              },
+              "components": [
+
+                {
+                  "type": "map",
+                  "region": {
+                    "coord": "40.7197614,-73.9909211",
+                    "width": "200",
+                    "height": "200"
+                  },
+                  "pins": [{
+                    "title": "This is a pin",
+                    "description": "It really is.",
+                    "coord": "40.7197614,-73.9909211",
+                    "style": {
+                      "selected": "true"
+                    }
+                  }],
+                  "style": {
+                    "width": "100%",
+                    "height": "100%",
+                    "type": "satellite_flyover"
+                  }
+                }
+
+
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

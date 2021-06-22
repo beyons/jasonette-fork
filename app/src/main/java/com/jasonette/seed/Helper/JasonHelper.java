@@ -381,6 +381,61 @@ public class JasonHelper {
         if (intent != null) {
             // Start the activity
             ((JasonViewActivity) context).startActivityForResult(intent, requestCode);
+
+        } else {
+            // if intent is null,
+            // it means we are manually going to deal with opening a new Intent
+        }
+
+    }
+
+
+    // dispatchIntent method
+    // 1. triggers an external Intent
+    // 2. attaches a callback with all the payload so that we can pick it up where we left off when the intent returns
+    // the callback needs to specify the class name and the method name we wish to trigger after the intent returns
+    public static void dispatchPushIntent(String direction, String name, JSONObject action, JSONObject data, JSONObject event, Context context, Intent intent, JSONObject handler) {
+        // Generate unique identifier for return value
+        // This will be used to name the handlers
+        int requestCode;
+        try {
+            requestCode = Integer.parseInt(name);
+        } catch (NumberFormatException e) {
+            requestCode = -1;
+        }
+
+        try {
+            // handler looks like this:
+            /*
+                  {
+                    "class": [class name],
+                    "method": [method name],
+                    "options": {
+                        [options to preserve]
+                    }
+                  }
+             */
+
+            JSONObject options = new JSONObject();
+            options.put("action", action);
+            options.put("data", data);
+            options.put("event", event);
+            options.put("context", context);
+            handler.put("options", options);
+
+            ((Launcher) ((JasonViewActivity) context).getApplicationContext()).once(name, handler);
+        } catch (Exception e) {
+            Timber.w(e);
+        }
+
+        if (intent != null) {
+            // Start the activity
+            ((JasonViewActivity) context).startActivityForResult(intent, requestCode);
+            if(direction.equals("pushleft"))
+                ((JasonViewActivity) context).overridePendingTransition(android.R.anim.slide_out_right, android.R.anim.slide_in_left);
+            else if(direction.equals("fade"))
+                ((JasonViewActivity) context).overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+
         } else {
             // if intent is null,
             // it means we are manually going to deal with opening a new Intent

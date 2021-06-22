@@ -1,0 +1,254 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Login to your account",
+      "description": "Login to your account",
+      "agents": {
+        "auth": {
+          "url": "file://agent/agent.html"
+        }
+      },
+      "actions" : {
+        "pageSuivante": {
+          "type": "$href",
+          "options": {
+            "url": "file://ui/main.json",
+            "transition": "replace",
+            "view": "jason"
+          }
+        },
+        "erreurLogin": {
+          "type": "$util.alert",
+          "options": {
+            "title": "Authentification",
+            "description": "Veuillez vérifier vos paramètres d'authentification"
+          }
+        },
+        "mailInvalide": {
+          "type": "$util.alert",
+          "options": {
+            "title": "Adresse mail",
+            "description": "Le format de votre Email est invalide"
+          }
+        }
+      },
+      "styles": {
+        "caption": {
+          "font": "Roboto",
+          "size": 13,
+          "align": "center",
+          "spacing": 15
+        }
+      }
+    },
+    "body": {
+      "style": {
+        "border": "none"
+      },
+      "sections": [
+        {
+          "items": [
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center"
+              },
+              "components": [
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 70
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Login to your account",
+                  "style": {
+                    "size": "27",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "padding": "10",
+                    "align": "center",
+                    "fontWeight": "bold"
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 70
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Votre login",
+                  "style": {
+                    "size": "17",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "padding": "10",
+                    "width": "70%",
+                    "align": "left",
+                    "fontWeight": "bold"
+                  }
+                },
+                {
+                  "type": "textfield",
+                  "name": "login",
+                  "keyborad": "email",
+                  "style": {
+                    "hintColor": "#2c3e50",
+                    "borderColor": "#dfe6e9",
+                    "background": "#ffffff",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "align": "left",
+                    "width": "70%",
+                    "height": 50,
+                    "padding": 15,
+                    "corner_radius": 35,
+                    "size": 15
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Votre mot de passe",
+                  "style": {
+                    "size": "17",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "padding": "10",
+                    "width": "70%",
+                    "align": "left",
+                    "fontWeight": "bold"
+                  }
+                },
+                {
+                  "type": "textfield",
+                  "name": "password",
+                  "keyborad": "text",
+                  "style": {
+                    "hintColor": "#2c3e50",
+                    "borderColor": "#dfe6e9",
+                    "background": "#ffffff",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "align": "left",
+                    "width": "70%",
+                    "height": 50,
+                    "padding": 15,
+                    "corner_radius": 35,
+                    "secure": true,
+                    "size": 15
+                  },
+                  "action": {
+                    "store": {
+                      "type": "$global.set",
+                      "options": {
+                        "pwd": "{{$get.password}}"
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 80
+                  }
+                },
+                {
+                  "type": "button",
+                  "text": "Login",
+                  "style": {
+                    "width": "70%",
+                    "height": 50,
+                    "background": "#6c5ce7",
+                    "color": "#ffffff",
+                    "font": "Roboto-Bold",
+                    "corner_radius": 35,
+                    "size": 15
+                  },
+                  "action": {
+                    "type": "$agent.request",
+                    "options": {
+                      "id": "auth",
+                      "method": "validateEmail",
+                      "params": ["{{$get.login}}", "{{$get.password}}", "{{$global.login}}", "{{$global.motdepasse}}"]
+                    },
+                    "success": {
+                      "type": "$util.toast",
+                      "options": {
+                        "text": "{{$jason}}"
+                      }
+                    },
+                    "error": {
+                      "type": "$util.toast",
+                      "options": {
+                        "text": "Impossible de joindre l'agent"
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 40
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Nouveau utilisateur ? \nInscrivez vous maintenant",
+                  "style": {
+                    "size": "15",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "padding": "10",
+                    "align": "center",
+                    "fontWeight": "bold"
+                  },
+                  "action": {
+                    "type": "$href",
+                    "options": {
+                      "url": "file://register.json",
+                      "transition": "replace"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "layers": [
+        {
+          "type": "button",
+          "url": "file://images/add.png",
+          "style": {
+            "width": 60,
+            "height": 60,
+            "right": 40,
+            "bottom": 30,
+            "background": "#e74c3c",
+            "color": "#ffffff",
+            "font": "Roboto",
+            "size": 30,
+            "corner_radius": 75
+          },
+          "action": {
+            "type": "$href",
+            "options": {
+              "url": "file://ui/register.json",
+              "transition": "replace",
+              "view": "jason",
+              "preload": {
+                "background": "#0E111F"
+              }
+            }
+          },
+          "success": {
+            "type": "$ok"
+          }
+        }
+      ]
+    }
+  }
+}
