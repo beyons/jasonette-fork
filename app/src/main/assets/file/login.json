@@ -4,7 +4,7 @@
       "title": "JAVASCRIPT Agent Jasonelle",
       "description": "Jasonelle login form + call javascript Agent ",
       "agents": {
-        "checko": {
+        "authentificate": {
           "url": "file://agent/agent.html"
         }
       },
@@ -258,7 +258,7 @@
                   "action": {
                     "type": "$agent.request",
                     "options": {
-                      "id": "checko",
+                      "id": "authentificate",
                       "method": "validateEmail",
                       "params": ["{{$get.login}}", "{{$get.password}}", "{{$global.login}}", "{{$global.motdepasse}}"]
                     },
