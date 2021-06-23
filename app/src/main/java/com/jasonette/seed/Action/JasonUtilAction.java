@@ -149,6 +149,24 @@ public class JasonUtilAction {
             Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
         }
     }
+	public void close(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    ((JasonViewActivity)context).finish();
+					System.exit(0);
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }
     public void recaptcha(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
