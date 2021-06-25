@@ -3,12 +3,17 @@
     "head": {
       "title": "Register your account",
       "description": "Register your account locally in mobile key/value database",
+      "agents": {
+        "getTime": {
+          "url": "file://agent/agent.html"
+        }
+      },
       "styles": {
         "caption": {
           "font": "Roboto",
-          "size": "13",
+          "size": 13,
           "align": "center",
-          "spacing": "15"
+          "spacing": 15
         }
       }
     },
@@ -28,22 +33,22 @@
                 {
                   "type": "space",
                   "style": {
-                    "height": "70"
+                    "height": 70
                   }
                 },
                 {
                   "type": "button",
                   "url": "file://images/attaching.png",
                   "style": {
-                    "width": "60",
-                    "height": "60",
-                    "right": "40",
-                    "bottom": "30",
+                    "width": 60,
+                    "height": 60,
+                    "right": 40,
+                    "bottom": 30,
                     "background": "#fdcb6e",
                     "color": "#ffffff",
                     "font": "Roboto",
-                    "size": "30",
-                    "corner_radius": "75"
+                    "size": 30,
+                    "corner_radius": 75
                   },
                   "action": {
                     "type": "$media.picker",
@@ -63,17 +68,17 @@
                 {
                   "type": "space",
                   "style": {
-                    "height": "30"
+                    "height": 30
                   }
                 },
                 {
                   "type": "label",
                   "text": "Votre nom",
                   "style": {
-                    "size": "17",
+                    "size": 17,
                     "color": "#2c3e50",
                     "font": "Roboto",
-                    "padding": "10",
+                    "padding": 10,
                     "width": "70%",
                     "align": "left",
                     "fontWeight": "bold"
@@ -94,7 +99,6 @@
                     "height": 50,
                     "padding": 15,
                     "corner_radius": 35,
-                    "secure": true,
                     "size": 15
                   }
                 },
@@ -102,10 +106,10 @@
                   "type": "label",
                   "text": "Votre prénom",
                   "style": {
-                    "size": "17",
+                    "size": 17,
                     "color": "#2c3e50",
                     "font": "Roboto",
-                    "padding": "10",
+                    "padding": 10,
                     "width": "70%",
                     "align": "left",
                     "fontWeight": "bold"
@@ -126,7 +130,6 @@
                     "height": 50,
                     "padding": 15,
                     "corner_radius": 35,
-                    "secure": true,
                     "size": 15
                   }
                 },
@@ -134,10 +137,10 @@
                   "type": "label",
                   "text": "Votre adresse",
                   "style": {
-                    "size": "17",
+                    "size": 17,
                     "color": "#2c3e50",
                     "font": "Roboto",
-                    "padding": "10",
+                    "padding": 10,
                     "width": "70%",
                     "align": "left",
                     "fontWeight": "bold"
@@ -158,7 +161,6 @@
                     "height": 50,
                     "padding": 15,
                     "corner_radius": 35,
-                    "secure": true,
                     "size": 15
                   }
                 },
@@ -166,10 +168,10 @@
                   "type": "label",
                   "text": "Votre téléphone",
                   "style": {
-                    "size": "17",
+                    "size": 17,
                     "color": "#2c3e50",
                     "font": "Roboto",
-                    "padding": "10",
+                    "padding": 10,
                     "width": "70%",
                     "align": "left",
                     "fontWeight": "bold"
@@ -190,50 +192,66 @@
                     "height": 50,
                     "padding": 15,
                     "corner_radius": 35,
-                    "secure": true,
                     "size": 15
                   }
                 },
                 {
-                  "type": "label",
-                  "text": "Votre date de naissance",
+                  "type": "space",
                   "style": {
-                    "size": "17",
-                    "color": "#2c3e50",
-                    "font": "Roboto",
-                    "padding": "10",
-                    "width": "70%",
-                    "align": "left",
-                    "fontWeight": "bold"
+                    "height": 20
                   }
                 },
                 {
-                  "type": "textfield",
-                  "name": "birthday",
-                  "keyboard": "text",
+                  "type": "horizontal",
+                  "style":{
+                    "align": "center"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "text": "Date de naissance",
+                      "style": {
+                        "size": 17,
+                        "color": "#2c3e50",
+                        "font": "Roboto",
+                        "padding": 10,
+                        "width": "70% - 30",
+                        "align": "left",
+                        "fontWeight": "bold"
+                      }
+                    },
+                    {
+                      "type": "image",
+                      "url": "file://images/calendars.png",
+                      "style": {
+                        "width": 30,
+                        "height": 30,
+                        "align": "center"
+                      },
+                      "action": {
+                        "type": "$util.datepicker",
+                        "options": {
+                          "title": "Birthday date",
+                          "description": "Just pick one"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "space",
                   "style": {
-                    "hintColor": "#2c3e50",
-                    "borderColor": "#dfe6e9",
-                    "background": "#ffffff",
-                    "color": "#2c3e50",
-                    "font": "Roboto",
-                    "align": "left",
-                    "width": "70%",
-                    "height": 50,
-                    "padding": 15,
-                    "corner_radius": 35,
-                    "secure": true,
-                    "size": 15
+                    "height": 20
                   }
                 },
                 {
                   "type": "label",
                   "text": "Votre login",
                   "style": {
-                    "size": "17",
+                    "size": 17,
                     "color": "#2c3e50",
                     "font": "Roboto",
-                    "padding": "10",
+                    "padding": 10,
                     "width": "70%",
                     "align": "left",
                     "fontWeight": "bold"
@@ -254,7 +272,6 @@
                     "height": 50,
                     "padding": 15,
                     "corner_radius": 35,
-                    "secure": false,
                     "size": 15
                   }
                 },
@@ -262,10 +279,10 @@
                   "type": "label",
                   "text": "Votre mot de passe",
                   "style": {
-                    "size": "17",
+                    "size": 17,
                     "color": "#2c3e50",
                     "font": "Roboto",
-                    "padding": "10",
+                    "padding": 10,
                     "width": "70%",
                     "align": "left",
                     "fontWeight": "bold"
@@ -301,7 +318,7 @@
                 {
                   "type": "space",
                   "style": {
-                    "height": "70"
+                    "height": 70
                   }
                 },
                 {
@@ -309,12 +326,12 @@
                   "text": "Enregistrement",
                   "style": {
                     "width": "70%",
-                    "height": "50",
+                    "height": 50,
                     "background": "#ff6b6b",
                     "color": "#ffffff",
                     "font": "Roboto",
                     "corner_radius": 35,
-                    "size": "15"
+                    "size": 15
                   },
                   "action": {
                     "type": "$global.set",
@@ -323,7 +340,7 @@
                       "prenom": "{{$get.prenom}}",
                       "adresse": "{{$get.adresse}}",
                       "phone": "{{$get.phone}}",
-                      "birthday": "{{$get.birthday}}",
+                      "birthday": "{{(new Date(parseInt($jason.value)*1000)).toString()}}",
                       "login": "{{$get.login}}",
                       "motdepasse": "{{$get.password}}"
                     },
@@ -338,7 +355,7 @@
                 {
                   "type": "space",
                   "style": {
-                    "height": "70"
+                    "height": 70
                   }
                 }
               ]
@@ -351,22 +368,22 @@
           "type": "button",
           "url": "file://images/back.png",
           "style": {
-            "width": "60",
-            "height": "60",
-            "right": "40",
-            "bottom": "30",
+            "width": 60,
+            "height": 60,
+            "right": 40,
+            "bottom": 30,
             "background": "#3498db",
             "color": "#ffffff",
             "font": "Roboto",
-            "size": "30",
-            "corner_radius": "75"
+            "size": 30,
+            "corner_radius": 75
           },
           "action": {
             "type": "$href",
             "options": {
               "url": "file://ui/login.json",
               "transition": "push",
-              "animation": "pushleft",
+              "animation": "direct",
               "view": "jason"
             }
           },

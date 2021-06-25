@@ -432,7 +432,9 @@ public class JasonHelper {
             // Start the activity
             ((JasonViewActivity) context).startActivityForResult(intent, requestCode);
             if(direction.equals("pushleft"))
-                ((JasonViewActivity) context).overridePendingTransition(android.R.anim.slide_out_right, android.R.anim.slide_in_left);
+                ((JasonViewActivity) context).overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
+            else if(direction.equals("direct"))
+                    ((JasonViewActivity) context).overridePendingTransition(0,0);
             else if(direction.equals("fade"))
                 ((JasonViewActivity) context).overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
 

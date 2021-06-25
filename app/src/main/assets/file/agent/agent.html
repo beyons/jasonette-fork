@@ -23,4 +23,11 @@
             $agent.trigger("mailInvalide", {});
         }
     }
+    //////////////////////////////////////////////
+    //---- Fonction restauration de la date ----//
+    //////////////////////////////////////////////
+    var specifyDate = function(timeStamp)
+    {
+        $agent.response((new Date(parseInt(timeStamp)*1000)).toString());
+    }
 </script>

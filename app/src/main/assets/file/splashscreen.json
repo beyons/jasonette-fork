@@ -6,9 +6,9 @@
       "styles": {
         "caption": {
           "font": "Roboto",
-          "size": "13",
+          "size": 13,
           "align": "center",
-          "spacing": "15"
+          "spacing": 15
         }
       },
       "actions": {
@@ -27,7 +27,8 @@
                 "type": "$href",
                 "options": {
                   "url": "file://ui/login.json",
-                  "transition": "replace",
+                  "transition": "push",
+                  "animation": "direct",
                   "view": "jason"
                 }
               },
@@ -73,8 +74,8 @@
                   "type": "image",
                   "url": "file://images/logo.png",
                   "style": {
-                    "width": "300",
-                    "height": "300",
+                    "width": 300,
+                    "height": 300,
                     "align": "center"
                   }
                 },
@@ -88,10 +89,10 @@
                   "type": "label",
                   "text": "CHARGEMENT ...",
                   "style": {
-                    "size": "15",
+                    "size": 15,
                     "color": "#2c3e50",
                     "font": "Roboto",
-                    "padding": "10",
+                    "padding": 10,
                     "align": "center",
                     "fontWeight": "bold"
                   }

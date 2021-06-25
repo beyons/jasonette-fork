@@ -64,10 +64,10 @@
                   "type": "label",
                   "text": "Login to your account",
                   "style": {
-                    "size": "27",
+                    "size": 27,
                     "color": "#2c3e50",
                     "font": "Roboto",
-                    "padding": "10",
+                    "padding": 10,
                     "align": "center",
                     "fontWeight": "bold"
                   }
@@ -82,10 +82,10 @@
                   "type": "label",
                   "text": "Votre login",
                   "style": {
-                    "size": "17",
+                    "size": 17,
                     "color": "#2c3e50",
                     "font": "Roboto",
-                    "padding": "10",
+                    "padding": 10,
                     "width": "70%",
                     "align": "left",
                     "fontWeight": "bold"
@@ -113,10 +113,10 @@
                   "type": "label",
                   "text": "Votre mot de passe",
                   "style": {
-                    "size": "17",
+                    "size": 17,
                     "color": "#2c3e50",
                     "font": "Roboto",
-                    "padding": "10",
+                    "padding": 10,
                     "width": "70%",
                     "align": "left",
                     "fontWeight": "bold"
@@ -198,18 +198,20 @@
                   "type": "label",
                   "text": "Nouveau utilisateur ? \nInscrivez vous maintenant",
                   "style": {
-                    "size": "15",
+                    "size": 15,
                     "color": "#2c3e50",
                     "font": "Roboto",
-                    "padding": "10",
+                    "padding": 10,
                     "align": "center",
                     "fontWeight": "bold"
                   },
                   "action": {
                     "type": "$href",
                     "options": {
-                      "url": "file://register.json",
-                      "transition": "replace"
+                      "url": "file://ui/register.json",
+                      "transition": "push",
+                      "animation": "direct",
+                      "view": "jason"
                     }
                   }
                 }
@@ -237,7 +239,8 @@
             "type": "$href",
             "options": {
               "url": "file://ui/register.json",
-              "transition": "replace",
+              "transition": "push",
+              "animation": "direct",
               "view": "jason",
               "preload": {
                 "background": "#0E111F"
