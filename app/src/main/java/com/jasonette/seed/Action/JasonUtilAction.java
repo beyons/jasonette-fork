@@ -149,7 +149,7 @@ public class JasonUtilAction {
             Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
         }
     }
-	public void close(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+	public void closeApp(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
