@@ -1,7 +1,7 @@
 {
   "$jason": {
     "head": {
-      "title": "TEST JAVASCRIPT",
+      "title": "Main View",
       "description": "Test javascript implementation for Jasonette",
       "styles": {
         "caption": {

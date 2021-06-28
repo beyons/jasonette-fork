@@ -1,7 +1,7 @@
 {
   "$jason": {
     "head": {
-      "title": "Register your account",
+      "title": "Register View",
       "description": "Register your account locally in mobile key/value database",
       "agents": {
         "getTime": {
