@@ -35,6 +35,13 @@
               "style": {
                 "color": "white"
               }
+            },
+            "leftButton": {
+              "text": "retour",
+              "style": {
+                "color": "white",
+                "background": "#6c5ce7"
+              }
             }
           },
           "sections": [

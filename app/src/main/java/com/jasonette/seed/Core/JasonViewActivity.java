@@ -47,6 +47,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -2713,6 +2714,27 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                 JSONObject header = model.rendered.getJSONObject("header");
 
                 header_height = toolbar.getHeight();
+
+                if(header.has("leftButton")) {
+                    final JSONObject leftButton = header.getJSONObject("leftButton");
+                    Button NamBarBtnVar = new Button(this);
+                    if(leftButton.has("text")){
+                        NamBarBtnVar.setText(leftButton.getString("text"));
+                    }
+
+                    if(leftButton.has("style") && leftButton.getJSONObject("style").has("background")){
+                        int c = JasonHelper.parse_color(leftButton.getJSONObject("style").getString("background"));
+                        NamBarBtnVar.setBackgroundColor(c);
+                    }
+
+                    if(leftButton.has("style") && leftButton.getJSONObject("style").has("color")){
+                        int c = JasonHelper.parse_color(leftButton.getJSONObject("style").getString("color"));
+                        NamBarBtnVar.setTextColor(c);
+                    }
+                    LinearLayout.LayoutParams NamBarBtnRulVar = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    NamBarBtnRulVar.gravity = Gravity.RIGHT;
+                    toolbar.addView(NamBarBtnVar, NamBarBtnRulVar);
+                }
 
                 setup_title(header);
 
