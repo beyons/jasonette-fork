@@ -2,7 +2,7 @@
   "$jason": {
     "head": {
       "title": "Splashscreen",
-      "description": "Splashscreen View",
+      "description": "Splashscreen For First application",
       "styles": {
         "caption": {
           "font": "Roboto",
@@ -50,6 +50,7 @@
         }
       }
     },
+
     "body": {
       "style": {
         "background": "#ffffff",

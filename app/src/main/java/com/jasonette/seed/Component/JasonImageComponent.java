@@ -238,6 +238,7 @@ public class JasonImageComponent {
                 ImageView imageview;
                 imageview = new ImageView(context);
                 imageview.setAdjustViewBounds(true);
+
                 return imageview;
             } catch (Exception e) {
                 Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());

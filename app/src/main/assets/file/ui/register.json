@@ -1,7 +1,7 @@
 {
   "$jason": {
     "head": {
-      "title": "Register View",
+      "title": "Register your account",
       "description": "Register your account locally in mobile key/value database",
       "agents": {
         "getTime": {
@@ -244,6 +244,41 @@
                     "height": 20
                   }
                 },
+
+                {
+                  "type": "label",
+                  "text": "Présentation",
+                  "style": {
+                    "size": 17,
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "padding": 10,
+                    "width": "70%",
+                    "align": "left",
+                    "fontWeight": "bold"
+                  }
+                },
+                {
+                  "type": "textarea",
+                  "name": "synopsis",
+                  "placeholder": "",
+                  "value": "",
+                  "style": {
+                    "hintColor": "#2c3e50",
+                    "borderColor": "#dfe6e9",
+                    "background": "#dfe6e9",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "align": "left",
+                    "width": "70%",
+                    "height": 190,
+                    "padding": 15,
+                    "corner_radius": 18,
+                    "size": 15
+                  }
+                },
+
+
                 {
                   "type": "label",
                   "text": "Votre login",
@@ -338,11 +373,13 @@
                     "options": {
                       "nom": "{{$get.nom}}",
                       "prenom": "{{$get.prenom}}",
-                      "adresse": "{{$get.adresse}}",
+                      "adresse": "{{$get.adresse.replace(/\\s/g, \"_\")}}",
                       "phone": "{{$get.phone}}",
                       "birthday": "{{(new Date(parseInt($jason.value)*1000)).toString()}}",
+                      "synopsis": "{{$get.synopsis.replace(/\\s/g, \"_\")}}",
                       "login": "{{$get.login}}",
-                      "motdepasse": "{{$get.password}}"
+                      "motdepasse": "{{$get.password}}",
+                      "image": "{{$jason.file_url}}"
                     },
                     "success": {
                       "type": "$util.toast",

@@ -1,7 +1,7 @@
 {
   "$jason": {
     "head": {
-      "title": "Login View",
+      "title": "Login to your account",
       "description": "Login to your account",
       "agents": {
         "auth": {
