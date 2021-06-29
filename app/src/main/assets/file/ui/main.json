@@ -39,7 +39,9 @@
             "leftButton": {
               "text": "<",
               "style": {
-                "size": 70,
+                "size": 65,
+                "width": 20,
+                "minWidth": 90,
                 "color": "white",
                 "background": "#6c5ce7"
               }
@@ -164,6 +166,26 @@
                   ]
                 },
                 {
+                  "type": "map",
+                  "region": {
+                    "coord": "36.88222643648652, 10.324887022337078",
+                    "width": "100",
+                    "height": "100"
+                  },
+                  "pins": [{
+                    "title": "Ma position",
+                    "description": "--",
+                    "coord": "36.88222643648652, 10.324887022337078",
+                    "style": {
+                      "selected": "true"
+                    }
+                  }],
+                  "style": {
+                    "width": "100%",
+                    "height": "200"
+                  }
+                },
+                {
                   "type": "vertical",
                   "style": {
                     "padding": 25
@@ -171,7 +193,7 @@
                   "components": [
                     {
                       "type": "label",
-                      "text": "Notre but",
+                      "text": "Qui sommes-nous?",
                       "style": {
                         "font": "Avenir",
                         "size": 25,
@@ -185,7 +207,7 @@
                       "style": {
                         "font": "Avenir",
                         "width": 35,
-                        "height": 10,
+                        "height": 6,
                         "background": "#e74c3c",
                         "fontWeight": "bold"
                       }

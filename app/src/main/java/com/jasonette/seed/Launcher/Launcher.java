@@ -16,6 +16,7 @@ import com.jasonette.seed.Core.JasonViewActivity;
 import com.jasonette.seed.Helper.JasonHelper;
 import com.jasonette.seed.R;
 
+import org.hjson.JsonObject;
 import org.hjson.JsonValue;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -91,6 +92,7 @@ public class Launcher extends Application {
             Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
         }
     }
+
     public JSONObject getGlobal(){
         return this.global;
     }

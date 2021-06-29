@@ -2720,10 +2720,13 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                     final JSONObject leftButton = header.getJSONObject("leftButton");
                     Button NamBarBtnVar = new Button(this);
                     NamBarBtnVar.setStateListAnimator(null);
-
+                    NamBarBtnVar.setPadding(0,0,0,0);
+                    NamBarBtnVar.setPaddingRelative(0,0,0,0);
+                    NamBarBtnVar.setWidth(Integer.parseInt(leftButton.getJSONObject("style").getString("minWidth")));
+                    NamBarBtnVar.setMinimumWidth(Integer.parseInt(leftButton.getJSONObject("style").getString("minWidth")));
                     // int size = JasonHelper.parse_color(leftButton.getString("size"));
                     NamBarBtnVar.setTextSize(TypedValue.COMPLEX_UNIT_PX, Float.parseFloat(leftButton.getJSONObject("style").getString("size")));
-
+                    NamBarBtnVar.setPaddingRelative(0,0,0,0);
                     if(leftButton.has("text")){
                         NamBarBtnVar.setText(leftButton.getString("text"));
                     }
