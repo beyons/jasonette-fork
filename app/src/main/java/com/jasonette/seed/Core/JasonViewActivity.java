@@ -38,6 +38,7 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -2718,6 +2719,11 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                 if(header.has("leftButton")) {
                     final JSONObject leftButton = header.getJSONObject("leftButton");
                     Button NamBarBtnVar = new Button(this);
+                    NamBarBtnVar.setStateListAnimator(null);
+
+                    // int size = JasonHelper.parse_color(leftButton.getString("size"));
+                    NamBarBtnVar.setTextSize(TypedValue.COMPLEX_UNIT_PX, Float.parseFloat(leftButton.getJSONObject("style").getString("size")));
+
                     if(leftButton.has("text")){
                         NamBarBtnVar.setText(leftButton.getString("text"));
                     }
@@ -2734,6 +2740,25 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                     LinearLayout.LayoutParams NamBarBtnRulVar = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
                     NamBarBtnRulVar.gravity = Gravity.RIGHT;
                     toolbar.addView(NamBarBtnVar, NamBarBtnRulVar);
+
+                    NamBarBtnVar.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            try {
+                                JSONObject header = model.rendered.getJSONObject("header");
+                                if (header.has("leftButton")) {
+                                    if (header.getJSONObject("leftButton").has("action")) {
+                                        call(header.getJSONObject("leftButton").getJSONObject("action").toString(), new JSONObject().toString(), "{}", JasonViewActivity.this);
+                                    } else if (header.getJSONObject("leftButton").has("href")) {
+                                        JSONObject action = new JSONObject().put("type", "$href").put("options", header.getJSONObject("leftButton").getJSONObject("href"));
+                                        call(action.toString(), new JSONObject().toString(), "{}", JasonViewActivity.this);
+                                    }
+                                }
+                            } catch (Exception e) {
+                                Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                            }
+                        }
+                    });
                 }
 
                 setup_title(header);

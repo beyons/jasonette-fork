@@ -37,13 +37,22 @@
               }
             },
             "leftButton": {
-              "text": "retour",
+              "text": "←",
               "style": {
+                "size": 30,
                 "color": "white",
                 "background": "#6c5ce7"
+              },
+              "action": {
+                "type": "$util.alert",
+                "options": {
+                  "title": "Basic Alert",
+                  "description": "I'm a basic alert. I simply display an alert that needs to be dismissed before moving forward"
+                }
               }
             }
-          },
+          }
+        },
           "sections": [
             {
               "items": [
