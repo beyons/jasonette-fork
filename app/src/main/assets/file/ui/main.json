@@ -140,6 +140,12 @@
                         "width": 50,
                         "height": 50,
                         "corner_radius": 100
+                      },
+                      "action": {
+                        "type": "$util.dial",
+                        "options": {
+                          "url": "{{$global.phone}}"
+                        }
                       }
                     },
                     {
@@ -155,12 +161,20 @@
                         "width": 50,
                         "height": 50,
                         "corner_radius": 100
+                      },
+                      "action": {
+                        "type": "$util.emails",
+                        "options": {
+                          "email": "{{$get.login}}",
+                          "subject": "",
+                          "message": ""
+                        }
                       }
                     },
                     {
                       "type": "space",
                       "style": {
-                        "width": "12%"
+                        "width": "6%"
                       }
                     }
                   ]

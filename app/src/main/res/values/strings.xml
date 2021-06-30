@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">NativeApplication</string>
-    <string name="url">file://ui/main.json</string>
+    <string name="url">file://splashscreen.json</string>
     <string name="launch">file://preload.json</string>
 </resources>

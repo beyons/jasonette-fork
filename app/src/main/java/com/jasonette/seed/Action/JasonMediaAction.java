@@ -122,6 +122,7 @@ public class JasonMediaAction {
             JSONObject callback = new JSONObject();
             callback.put("class", "JasonMediaAction");
             callback.put("method", "process");
+            Log.d("Warning", "---------->"+action);
 
             JasonHelper.dispatchIntent(action, data, event, context, intent, callback);
         } catch (SecurityException e){
@@ -268,7 +269,9 @@ public class JasonMediaAction {
                     JSONObject ret = new JSONObject();
                     ret.put("data", encoded);
                     ret.put("data_uri", data_uri);
+                    ret.put("file_url", uri.toString());
                     ret.put("content_type", "image/jpeg");
+
                     JasonHelper.next("success", action, ret, event, context);
                 } catch (Exception e) {
                     Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());

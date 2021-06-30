@@ -54,7 +54,7 @@
                     "type": "$media.picker",
                     "options": {
                       "edit": "true",
-                      "type": "video"
+                      "type": "photo"
                     },
                     "success": {
                       "type": "$util.alert",
