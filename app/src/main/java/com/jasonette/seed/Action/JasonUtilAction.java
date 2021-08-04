@@ -16,6 +16,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.hardware.Camera;
 import android.hardware.camera2.CameraManager;
 import android.net.ConnectivityManager;
@@ -34,6 +35,8 @@ import android.text.InputType;
 import android.text.format.DateFormat;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.CookieManager;
 import android.webkit.JavascriptInterface;
@@ -44,6 +47,7 @@ import android.webkit.WebViewClient;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -75,6 +79,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -100,6 +106,29 @@ public class JasonUtilAction {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
+    /*public void MenuComponent(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject options = action.getJSONObject("options");
+                    LinearLayout lay =new LinearLayout(context);
+                    lay.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+                    lay.setOrientation(LinearLayout.VERTICAL);
+                    if (options.has("title")) {
+                        lay.setBackground();
+                    }
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+        try {
+            JasonHelper.next("success", action, new JSONObject(), event, context);
+        } catch (Exception e) {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
+    }*/
     public void banner(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
@@ -717,7 +746,72 @@ public class JasonUtilAction {
             Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
         }
     }
+    public void facebookAuth(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject options = new JSONObject();
+                    if (action.has("options")) {
+                        options = action.getJSONObject("options");
+                        final String appId = options.get("APP_ID").toString();
+                        final String Redirect = options.get("REDIRECT_URL").toString();
 
+                        String APP_ID = appId;
+                        String RAW_REDIRECT_URI = Redirect;
+                        String REDIRECT_URI ="";
+                        try {
+                            REDIRECT_URI = URLEncoder.encode(RAW_REDIRECT_URI, "UTF-8");
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+
+                        // get the code or token
+                        String TOKEN_REQUEST = "https://www.facebook.com/dialog/oauth?client_id="+ APP_ID +"&redirect_uri=" + RAW_REDIRECT_URI + "&display=popup&scope=email&response_type=token";
+                        final Dialog custon_dialog = new Dialog(context);
+                        custon_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        WebView wv = new WebView(context);
+                        wv.loadUrl(TOKEN_REQUEST);
+                        wv.setWebViewClient(new WebViewClient() {
+                            @Override
+                            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                                view.loadUrl(url);
+                                // You are connected to facebook
+                                System.out.println("Connected");
+                                custon_dialog.dismiss();
+                                return true;
+                            }
+
+                            @Override
+                            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                                super.onPageStarted(view, url, favicon);
+                                if(url.contains("connect")) {
+                                    custon_dialog.dismiss();
+                                }
+                            }
+
+                            @Override
+                            public void onPageFinished(WebView view, String url) {
+                                super.onPageFinished(view, url);
+                                System.out.println(""+url);
+                            }
+                        });
+
+                        final EditText input = new EditText(context);
+                        input.setBackgroundColor(Color.BLUE);
+                        RelativeLayout layout = new RelativeLayout(context);
+                        layout.addView(input); // Notice this is an add method
+                        layout.addView(wv); // Notice this is an add method
+                        custon_dialog.setContentView(layout);
+                        custon_dialog.show();
+                    }
+                }
+                catch (Exception e) {
+                Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+    }
     public void alert(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override

@@ -168,6 +168,8 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
     }
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 

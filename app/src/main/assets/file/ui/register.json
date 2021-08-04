@@ -404,8 +404,8 @@
           "style": {
             "width": 60,
             "height": 60,
-            "right": 40,
-            "bottom": 30,
+            "right": 20,
+            "bottom": 20,
             "background": "#3498db",
             "color": "#ffffff",
             "font": "Roboto",

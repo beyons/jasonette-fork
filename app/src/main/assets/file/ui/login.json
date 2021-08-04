@@ -102,7 +102,7 @@
                     "color": "#2c3e50",
                     "font": "Roboto",
                     "align": "left",
-                    "width": "70%",
+                    "width": "70% - 15",
                     "height": 50,
                     "padding": 15,
                     "corner_radius": 35,
@@ -133,7 +133,7 @@
                     "color": "#2c3e50",
                     "font": "Roboto",
                     "align": "left",
-                    "width": "70%",
+                    "width": "70% - 15",
                     "height": 50,
                     "padding": 15,
                     "corner_radius": 35,
@@ -152,41 +152,84 @@
                 {
                   "type": "space",
                   "style": {
-                    "height": 80
+                    "height": 50
                   }
                 },
                 {
-                  "type": "button",
-                  "text": "Login",
-                  "style": {
-                    "width": "70%",
-                    "height": 50,
-                    "background": "#6c5ce7",
-                    "color": "#ffffff",
-                    "font": "Roboto-Bold",
-                    "corner_radius": 35,
-                    "size": 15
-                  },
-                  "action": {
-                    "type": "$agent.request",
-                    "options": {
-                      "id": "auth",
-                      "method": "validateEmail",
-                      "params": ["{{$get.login}}", "{{$get.password}}", "{{$global.login}}", "{{$global.motdepasse}}"]
-                    },
-                    "success": {
-                      "type": "$util.toast",
-                      "options": {
-                        "text": "{{$jason}}"
+                  "type": "horizontal",
+                  "components": [
+                    {
+                      "type": "space",
+                      "style": {
+                        "width": "15%"
                       }
                     },
-                    "error": {
-                      "type": "$util.toast",
-                      "options": {
-                        "text": "Impossible de joindre l'agent"
+                    {
+                      "type": "button",
+                      "text": "Login",
+                      "style": {
+                        "width": "35% - 10",
+                        "height": 50,
+                        "background": "#6c5ce7",
+                        "color": "#ffffff",
+                        "font": "Roboto-Bold",
+                        "corner_radius": 35,
+                        "size": 15
+                      },
+                      "action": {
+                        "type": "$agent.request",
+                        "options": {
+                          "id": "auth",
+                          "method": "validateEmail",
+                          "params": ["{{$get.login}}", "{{$get.password}}", "{{$global.login}}", "{{$global.motdepasse}}"]
+                        },
+                        "success": {
+                          "type": "$util.toast",
+                          "options": {
+                            "text": "{{$jason}}"
+                          }
+                        },
+                        "error": {
+                          "type": "$util.toast",
+                          "options": {
+                            "text": "Impossible de joindre l'agent"
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "width": "10"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Facebook",
+                      "style": {
+                        "width": "35% - 10",
+                        "height": 50,
+                        "background": "#3b5998",
+                        "color": "#ffffff",
+                        "font": "Roboto-Bold",
+                        "corner_radius": 35,
+                        "size": 15
+                      },
+                      "action": {
+                        "type": "$util.facebookAuth",
+                        "options": {
+                          "APP_ID": "633565873881541",
+                          "REDIRECT_URL": "https://www.facebook.com/connect/login_success.html"
+                        }
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "width": "15%"
                       }
                     }
-                  }
+                  ]
                 },
                 {
                   "type": "space",
@@ -227,8 +270,8 @@
           "style": {
             "width": 60,
             "height": 60,
-            "right": 40,
-            "bottom": 30,
+            "right": 20,
+            "bottom": 20,
             "background": "#e74c3c",
             "color": "#ffffff",
             "font": "Roboto",
@@ -241,10 +284,7 @@
               "url": "file://ui/register.json",
               "transition": "push",
               "animation": "direct",
-              "view": "jason",
-              "preload": {
-                "background": "#0E111F"
-              }
+              "view": "jason"
             }
           },
           "success": {
