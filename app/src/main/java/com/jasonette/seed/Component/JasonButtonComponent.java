@@ -99,7 +99,6 @@ public class JasonButtonComponent{
                 }
 
                 view.setPadding(padding_left, padding_top, padding_right, padding_bottom);
-
             } catch (Exception e) {
                 Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
             }
@@ -113,7 +112,15 @@ public class JasonButtonComponent{
             }
         }
         JasonComponent.addListener(view, context);
-
+        try {
+            JSONObject style = component.getJSONObject("style");
+            if(style.has("elevation")){
+                view.setElevation(style.getInt("elevation"));
+            }
+        }catch(Exception e)
+        {
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
         return view;
     }
 

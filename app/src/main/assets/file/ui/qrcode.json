@@ -21,7 +21,7 @@
         "$vision.onscan": {
           "type": "$util.alert",
           "options": {
-            "title": "Scanned content",
+            "title": "Résultat scan Barcode/Qrcode",
             "description": "{{$jason.type}} {{$jason.content}}"
           }
         }

@@ -6,6 +6,9 @@
       "agents": {
         "getTime": {
           "url": "file://agent/agent.html"
+        },
+        "firebaseRegister": {
+          "url": "file://agent/firebase.html"
         }
       },
       "styles": {
@@ -19,7 +22,11 @@
     },
     "body": {
       "style": {
-        "border": "none"
+        "border": "none",
+        "background": {
+          "type": "html",
+          "text": "<html><style>body {  background: #fff;}.darker {position: absolute;top: 0;left: 0;width: 100%;padding-top: 50%;background: #e74c3c;overflow: hidden;}.darker::after {content: '';position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: white;transform: skewY(26.5deg);transform-origin: left top;}</style><div class=\"darker\"></div><div style='background:#e74c3c;width:7px;height:100%;position:fixed;right:0;top:0;bottom:0'></div></html>"
+        }
       },
       "sections": [
         {
@@ -47,6 +54,7 @@
                     "background": "#fdcb6e",
                     "color": "#ffffff",
                     "font": "Roboto",
+                    "elevation": 20,
                     "size": 30,
                     "corner_radius": 75
                   },
@@ -57,10 +65,9 @@
                       "type": "photo"
                     },
                     "success": {
-                      "type": "$util.alert",
+                      "type": "$set",
                       "options": {
-                        "title": "Selected {{$jason['content_type']}} at",
-                        "description": "{{$jason.file_url}}"
+                        "fileURL": "{{$jason.file_url}}"
                       }
                     }
                   }
@@ -119,6 +126,37 @@
                   "type": "textfield",
                   "name": "prenom",
                   "keyboard": "text",
+                  "style": {
+                    "hintColor": "#2c3e50",
+                    "borderColor": "#dfe6e9",
+                    "background": "#ffffff",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "align": "left",
+                    "width": "70%",
+                    "height": 50,
+                    "padding": 15,
+                    "corner_radius": 35,
+                    "size": 15
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Votre Email",
+                  "style": {
+                    "size": 17,
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "padding": 10,
+                    "width": "70%",
+                    "align": "left",
+                    "fontWeight": "bold"
+                  }
+                },
+                {
+                  "type": "textfield",
+                  "name": "email",
+                  "keyboard": "email",
                   "style": {
                     "hintColor": "#2c3e50",
                     "borderColor": "#dfe6e9",
@@ -233,6 +271,12 @@
                         "options": {
                           "title": "Birthday date",
                           "description": "Just pick one"
+                        },
+                        "success": {
+                          "type": "$set",
+                          "options": {
+                            "dateTime": "{{(new Date(parseInt($jason.value)*1000)).toString()}}"
+                          }
                         }
                       }
                     }
@@ -370,18 +414,30 @@
                     "options": {
                       "nom": "{{$get.nom}}",
                       "prenom": "{{$get.prenom}}",
+                      "email": "{{$get.email}}",
                       "adresse": "{{$get.adresse.replace(/\\s/g, \"_\")}}",
                       "phone": "{{$get.phone}}",
                       "birthday": "{{(new Date(parseInt($jason.value)*1000)).toString()}}",
                       "synopsis": "{{$get.synopsis.replace(/\\s/g, \"_\")}}",
                       "login": "{{$get.login}}",
                       "motdepasse": "{{$get.password}}",
-                      "image": "{{$jason.file_url}}"
+                      "image": "{{$get.fileURL}}"
                     },
                     "success": {
-                      "type": "$util.toast",
+                      "type": "$agent.request",
                       "options": {
-                        "text": "Inscription réussie !"
+                        "id": "firebaseRegister",
+                        "method": "firebasePost",
+                        "params": ["https://fir-db-63961.firebaseio.com/users/{{$get.phone}}.json?auth=IuGbhgJJoTNSURmB8DBjWIpMgPiSq85SQ8rubWbw","{{$get.nom}}","{{$get.prenom}}","{{$get.adresse.replace(/\\s/g, \"_\")}}","{{$get.phone}}","{{$get.dateTime}}","{{$get.synopsis.replace(/\\s/g, \"_\")}}","{{$get.login}}","{{$get.password}}","{{$get.email}}"]
+                      },
+                      "success": {
+                        "type": "$back"
+                      },
+                      "error": {
+                        "type": "$util.toast",
+                        "options": {
+                          "text": "Impossible de joindre l'agent"
+                        }
                       }
                     }
                   }
@@ -405,6 +461,7 @@
             "width": 60,
             "height": 60,
             "right": 20,
+            "elevation": 20,
             "bottom": 20,
             "background": "#3498db",
             "color": "#ffffff",
@@ -413,16 +470,7 @@
             "corner_radius": 75
           },
           "action": {
-            "type": "$href",
-            "options": {
-              "url": "file://ui/login.json",
-              "transition": "push",
-              "animation": "direct",
-              "view": "jason"
-            }
-          },
-          "success": {
-            "type": "$ok"
+            "type": "$back"
           }
         }
       ]

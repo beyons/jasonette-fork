@@ -21,7 +21,7 @@
           "success": {
             "type": "$timer.start",
             "options": {
-              "interval": "3",
+              "interval": "2",
               "name": "timer1",
               "action": {
                 "type": "$href",
@@ -30,12 +30,6 @@
                   "transition": "push",
                   "animation": "direct",
                   "view": "jason"
-                }
-              },
-              "success": {
-                "type": "$ok",
-                "options": {
-                  "selection": "Splashscreen"
                 }
               }
             }
@@ -52,7 +46,10 @@
     },
     "body": {
       "style": {
-        "background": "#ffffff",
+        "background": {
+          "type": "html",
+          "text": "<html><div style='background:#e74c3c;width:7px;height:100%;position:fixed;right:0;top:0;bottom:0'></div></html>"
+        },
         "border": "none"
       },
       "sections": [
@@ -67,39 +64,44 @@
                 {
                   "type": "space",
                   "style": {
-                    "height": 70
+                    "height": 100
                   }
                 },
                 {
                   "type": "image",
-                  "url": "file://images/logo.png",
+                  "url": "file://images/motorcycle.gif",
                   "style": {
-                    "width": 300,
-                    "height": 300,
+                    "width": "80%",
                     "align": "center"
-                  }
-                },
-                {
-                  "type": "space",
-                  "style": {
-                    "height": 20
-                  }
-                },
-                {
-                  "type": "label",
-                  "text": "CHARGEMENT ...",
-                  "style": {
-                    "size": 15,
-                    "color": "#2c3e50",
-                    "font": "Roboto",
-                    "padding": 10,
-                    "align": "center",
-                    "fontWeight": "bold"
                   }
                 }
               ]
             }
           ]
+        }
+      ],
+      "layers": [
+        {
+          "type": "image",
+          "url": "file://images/AppsIcon.png",
+          "style": {
+            "width": 150,
+            "height": 70,
+            "left": 10,
+            "bottom": 10
+          }
+        },
+        {
+          "type": "label",
+          "text": "v.0.25.4",
+          "style": {
+            "size": 11,
+            "color": "#2c3e50",
+            "font": "Roboto",
+            "fontWeight": "bold",
+            "right": 10,
+            "bottom": 10
+          }
         }
       ]
     }

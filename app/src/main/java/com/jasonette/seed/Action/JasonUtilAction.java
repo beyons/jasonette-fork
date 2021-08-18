@@ -105,30 +105,6 @@ public class JasonUtilAction {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
-
-    /*public void MenuComponent(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
-        new Handler(Looper.getMainLooper()).post(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    JSONObject options = action.getJSONObject("options");
-                    LinearLayout lay =new LinearLayout(context);
-                    lay.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-                    lay.setOrientation(LinearLayout.VERTICAL);
-                    if (options.has("title")) {
-                        lay.setBackground();
-                    }
-                } catch (Exception e){
-                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
-                }
-            }
-        });
-        try {
-            JasonHelper.next("success", action, new JSONObject(), event, context);
-        } catch (Exception e) {
-            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
-        }
-    }*/
     public void banner(final JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
@@ -777,19 +753,26 @@ public class JasonUtilAction {
                             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                                 view.loadUrl(url);
                                 // You are connected to facebook
-                                System.out.println("Connected");
-                                custon_dialog.dismiss();
+                                if(url.contains("access_token")) {
+                                    custon_dialog.dismiss();
+                                    JasonHelper.next("success", action, true, event, context);
+                                }
+                                else {
+                                    JasonHelper.next("error", action, false, event, context);
+                                }
                                 return true;
                             }
-
                             @Override
                             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                                 super.onPageStarted(view, url, favicon);
-                                if(url.contains("connect")) {
+                                if(url.contains("access_token")) {
                                     custon_dialog.dismiss();
+                                    JasonHelper.next("success", action, true, event, context);
+                                }
+                                else {
+                                    JasonHelper.next("error", action, false, event, context);
                                 }
                             }
-
                             @Override
                             public void onPageFinished(WebView view, String url) {
                                 super.onPageFinished(view, url);

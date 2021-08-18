@@ -2710,6 +2710,7 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
     public boolean onPrepareOptionsMenu(Menu menu) {
         try {
             menu = toolbar.getMenu();
+
             if (model.rendered != null) {
                 if(!model.rendered.has("header")){
                     setup_title(new JSONObject());
@@ -2857,11 +2858,23 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                     });
                 }
 
-
                 if (header.has("menu")) {
                     JSONObject json = header.getJSONObject("menu");
+                    final MenuItem item;
 
-                    final MenuItem item = menu.add("Menu");
+                    //Ta adding dropDown Menu
+                    /*if(menu.size()>0){
+                        item = null;
+                    }
+                    else {
+                        menu.add("Acceuil");
+                        menu.add("Actualités");
+                        menu.add("Qui sommes-nous?");
+                        menu.add("Vidéo");
+                        menu.add("Paramètrages");
+
+                    }*/
+                    item = menu.add("Menu");
                     item.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
                     // We're going to create a button.
