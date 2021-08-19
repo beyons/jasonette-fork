@@ -269,8 +269,8 @@
                       "action": {
                         "type": "$util.datepicker",
                         "options": {
-                          "title": "Birthday date",
-                          "description": "Just pick one"
+                          "title": "Sélecteur de date",
+                          "description": "Date d'anniversaire"
                         },
                         "success": {
                           "type": "$set",

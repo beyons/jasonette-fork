@@ -128,6 +128,7 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
     private LinearLayout footerInput;
     private View footer_input_textfield;
     private SearchView searchView;
+    private Button NamBarBtnVar;
     private HorizontalDividerItemDecoration divider;
     private String previous_background;
     private JSONObject launch_action;
@@ -2721,50 +2722,53 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
 
                 if(header.has("leftButton")) {
                     final JSONObject leftButton = header.getJSONObject("leftButton");
-                    Button NamBarBtnVar = new Button(this);
-                    NamBarBtnVar.setStateListAnimator(null);
-                    NamBarBtnVar.setPadding(0,0,0,0);
-                    NamBarBtnVar.setPaddingRelative(0,0,0,0);
-                    NamBarBtnVar.setWidth(Integer.parseInt(leftButton.getJSONObject("style").getString("minWidth")));
-                    NamBarBtnVar.setMinimumWidth(Integer.parseInt(leftButton.getJSONObject("style").getString("minWidth")));
-                    // int size = JasonHelper.parse_color(leftButton.getString("size"));
-                    NamBarBtnVar.setTextSize(TypedValue.COMPLEX_UNIT_PX, Float.parseFloat(leftButton.getJSONObject("style").getString("size")));
-                    NamBarBtnVar.setPaddingRelative(0,0,0,0);
-                    if(leftButton.has("text")){
-                        NamBarBtnVar.setText(leftButton.getString("text"));
-                    }
 
-                    if(leftButton.has("style") && leftButton.getJSONObject("style").has("background")){
-                        int c = JasonHelper.parse_color(leftButton.getJSONObject("style").getString("background"));
-                        NamBarBtnVar.setBackgroundColor(c);
-                    }
-
-                    if(leftButton.has("style") && leftButton.getJSONObject("style").has("color")){
-                        int c = JasonHelper.parse_color(leftButton.getJSONObject("style").getString("color"));
-                        NamBarBtnVar.setTextColor(c);
-                    }
-                    LinearLayout.LayoutParams NamBarBtnRulVar = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    NamBarBtnRulVar.gravity = Gravity.RIGHT;
-                    toolbar.addView(NamBarBtnVar, NamBarBtnRulVar);
-
-                    NamBarBtnVar.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            try {
-                                JSONObject header = model.rendered.getJSONObject("header");
-                                if (header.has("leftButton")) {
-                                    if (header.getJSONObject("leftButton").has("action")) {
-                                        call(header.getJSONObject("leftButton").getJSONObject("action").toString(), new JSONObject().toString(), "{}", JasonViewActivity.this);
-                                    } else if (header.getJSONObject("leftButton").has("href")) {
-                                        JSONObject action = new JSONObject().put("type", "$href").put("options", header.getJSONObject("leftButton").getJSONObject("href"));
-                                        call(action.toString(), new JSONObject().toString(), "{}", JasonViewActivity.this);
-                                    }
-                                }
-                            } catch (Exception e) {
-                                Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
-                            }
+                    if(NamBarBtnVar == null){
+                        NamBarBtnVar = new Button(this);
+                        NamBarBtnVar.setStateListAnimator(null);
+                        NamBarBtnVar.setPadding(0,0,0,0);
+                        NamBarBtnVar.setPaddingRelative(0,0,0,0);
+                        NamBarBtnVar.setWidth(Integer.parseInt(leftButton.getJSONObject("style").getString("minWidth")));
+                        NamBarBtnVar.setMinimumWidth(Integer.parseInt(leftButton.getJSONObject("style").getString("minWidth")));
+                        // int size = JasonHelper.parse_color(leftButton.getString("size"));
+                        NamBarBtnVar.setTextSize(TypedValue.COMPLEX_UNIT_PX, Float.parseFloat(leftButton.getJSONObject("style").getString("size")));
+                        NamBarBtnVar.setPaddingRelative(0,0,0,0);
+                        if(leftButton.has("text")){
+                            NamBarBtnVar.setText(leftButton.getString("text"));
                         }
-                    });
+
+                        if(leftButton.has("style") && leftButton.getJSONObject("style").has("background")){
+                            int c = JasonHelper.parse_color(leftButton.getJSONObject("style").getString("background"));
+                            NamBarBtnVar.setBackgroundColor(c);
+                        }
+
+                        if(leftButton.has("style") && leftButton.getJSONObject("style").has("color")){
+                            int c = JasonHelper.parse_color(leftButton.getJSONObject("style").getString("color"));
+                            NamBarBtnVar.setTextColor(c);
+                        }
+                        LinearLayout.LayoutParams NamBarBtnRulVar = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                        NamBarBtnRulVar.gravity = Gravity.RIGHT;
+                        toolbar.addView(NamBarBtnVar, NamBarBtnRulVar);
+
+                        NamBarBtnVar.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                try {
+                                    JSONObject header = model.rendered.getJSONObject("header");
+                                    if (header.has("leftButton")) {
+                                        if (header.getJSONObject("leftButton").has("action")) {
+                                            call(header.getJSONObject("leftButton").getJSONObject("action").toString(), new JSONObject().toString(), "{}", JasonViewActivity.this);
+                                        } else if (header.getJSONObject("leftButton").has("href")) {
+                                            JSONObject action = new JSONObject().put("type", "$href").put("options", header.getJSONObject("leftButton").getJSONObject("href"));
+                                            call(action.toString(), new JSONObject().toString(), "{}", JasonViewActivity.this);
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                                }
+                            }
+                        });
+                    }
                 }
 
                 setup_title(header);

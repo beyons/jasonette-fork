@@ -71,7 +71,7 @@
                   "type": "image",
                   "url": "file://images/motorcycle.gif",
                   "style": {
-                    "width": "80%",
+                    "width": "100%",
                     "align": "center"
                   }
                 }

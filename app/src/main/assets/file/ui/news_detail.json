@@ -1,0 +1,79 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Render dynamic news details page with mixin data",
+      "actions": {
+        "$load": {
+          "type": "$render"
+        }
+      },
+      "templates": {
+        "body": {
+          "style": {
+            "background": "#ffffff",
+            "border": "none",
+            "align": "center"
+          },
+          "header": {
+            "title": "{{$global.titreArticle.substring(0,27)+'...'}}",
+            "style": {
+              "font": "Roboto",
+              "size": 22,
+              "background": "#DC0000",
+              "color": "white"
+            },
+            "leftButton": {
+              "text": "‹",
+              "style": {
+                "size": 75,
+                "width": 20,
+                "minWidth": 90,
+                "color": "white",
+                "background": "#DC0000"
+              },
+              "action": {
+                "type": "$back"
+              }
+            }
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "image",
+                  "url": "{{$global.imageArticle}}",
+                  "style": {
+                    "width": "100%"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "{{$global.titreArticle}}",
+                  "style": {
+                    "font": "Roboto-bold",
+                    "size": 20,
+                    "padding_left": 20,
+                    "padding_right": 20,
+                    "padding_top": 20,
+                    "padding_bottom": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "{{$global.fullArticle}}",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "padding_left": 20,
+                    "padding_right": 20
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+
