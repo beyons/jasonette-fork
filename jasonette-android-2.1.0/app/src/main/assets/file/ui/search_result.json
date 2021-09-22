@@ -1,0 +1,172 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Render dynamic announcements page with request data",
+      "data": {
+        "annonces": {
+          "@": "https://beyons.alwaysdata.net/jasonette/results.json"
+        }
+      },
+      "actions": {
+        "$load": {
+          "type": "$render"
+        },
+        "$pull": {
+          "type": "$reload"
+        }
+      },
+      "templates": {
+        "body": {
+          "style": {
+            "background": "#ffffff",
+            "border": "none",
+            "align": "center"
+          },
+          "header": {
+            "title": "Résultat des recherches",
+            "style": {
+              "font": "Roboto",
+              "size": 25,
+              "background": "#2d3436",
+              "color": "white"
+            },
+            "leftButton": {
+              "text": "‹",
+              "style": {
+                "size": 75,
+                "width": 20,
+                "minWidth": 90,
+                "color": "white",
+                "background": "#2d3436"
+              },
+              "action": {
+                "type": "$back"
+              }
+            }
+          },
+          "sections": [
+            {
+              "style": {
+                "align": "center"
+              },
+              "items": {
+                "{{#each annonces}}":
+                {
+                  "type": "vertical",
+                  "style": {
+                    "color": "white",
+                    "width": "100%"
+                  },
+                  "components": [
+                    {
+                      "type": "horizontal",
+                      "style":{
+                        "background": "{{col}}",
+                        "align": "center"
+                      },
+                      "components": [
+                        {
+                          "type": "image",
+                          "url": "{{image1}}",
+                          "style": {
+                            "width": "110",
+                            "height": "110"
+                          }
+                        },
+                        {
+                          "type": "vertical",
+                          "style": {
+                            "background": "{{col}}",
+                            "align": "center"
+                          },
+                          "components": [
+                            {
+                              "type": "label",
+                              "text": "{{title}}",
+                              "style": {
+                                "font": "Roboto-bold",
+                                "size": 17,
+                                "color": "#2c3e50",
+                                "padding_left": 20,
+                                "padding_right": 20
+                              }
+                            },
+                            {
+                              "type": "label",
+                              "text": "{{(Number.parseFloat(price).toFixed(2).replace(/\\d(?=(\\d{3})+\\.)/g, '$&,'))}}",
+                              "style": {
+                                "font": "Roboto-bold",
+                                "size": 15,
+                                "color": "{{col1}}",
+                                "padding_left": 20,
+                                "padding_right": 20,
+                                "padding_top": 20,
+                                "padding_bottom": 20
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "button",
+                          "text": "{{button}}",
+                          "style": {
+                            "width": 60,
+                            "height": 60,
+                            "background": "{{col}}",
+                            "color": "#2c3e50",
+                            "font": "Roboto-Bold",
+                            "size": 20
+                          },
+                          "action": {
+                            "type": "$global.set",
+                            "options": {
+                              "title": "{{title}}",
+                              "ref": "{{ref}}",
+                              "image1": "{{image1}}",
+                              "image2": "{{image2}}",
+                              "image3": "{{image3}}",
+                              "image4": "{{image4}}",
+                              "image5": "{{image5}}",
+                              "price": "{{(Number.parseFloat(price).toFixed(2).replace(/\\d(?=(\\d{3})+\\.)/g, '$&,'))}}",
+                              "location": "{{location}}",
+                              "circulation": "{{circulation}}",
+                              "km": "{{kilometrage}}",
+                              "couleur": "{{couleur}}",
+                              "garantie": "{{garantie}}",
+                              "puissance": "{{puissance}}",
+                              "din": "{{din}}",
+                              "premieremain": "{{premieremain}}",
+                              "accessoires1": "{{accessoires1}}",
+                              "accessoires2": "{{accessoires2}}",
+                              "accessoires3": "{{accessoires3}}",
+                              "accessoires4": "{{accessoires4}}"
+                            },
+                            "success": {
+                              "type": "$href",
+                              "options": {
+                                "url": "file://ui/announcements_details.json",
+                                "transition": "push",
+                                "animation": "pushleft",
+                                "view": "jason"
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": 2
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

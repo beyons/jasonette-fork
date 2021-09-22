@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.jasonette.seed">
+    <!-- Uncomment below lines to enable $geo.get -->
+    <uses-permission
+        android:name="android.permission.ACCESS_FINE_LOCATION"
+        android:maxSdkVersion="26" />
+    <uses-permission
+        android:name="android.permission.ACCESS_COARSE_LOCATION"
+        android:maxSdkVersion="26" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <application
+        android:name=".Launcher.Launcher"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Core.JasonViewActivity" android:windowSoftInputMode="adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <!-- Uncomment below intent-filter to support custom url schemes -->
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="jason" />
+            </intent-filter>
+            -->
+
+            <!-- Uncomment below intent-filter to support url opening -->
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http" android:host="oauth" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name="com.commonsware.cwac.cam2.CameraActivity"
+            android:process=":cwac_cam2"
+            android:theme="@style/CameraTheme"/>
+
+        <!-- Uncomment below line and add your Google Maps API key -->
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCFicyFgJNcDeW3WZiRHTFKHBL5RijaiGY"/>
+
+        <!-- Uncomment below to support push notification -->
+        <!--
+        <service
+            android:name=".Service.push.JasonPushRegisterService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <service
+            android:name=".Service.push.JasonPushMessageService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        -->
+
+        <service android:name=".Service.push.JasonPushRegisterService" />
+    </application>
+
+    <!-- Uncomment below line to enable $util.addressbook -->
+    <!--
+        <uses-permission android:name="android.permission.READ_CONTACTS"/>
+     -->
+
+    <!-- Uncomment below lines to enable $geo.get -->
+    <!--
+        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    -->
+
+    <!-- Uncomment below lines to enable $audio.record -->
+    <!--
+        <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+        <uses-permission android:name="android.permission.WAKE_LOCK" />
+    -->
+
+    <!-- Uncomment below lines to enable barcode scanner -->
+    <meta-data android:name="com.google.android.gms.vision.DEPENDENCIES" android:value="barcode"/>
+
+    <!-- Uncomment below lines to enable camera -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- Uncomment below lines to enable external storage -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- Uncomment below lines to access to wifi state -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <!-- Uncomment below lines to enable call phone -->
+    <!--
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    -->
+
+    <!-- Uncomment below lines to enable send sms -->
+    <!--
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    -->
+
+    <!-- Uncomment below lines to enable Flashlight -->
+    <!--
+    <permission android:name="android.permission.FLASHLIGHT"
+        android:permissionGroup="android.permission-group.HARDWARE_CONTROLS"
+        android:protectionLevel="normal"/>
+    -->
+
+    <!-- Uncomment below lines to enable Bluetooth -->
+    <!--
+    <uses-permission android:name="android.permission.BLUETOOTH" android:required="false" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    -->
+</manifest>
