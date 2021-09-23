@@ -500,6 +500,8 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
         // Register to receive messages.
         // We are registering an observer (mMessageReceiver) to receive Intents
         // with actions named "custom-event-name".
+        // Resume Lockscreen token
+        // wakeLock.release();
         Launcher.setCurrentContext(this);
 
         LocalBroadcastManager.getInstance(this).registerReceiver(onSuccess, new IntentFilter("success"));

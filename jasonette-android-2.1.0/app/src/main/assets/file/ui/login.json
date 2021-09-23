@@ -6,6 +6,9 @@
       "agents": {
         "auth": {
           "url": "file://agent/agent.html"
+        },
+        "checkingConnected": {
+          "url": "file://agent/connected.html"
         }
       },
       "actions" : {
@@ -39,6 +42,21 @@
             "title": "Adresse mail",
             "description": "Le format de votre Email est invalide"
           }
+        },
+        "connected": {
+          "type": "$util.toast",
+          "options": {
+            "text": "Utilisateur déja inscrit !"
+          }
+        },
+        "notConnected": {
+          "type": "$href",
+          "options": {
+            "url": "file://ui/register.json",
+            "transition": "push",
+            "animation": "pushleft",
+            "view": "jason"
+          }
         }
       },
       "styles": {
@@ -67,25 +85,6 @@
                 "align": "center"
               },
               "components": [
-                {
-                  "type": "textfield",
-                  "name": "status",
-                  "placeholder": "Status update",
-                  "style": {
-                    "placeholder_color": "#cecece",
-                    "font": "HelveticaNeue",
-                    "align": "center",
-                    "width": "200",
-                    "color": "#ffffff",
-                    "hintColor": "#ffffff",
-                    "borderColor": "#ffffff",
-                    "height": "60",
-                    "autocorrect": "true",
-                    "autocapitalize": "true",
-                    "spellcheck": "true",
-                    "size": "12"
-                  }
-                },
                 {
                   "type": "space",
                   "style": {
@@ -339,16 +338,12 @@
             "corner_radius": 75
           },
           "action": {
-            "type": "$href",
+            "type": "$agent.request",
             "options": {
-              "url": "file://ui/register.json",
-              "transition": "push",
-              "animation": "pushleft",
-              "view": "jason"
+              "id": "checkingConnected",
+              "method": "checkingConnected",
+              "params": ["{{$global.email}}"]
             }
-          },
-          "success": {
-            "type": "$ok"
           }
         }
       ]

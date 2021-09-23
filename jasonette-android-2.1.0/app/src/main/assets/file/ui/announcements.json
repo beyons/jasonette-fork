@@ -199,7 +199,7 @@
               "action": {
                 "type": "$network.request",
                 "options": {
-                  "url": "https://beyons.alwaysdata.net/jasonette/search.engine.php",
+                  "url": "https://beyons.alwaysdata.net/jasonette/search.engine.php?choice={{$get.search}}",
                   "data_type": "jason"
                 },
                 "success": {

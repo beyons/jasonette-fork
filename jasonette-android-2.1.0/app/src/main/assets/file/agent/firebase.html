@@ -1,7 +1,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     ///////////////////////////////////////
-    //              {˃̑ᴥ̑˂}              //
+    //               🛸                  //
     //      Javascript library for       //
     //    firebase realtime Database     //
     //       BEY Ons 2020 - 2021         //
@@ -26,7 +26,7 @@
                 }
             })
         });
-    }
+    };
     /*
     // Post data with 'POST' method
     */
@@ -45,14 +45,14 @@
         const jsonUser = JSON.stringify(obj);
         $.ajax({url: tUrl, type: 'POST', data: jsonUser, success: function(result) { $agent.response(result); }, error: function(error) { $agent.response(error); }
         });
-    }
+    };
     /*
     // Delete data with 'DELETE' method
     */
     var firebaseDel = function(tUrl)
     {
         $.ajax({url: tUrl,type: 'DELETE',success: function(result) {$agent.response(result);},error: function(error) { $agent.response(error);}});
-    }
+    };
     /*
     // Update data with 'PUT' method
     */
@@ -69,5 +69,5 @@
         obj.password = password;
         const jsonUser = JSON.stringify(obj);
         $.ajax({url: tUrl,data: jsonUser,type: 'PUT',success: function(result) { $agent.response(result);}, error: function(error) {$agent.response(error);}});
-    }
+    };
 </script>

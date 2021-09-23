@@ -1,8 +1,13 @@
 <script>
     /////////////////////////////////////////
-    //              {˃̑ᴥ̑˂}                //
+    //                  🛸                 //
+    //      JASONELLE MICRO FRAMEWORK      //
+    //      Crossplatform Android/Ios      //
+    //              2020/2021              //
+    /////////////////////////////////////////
+
+    /////////////////////////////////////////
     //     Fonction d'authentification     //
-    //         BEY Ons 2020 - 2021         //
     /////////////////////////////////////////
     var validateEmail = function(email,pass,bd1,bd2)
     {
@@ -24,14 +29,14 @@
             $agent.response(result);
             $agent.trigger("mailInvalide", {});
         }
-    }
+    };
     //////////////////////////////////////////////
     //    Fonction transformation de la date    //
     //////////////////////////////////////////////
     var specifyDate = function(timeStamp)
     {
         $agent.response((new Date(parseInt(timeStamp)*1000)).toString());
-    }
+    };
     //////////////////////////////////////////////
     //    Fonction check dark modes enabling    //
     //////////////////////////////////////////////
@@ -43,5 +48,6 @@
        else{
             $agent.trigger("ModeJour", {});
        }
-    }
+    };
+
 </script>

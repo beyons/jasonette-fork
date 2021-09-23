@@ -9,6 +9,7 @@
         android:name="android.permission.ACCESS_COARSE_LOCATION"
         android:maxSdkVersion="26" />
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE"/>
     <application
@@ -120,5 +121,10 @@
     <!--
     <uses-permission android:name="android.permission.BLUETOOTH" android:required="false" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    -->
+
+    <!-- Uncomment below lines to enable lock screen disable -->
+    <!--
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     -->
 </manifest>
