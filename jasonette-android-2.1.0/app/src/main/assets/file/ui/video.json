@@ -26,7 +26,8 @@
       "templates": {
         "body": {
           "style": {
-            "background": "#ffffff",
+            "background": "{{$global.background}}",
+            "color": "{{$global.fontColor}}",
             "border": "none",
             "align": "center"
           },

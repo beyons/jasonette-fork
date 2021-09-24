@@ -24,15 +24,10 @@ public class JasonSwitchComponent {
                 final Switch aSwitch = ((Switch) view);
 
                 Boolean checked = false;
-                if(component.has("name")){
-                    if(((JasonViewActivity) context).model.var.has(component.getString("name"))){
-                        checked = ((JasonViewActivity) context).model.var.getBoolean(component.getString("name"));
-                    } else {
-                        if(component.has("value")){
-                            checked = component.getBoolean("value");
-                        }
-                    }
+                if(component.has("value")){
+                    checked = component.getBoolean("value");
                 }
+
                 final JSONObject style = JasonHelper.style(component, context);
                 aSwitch.setChecked(checked);
                 aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

@@ -15,7 +15,8 @@
           "type": "$global.set",
           "options": {
             "background": "#000000",
-            "fontColor": "#ffffff"
+            "fontColor": "#ffffff",
+            "darkMode": true
           },
           "success": {
             "type": "$render"
@@ -25,7 +26,8 @@
           "type": "$global.set",
           "options": {
             "background": "#ffffff",
-            "fontColor": "#2c3e50"
+            "fontColor": "#2c3e50",
+            "darkMode": false
           },
           "success": {
             "type": "$render"
@@ -243,7 +245,10 @@
                     {
                       "type": "switch",
                       "name": "datacollect",
-                      "value": "false"
+                      "value": "false",
+                      "style": {
+                        "color": "#e74c3c"
+                      }
                     }
                   ]
                 },
@@ -272,6 +277,9 @@
                       "type": "switch",
                       "name": "deleteAccount",
                       "value": "false",
+                      "style": {
+                        "color": "#e74c3c"
+                      },
                       "action": {
                         "type": "$global.reset",
                         "success": {
@@ -318,7 +326,10 @@
                     {
                       "type": "switch",
                       "name": "darkmodes",
-                      "value": "false",
+                      "value": "{{$global.darkMode}}",
+                      "style": {
+                        "color": "#e74c3c"
+                      },
                       "action": {
                         "type": "$agent.request",
                         "options": {
@@ -329,6 +340,12 @@
                       }
                     }
                   ]
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 80
+                  }
                 }
               ]
             }

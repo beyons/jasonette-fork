@@ -1,5 +1,6 @@
 package com.jasonette.seed.Component;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -240,6 +242,28 @@ public class JasonImageComponent {
                 ImageView imageview;
                 imageview = new ImageView(context);
                 imageview.setAdjustViewBounds(true);
+
+                final JSONObject style = JasonHelper.style(component, context);
+                if(style.has("animation")){
+                    JSONObject animation = style.getJSONObject("animation");
+                    if(animation.has("type")){
+                        if(animation.getString("type").equals("fadeIn")){
+                            final Animation fadeIn = new AlphaAnimation(0.0f, 1.0f);
+                            fadeIn.setDuration(1000);
+                            fadeIn.setStartOffset(100);
+                            imageview.startAnimation(fadeIn);
+                            imageview.setVisibility(View.VISIBLE);
+                        }
+                        if(animation.getString("type").equals("fadeOut")){
+                            final Animation fadeOut = new AlphaAnimation(1.0f, 0.0f);
+                            fadeOut.setStartOffset(100);
+                            fadeOut.setDuration(1000);
+                            imageview.startAnimation(fadeOut);
+                            imageview.setVisibility(View.INVISIBLE);
+                        }
+                    }
+                }
+
                 return imageview;
             } catch (Exception e) {
                 Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
@@ -284,8 +308,6 @@ public class JasonImageComponent {
                             }
                         }
 
-                        JasonComponent.addListener(view, context);
-                        view.requestLayout();
                         return view;
 
                     } else {
@@ -314,20 +336,7 @@ public class JasonImageComponent {
 
                         JasonComponent.addListener(view, context);
                         view.requestLayout();
-
-                        /*******
-                         * Create a fadeIn animation for image
-                         ******/
-                        if (style.has("fade_In")) {
-                            JasonComponent.addListener(view, context);
-                            view.requestLayout();
-                            final Animation fadeIn = new AlphaAnimation(0.0f, 1.0f);
-                            fadeIn.setDuration(1000);
-                            fadeIn.setStartOffset(100);
-                            view.startAnimation(fadeIn);
-                        }
                         return view;
-
                     }
 
                 } else {
@@ -338,6 +347,5 @@ public class JasonImageComponent {
             }
             return new View(context);
         }
-
     }
 }

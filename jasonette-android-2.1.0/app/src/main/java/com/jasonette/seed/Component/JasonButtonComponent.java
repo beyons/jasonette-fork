@@ -18,6 +18,46 @@ public class JasonButtonComponent{
         if(component.has("url")){
             // image button
             view = JasonImageComponent.build(view, component, parent, context);
+
+            /*******
+             * Create a move animation for image button
+             ******/
+            try {
+                JSONObject style = component.getJSONObject("style");
+                if(style.has("animation")){
+                    JSONObject animation = style.getJSONObject("animation");
+                    if(animation.has("type")){
+                        if(animation.getString("type").equals("fadeIn")){
+                            final Animation fadeIn = new AlphaAnimation(0.0f, 1.0f);
+                            fadeIn.setDuration(1000);
+                            fadeIn.setStartOffset(100);
+                            view.startAnimation(fadeIn);
+                            view.setVisibility(View.VISIBLE);
+                        }
+                        if(animation.getString("type").equals("fadeOut")){
+                            final Animation fadeOut = new AlphaAnimation(1.0f, 0.0f);
+                            fadeOut.setStartOffset(100);
+                            fadeOut.setDuration(1000);
+                            view.startAnimation(fadeOut);
+                            view.setVisibility(View.INVISIBLE);
+                        }
+                        if(animation.getString("type").equals("move")){
+                            ObjectAnimator anim = ObjectAnimator.ofFloat(view, animation.getString("translation"), animation.getInt("value"));
+                            anim.setDuration(animation.getInt("duration"));
+                            anim.start();
+                        }
+                        if(animation.getString("type").equals("hide")){
+                            view.setVisibility(View.INVISIBLE);
+                        }
+                        if(animation.getString("type").equals("show")){
+                            view.setVisibility(View.VISIBLE);
+                        }
+                    }
+                }
+            }
+            catch (Exception e) {
+                Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+            }
         } else if(component.has("text")){
             // label button
 
@@ -59,13 +99,16 @@ public class JasonButtonComponent{
                 /*******
                  * Create a fadeIn / fadeout / move animation for textview button
                  ******/
+
+
                 if(style.has("animation")){
+
                     JSONObject animation = style.getJSONObject("animation");
                     if(animation.has("type")){
                         if(animation.getString("type").equals("fadeIn")){
                             final Animation fadeIn = new AlphaAnimation(0.0f, 1.0f);
-                            fadeIn.setDuration(animation.getInt("duration"));
-                            fadeIn.setStartOffset(animation.getInt("start"));
+                            fadeIn.setDuration(1000);
+                            fadeIn.setStartOffset(100);
                             ((TextView) view).startAnimation(fadeIn);
                             ((TextView) view).setVisibility(View.VISIBLE);
                         }
