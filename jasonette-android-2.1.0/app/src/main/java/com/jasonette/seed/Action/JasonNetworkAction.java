@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Environment;
 import android.util.Base64;
 import android.util.Log;
 
@@ -12,8 +13,17 @@ import com.jasonette.seed.Helper.JasonHelper;
 import com.jasonette.seed.Launcher.Launcher;
 
 import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Iterator;
 import java.util.UUID;
 
@@ -245,6 +255,97 @@ public class JasonNetworkAction {
     }
     public void request(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
         _request(null, action, data, event, context);
+    }
+
+    public void ftp(JSONObject action, final JSONObject data, final JSONObject event, final Context context) {
+        try{
+            JSONObject stack = new JSONObject();
+            final JSONObject options = action.getJSONObject("options");
+            String ftpServer = options.getString("ftpServer");
+            String fileName = options.getString("fileName");
+            String fileSource = options.getString("fileSource");
+            String user = options.getString("user");
+            String password = options.getString("password");
+
+            if (ftpServer != null & fileName != null)
+            {
+                StringBuffer sb = new StringBuffer( "ftp://" );
+                // check for authentication else assume its anonymous access.
+                if (user != null & password != null)
+                {
+                    sb.append( user );
+                    sb.append( ':' );
+                    sb.append( password );
+                    sb.append( '@' );
+                }
+                sb.append( ftpServer );
+                sb.append( '/' );
+                sb.append( fileName );
+                /*
+                 * type ==&gt; a=ASCII mode, i=image (binary) mode, d= file directory
+                 * listing
+                 */
+                sb.append( ";type=i" );
+
+                BufferedInputStream bis = null;
+                BufferedOutputStream bos = null;
+                try
+                {
+                    URL url = new URL( sb.toString() );
+                    URLConnection urlc = url.openConnection();
+
+                    bos = new BufferedOutputStream( urlc.getOutputStream() );
+
+                    /*
+                     * Get file directory and name
+                     */
+                    File path = Environment.getExternalStoragePublicDirectory(
+                            Environment.DIRECTORY_DOWNLOADS);
+                    File file = new File(path, fileSource);
+
+                    bis = new BufferedInputStream( new FileInputStream( file ) );
+
+                    int i;
+                    // read byte by byte until end of stream
+                    while ((i = bis.read()) != -1)
+                    {
+                        bos.write( i );
+                    }
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally
+                {
+                    if (bis != null)
+                        try
+                        {
+                            bis.close();
+                        }
+                        catch (IOException ioe)
+                        {
+                            ioe.printStackTrace();
+                        }
+                    if (bos != null)
+                        try
+                        {
+                            bos.close();
+                        }
+                        catch (IOException ioe)
+                        {
+                            ioe.printStackTrace();
+                        }
+                }
+                JasonHelper.callback(stack, ""+true, context);
+            }
+            else {
+                JasonHelper.callback(stack, "Input not available.", context);
+            }
+        } catch (Exception e){
+            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+        }
     }
 
     public void upload(JSONObject action, final JSONObject data, final JSONObject event, final Context context){

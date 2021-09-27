@@ -550,6 +550,7 @@ public class JasonUtilAction {
                             Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
                         }
                     }
+                    System.out.println("" + temporary);
 
                 } catch (Exception e){
                     Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());

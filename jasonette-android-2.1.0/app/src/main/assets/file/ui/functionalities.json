@@ -317,6 +317,41 @@
                                 },
                                 {
                                     "type": "button",
+                                    "text": "$network.ftp",
+                                    "style": {
+                                        "width": "35% - 10",
+                                        "height": 50,
+                                        "background": "#DC0000",
+                                        "color": "#ffffff",
+                                        "font": "Roboto-Bold",
+                                        "corner_radius": 35,
+                                        "size": 15
+                                    },
+                                    "action": {
+                                        "type": "$network.ftp",
+                                        "options": {
+                                            "ftpServer": "ftp-beyons.alwaysdata.net/www",
+                                            "fileName": "VID.mp4",
+                                            "fileSource": "VID.mp4",
+                                            "user": "beyons",
+                                            "password": "onsbey2012"
+                                        },
+                                        "success": {
+                                            "type": "$util.toast",
+                                            "options": {
+                                                "text": "Fichier envoyé avec succées"
+                                            }
+                                        },
+                                        "error": {
+                                            "type": "$util.toast",
+                                            "options": {
+                                                "text": "Erreur d'envoi du fichier"
+                                            }
+                                        }
+                                    }
+                                },
+                                {
+                                    "type": "button",
                                     "text": "WiFi State",
                                     "style": {
                                         "width": 220,
