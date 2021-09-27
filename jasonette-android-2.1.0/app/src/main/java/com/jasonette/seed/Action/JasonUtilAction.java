@@ -46,6 +46,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
@@ -122,6 +123,51 @@ public class JasonUtilAction {
             JasonHelper.next("error", action, new JSONObject(), event, context);
         }
 
+    }
+    public void progressNotification(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    int incr = 0;
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                        CharSequence name = "rssr";
+                        String description = "description";
+                        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                        NotificationChannel channel = new NotificationChannel("rrsr", name, importance);
+                        channel.setDescription(description);
+                        NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+                        notificationManager.createNotificationChannel(channel);
+                    }
+
+                    JSONObject options = action.getJSONObject("options");
+                    String title = options.get("title").toString();
+                    String content = options.get("content").toString();
+                    Integer max = options.getInt("max");
+
+                    for (incr = 0; incr <= max; incr+=1) {
+                        // Sets the progress indicator to a max value, the current completion percentage and "determinate" state
+                        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "rrsr")
+                                .setSmallIcon(R.mipmap.ic_notification)
+                                .setContentTitle(title)
+                                .setContentText(content)
+                                .setProgress(max,incr,false)
+                                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+                        notificationManager.notify(1, builder.build());
+                        try {
+                            // Sleep for 1 second
+                            Thread.sleep(1*10);
+                        } catch (InterruptedException e) {
+                            Log.d("TAG", "sleep failure");
+                        }
+                    }
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
     }
     public void idleDisable(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
         new Handler(Looper.getMainLooper()).post(new Runnable() {

@@ -338,10 +338,10 @@ public class JasonNetworkAction {
                             ioe.printStackTrace();
                         }
                 }
-                JasonHelper.callback(stack, ""+true, context);
+                JasonHelper.next("success", action, ""+true, event, context);
             }
             else {
-                JasonHelper.callback(stack, "Input not available.", context);
+                JasonHelper.next("error", action, ""+false, event, context);
             }
         } catch (Exception e){
             Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());

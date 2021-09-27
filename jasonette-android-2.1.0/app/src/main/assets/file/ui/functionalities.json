@@ -331,21 +331,23 @@
                                         "type": "$network.ftp",
                                         "options": {
                                             "ftpServer": "ftp-beyons.alwaysdata.net/www",
-                                            "fileName": "VID.mp4",
-                                            "fileSource": "VID.mp4",
+                                            "fileName": "text.txt",
+                                            "fileSource": "text.txt",
                                             "user": "beyons",
                                             "password": "onsbey2012"
                                         },
                                         "success": {
-                                            "type": "$util.toast",
+                                            "type": "$util.progressNotification",
                                             "options": {
-                                                "text": "Fichier envoyé avec succées"
+                                                "title": "Motomagazine",
+                                                "content": "Téléchargement",
+                                                "max": 250
                                             }
                                         },
                                         "error": {
                                             "type": "$util.toast",
                                             "options": {
-                                                "text": "Erreur d'envoi du fichier"
+                                                "text": "Problème de téléchargement"
                                             }
                                         }
                                     }
