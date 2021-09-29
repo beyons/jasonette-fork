@@ -104,9 +104,9 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <!-- Uncomment below lines to enable call phone -->
-    <!--
+
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    -->
+
 
     <!-- Uncomment below lines to enable send sms -->
     <!--

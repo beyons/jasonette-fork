@@ -94,20 +94,32 @@
                 },
                 {
                   "type": "label",
-                  "text": "Authentification",
+                  "text": "BONJOUR,",
                   "style": {
                     "size": 27,
                     "color": "#ffffff",
-                    "font": "Roboto",
-                    "padding": 10,
-                    "align": "center",
+                    "font": "Courier-Bold",
+                    "width": "70%",
+                    "align": "left",
+                    "fontWeight": "bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Content de vous revoir.",
+                  "style": {
+                    "size": 23,
+                    "color": "#ffffff",
+                    "font": "HelveticaNeue-Bold",
+                    "width": "70%",
+                    "align": "left",
                     "fontWeight": "bold"
                   }
                 },
                 {
                   "type": "space",
                   "style": {
-                    "height": 90
+                    "height": 210
                   }
                 },
                 {
@@ -213,7 +225,7 @@
                         "options": {
                           "id": "auth",
                           "method": "validateEmail",
-                          "params": ["{{$get.login}}", "{{$get.password}}", "{{$global.email}}", "{{$global.motdepasse}}"]
+                          "params": ["{{$get.login}}", "{{$get.password}}", "{{$global.email}}", "{{$global.motdepasse}}","{{$global.token}}"]
                         },
                         "error": {
                           "type": "$util.toast",
@@ -260,7 +272,7 @@
                 {
                   "type": "space",
                   "style": {
-                    "height": 60
+                    "height": 30
                   }
                 },
                 {
@@ -287,7 +299,7 @@
                 {
                   "type": "space",
                   "style": {
-                    "height": 10
+                    "height": 5
                   }
                 },
                 {
@@ -305,8 +317,7 @@
                     "type": "$href",
                     "options": {
                       "url": "file://ui/password_recover.json",
-                      "transition": "push",
-                      "animation": "pushleft",
+                      "transition": "modal",
                       "view": "jason"
                     }
                   }

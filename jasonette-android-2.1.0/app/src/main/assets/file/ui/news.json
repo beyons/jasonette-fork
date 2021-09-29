@@ -34,7 +34,7 @@
             "leftButton": {
               "text": "‹",
               "style": {
-                "size": 75,
+                "size": 45,
                 "width": 20,
                 "minWidth": 90,
                 "color": "white",
@@ -132,7 +132,9 @@
                                     "params":{
                                       "titreArticle": "{{title}}",
                                       "fullArticle": "{{full}}",
-                                      "imageArticle": "{{image}}"
+                                      "imageArticle": "{{image}}",
+                                      "emailArticle": "{{email}}",
+                                      "phoneArticle": "{{phone}}"
                                     }
                                   }
                               }

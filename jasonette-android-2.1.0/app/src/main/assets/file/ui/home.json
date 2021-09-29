@@ -35,7 +35,7 @@
             "leftButton": {
               "text": "☰",
               "style": {
-                "size": 55,
+                "size": 45,
                 "width": 20,
                 "minWidth": 90,
                 "color": "white",

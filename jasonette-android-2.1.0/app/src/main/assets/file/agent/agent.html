@@ -9,13 +9,13 @@
     /////////////////////////////////////////
     //     Fonction d'authentification     //
     /////////////////////////////////////////
-    var validateEmail = function(email,pass,bd1,bd2)
+    var validateEmail = function(email,pass,bd1,bd2,token)
     {
-        console.log(email)
-        console.log(pass)
-        console.log(bd1)
-        console.log(bd2)
-
+        console.log(email);
+        console.log(pass);
+        console.log(bd1);
+        console.log(bd2);
+        console.log(token);
         var re = /\S+@\S+\.\S+/;
         var result = re.test(email);
 

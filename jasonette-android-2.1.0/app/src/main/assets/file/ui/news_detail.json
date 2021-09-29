@@ -26,7 +26,7 @@
             "leftButton": {
               "text": "‹",
               "style": {
-                "size": 75,
+                "size": 45,
                 "width": 20,
                 "minWidth": 90,
                 "color": "white",
@@ -59,6 +59,51 @@
                     "padding_top": 20,
                     "padding_bottom": 20
                   }
+                },
+                {
+                  "type": "horizontal",
+                  "style":{
+                    "background": "#ecf0f1",
+                    "align": "left"
+                  },
+                  "components": [
+                    {
+                      "type": "button",
+                      "url": "file://images/phone.png",
+                      "style": {
+                        "width": 50,
+                        "height": 50,
+                        "background": "rgba(255,255,255,0)",
+                        "color": "#ffffff",
+                        "elevation": 20
+                      },
+                      "action": {
+                        "type": "$href",
+                        "options": {
+                          "url": "tel:{{$params.phoneArticle}}",
+                          "view": "app"
+                        }
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "url": "file://images/email.png",
+                      "style": {
+                        "width": 50,
+                        "height": 50,
+                        "background": "rgba(0,0,0,0)",
+                        "color": "#ffffff",
+                        "elevation": 20
+                      },
+                      "action": {
+                        "type": "$href",
+                        "options": {
+                          "url": "mailto:{{$params.emailArticle}}?subject=Contact",
+                          "view": "app"
+                        }
+                      }
+                    }
+                  ]
                 },
                 {
                   "type": "label",

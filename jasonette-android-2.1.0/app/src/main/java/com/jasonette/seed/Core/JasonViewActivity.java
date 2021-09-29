@@ -2722,7 +2722,7 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                     if(NamBarBtnVar == null){
                         NamBarBtnVar = new Button(this);
                         NamBarBtnVar.setStateListAnimator(null);
-                        NamBarBtnVar.setPadding(0,0,0,0);
+                        NamBarBtnVar.setPadding(0,0,0,20);
                         NamBarBtnVar.setPaddingRelative(0,0,0,0);
                         NamBarBtnVar.setWidth(Integer.parseInt(leftButton.getJSONObject("style").getString("minWidth")));
                         NamBarBtnVar.setMinimumWidth(Integer.parseInt(leftButton.getJSONObject("style").getString("minWidth")));

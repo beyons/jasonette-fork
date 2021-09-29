@@ -259,12 +259,16 @@
                       }
                     },
                     {
-                      "type": "image",
+                      "type": "button",
                       "url": "file://images/calendars.png",
                       "style": {
-                        "width": 30,
-                        "height": 30,
-                        "align": "center"
+                        "width": 25,
+                        "height": 25,
+                        "background": "rgba(0,0,0,0)",
+                        "color": "#ffffff",
+                        "font": "Roboto",
+                        "size": 10,
+                        "elevation": 20
                       },
                       "action": {
                         "type": "$util.datepicker",
