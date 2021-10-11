@@ -1,0 +1,494 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Register your account for IPC Apps",
+      "description": "Register your account locally in mobile key/value database",
+      "agents": {
+        "getTime": {
+          "url": "file://agent/agent.html"
+        },
+        "firebaseRegister": {
+          "url": "file://agent/firebase.html"
+        }
+      },
+      "styles": {
+        "caption": {
+          "font": "Roboto",
+          "size": 13,
+          "align": "center",
+          "spacing": 15
+        }
+      }
+    },
+    "body": {
+      "style": {
+        "border": "none",
+        "background": {
+          "type": "html",
+          "url": "file://images/register.html"
+        }
+      },
+      "sections": [
+        {
+          "items": [
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center"
+              },
+              "components": [
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 70
+                  }
+                },
+                {
+                  "type": "button",
+                  "url": "file://images/attaching.png",
+                  "style": {
+                    "width": 60,
+                    "height": 60,
+                    "right": 40,
+                    "bottom": 30,
+                    "background": "#3B4DB3",
+                    "color": "#ffffff",
+                    "font": "Roboto",
+                    "elevation": 20,
+                    "size": 30,
+                    "corner_radius": 75
+                  },
+                  "action": {
+                    "type": "$media.picker",
+                    "options": {
+                      "edit": "true",
+                      "type": "photo"
+                    },
+                    "success": {
+                      "type": "$set",
+                      "options": {
+                        "fileURL": "{{$jason.file_url}}"
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 30
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Votre nom",
+                  "style": {
+                    "size": 17,
+                    "color": "#ffffff",
+                    "font": "Roboto",
+                    "padding": 10,
+                    "width": "70%",
+                    "align": "left",
+                    "fontWeight": "bold"
+                  }
+                },
+                {
+                  "type": "textfield",
+                  "name": "nom",
+                  "keyboard": "text",
+                  "style": {
+                    "autocapitalize": true,
+                    "hintColor": "#2c3e50",
+                    "borderColor": "#dfe6e9",
+                    "background": "#ffffff",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "align": "left",
+                    "width": "70%",
+                    "height": 50,
+                    "padding": 15,
+                    "corner_radius": 35,
+                    "size": 15
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Votre prénom",
+                  "style": {
+                    "size": 17,
+                    "color": "#ffffff",
+                    "font": "Roboto",
+                    "padding": 10,
+                    "width": "70%",
+                    "align": "left",
+                    "fontWeight": "bold"
+                  }
+                },
+                {
+                  "type": "textfield",
+                  "name": "prenom",
+                  "keyboard": "text",
+                  "style": {
+                    "autocapitalize": true,
+                    "hintColor": "#2c3e50",
+                    "borderColor": "#dfe6e9",
+                    "background": "#ffffff",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "align": "left",
+                    "width": "70%",
+                    "height": 50,
+                    "padding": 15,
+                    "corner_radius": 35,
+                    "size": 15
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Votre Email (Login)",
+                  "style": {
+                    "size": 17,
+                    "color": "#ffffff",
+                    "font": "Roboto",
+                    "padding": 10,
+                    "width": "70%",
+                    "align": "left",
+                    "fontWeight": "bold"
+                  }
+                },
+                {
+                  "type": "textfield",
+                  "name": "email",
+                  "keyboard": "email",
+                  "style": {
+                    "hintColor": "#2c3e50",
+                    "borderColor": "#dfe6e9",
+                    "background": "#ffffff",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "align": "left",
+                    "width": "70%",
+                    "height": 50,
+                    "padding": 15,
+                    "corner_radius": 35,
+                    "size": 15
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Votre mot de passe",
+                  "style": {
+                    "size": 17,
+                    "color": "#ffffff",
+                    "font": "Roboto",
+                    "padding": 10,
+                    "width": "70%",
+                    "align": "left",
+                    "fontWeight": "bold"
+                  }
+                },
+                {
+                  "type": "textfield",
+                  "name": "password",
+                  "keyboard": "text",
+                  "style": {
+                    "hintColor": "#2c3e50",
+                    "borderColor": "#dfe6e9",
+                    "background": "#ffffff",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "align": "left",
+                    "width": "70%",
+                    "height": 50,
+                    "padding": 15,
+                    "corner_radius": 35,
+                    "secure": true,
+                    "size": 15
+                  },
+                  "action": {
+                    "store": {
+                      "type": "$global.set",
+                      "options": {
+                        "pwd": "{{$get.password}}"
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Votre adresse",
+                  "style": {
+                    "size": 17,
+                    "color": "#ffffff",
+                    "font": "Roboto",
+                    "padding": 10,
+                    "width": "70%",
+                    "align": "left",
+                    "fontWeight": "bold"
+                  }
+                },
+                {
+                  "type": "textfield",
+                  "name": "adresse",
+                  "keyboard": "text",
+                  "style": {
+                    "autocapitalize": true,
+                    "hintColor": "#2c3e50",
+                    "borderColor": "#dfe6e9",
+                    "background": "#ffffff",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "align": "left",
+                    "width": "70%",
+                    "height": 50,
+                    "padding": 15,
+                    "corner_radius": 35,
+                    "size": 15
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Votre téléphone",
+                  "style": {
+                    "size": 17,
+                    "color": "#ffffff",
+                    "font": "Roboto",
+                    "padding": 10,
+                    "width": "70%",
+                    "align": "left",
+                    "fontWeight": "bold"
+                  }
+                },
+                {
+                  "type": "textfield",
+                  "name": "phone",
+                  "keyboard": "phone",
+                  "style": {
+                    "hintColor": "#2c3e50",
+                    "borderColor": "#dfe6e9",
+                    "background": "#ffffff",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "align": "left",
+                    "width": "70%",
+                    "height": 50,
+                    "padding": 15,
+                    "corner_radius": 35,
+                    "size": 15
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 20
+                  }
+                },
+                {
+                  "type": "horizontal",
+                  "style":{
+                    "align": "center"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "text": "Date de naissance",
+                      "style": {
+                        "size": 17,
+                        "color": "#ffffff",
+                        "font": "Roboto",
+                        "padding": 10,
+                        "width": "70% - 30",
+                        "align": "left",
+                        "fontWeight": "bold"
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "url": "file://images/calendars.png",
+                      "style": {
+                        "width": 25,
+                        "height": 25,
+                        "background": "rgba(0,0,0,0)",
+                        "color": "#ffffff",
+                        "font": "Roboto",
+                        "size": 10,
+                        "elevation": 20
+                      },
+                      "action": {
+                        "type": "$util.datepicker",
+                        "options": {
+                          "title": "Sélecteur de date",
+                          "description": "Date d'anniversaire"
+                        },
+                        "success": {
+                          "type": "$set",
+                          "options": {
+                            "dateTime": "{{(new Date(parseInt($jason.value)*1000)).toString()}}"
+                          }
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Présentation",
+                  "style": {
+                    "autocapitalize": true,
+                    "size": 17,
+                    "color": "#ffffff",
+                    "font": "Roboto",
+                    "padding": 10,
+                    "width": "70%",
+                    "align": "left",
+                    "fontWeight": "bold"
+                  }
+                },
+                {
+                  "type": "textarea",
+                  "name": "synopsis",
+                  "placeholder": "",
+                  "value": "",
+                  "style": {
+                    "hintColor": "#2c3e50",
+                    "borderColor": "#dfe6e9",
+                    "background": "#dfe6e9",
+                    "color": "#2c3e50",
+                    "font": "Roboto",
+                    "align": "left",
+                    "width": "70%",
+                    "height": 190,
+                    "padding": 15,
+                    "corner_radius": 18,
+                    "size": 15
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 35
+                  }
+                },
+                {
+                  "type": "button",
+                  "text": "Lire les conditions d'utilisation",
+                  "style": {
+                    "width": "70%",
+                    "height": 50,
+                    "background": "rgba(0,0,0,0)",
+                    "color": "#ffffff",
+                    "font": "Roboto-Bold",
+                    "corner_radius": 35,
+                    "size": 15
+                  },
+                  "action": {
+                    "type": "$href",
+                    "options": {
+                      "url": "file://ui/gdpr.json",
+                      "transition": "modal",
+                      "view": "jason"
+                    }
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 35
+                  }
+                },
+                {
+                  "type": "button",
+                  "text": "Enregistrement",
+                  "style": {
+                    "width": "70%",
+                    "height": 50,
+                    "background": "#DC0000",
+                    "color": "#ffffff",
+                    "font": "Roboto-Bold",
+                    "corner_radius": 35,
+                    "size": 15
+                  },
+                  "action": {
+                    "type": "$script.include",
+                    "options": {
+                      "items": [{
+                        "url": "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"
+                      }]
+                    },
+                    "success": {
+                      "type": "$global.set",
+                      "options": {
+                        "nom": "{{$get.nom}}",
+                        "prenom": "{{$get.prenom}}",
+                        "nm": "{{$get.nom}}",
+                        "prn": "{{$get.prenom}}",
+                        "email": "{{$get.email}}",
+                        "adresse": "{{$get.adresse.replace(/\\s/g, \"_\")}}",
+                        "phone": "{{$get.phone}}",
+                        "birthday": "{{(new Date(parseInt($jason.value)*1000)).toString()}}",
+                        "synopsis": "{{$get.synopsis.replace(/\\s/g, \"_\")}}",
+                        "login": "{{$get.email}}",
+                        "motdepasse": "{{$get.password}}",
+                        "image": "{{$get.fileURL}}",
+                        "token": "{{var a = $get.prenom+$get.nom+$get.email;var b = []; for (var i=0; i<20; i++) { var j = (Math.random() * (a.length-1)).toFixed(0); b[i] = a[j];} return b.join('');}}"
+                      },
+                      "success": {
+                        "type": "$agent.request",
+                        "options": {
+                          "id": "firebaseRegister",
+                          "method": "firebasePost",
+                          "params": ["https://fir-db-63961.firebaseio.com/users/{{$get.phone}}.json?auth=IuGbhgJJoTNSURmB8DBjWIpMgPiSq85SQ8rubWbw","{{$get.nom}}","{{$get.prenom}}","{{$get.adresse.replace(/\\s/g, \"_\")}}","{{$get.phone}}","{{$get.dateTime}}","{{$get.synopsis.replace(/\\s/g, \"_\")}}","{{$get.login}}","{{$get.password}}","{{$get.email}}"]
+                        },
+                        "success": {
+                          "type": "$back"
+                        },
+                        "error": {
+                          "type": "$util.toast",
+                          "options": {
+                            "text": "Erreur! Inscription impossible. veuillez reessayer."
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 70
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "layers": [
+        {
+          "type": "button",
+          "url": "file://images/back.png",
+          "style": {
+            "width": 60,
+            "height": 60,
+            "right": 20,
+            "elevation": 20,
+            "bottom": 20,
+            "background": "#B08739",
+            "color": "#ffffff",
+            "font": "Roboto",
+            "size": 30,
+            "corner_radius": 75
+          },
+          "action": {
+            "type": "$back"
+          }
+        }
+      ]
+    }
+  }
+}

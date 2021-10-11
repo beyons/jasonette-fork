@@ -1,0 +1,439 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Render dynamic Home page for IPC Apps",
+      "actions": {
+        "$load": {
+          "type": "$render"
+        }
+      },
+      "templates": {
+        "body": {
+          "style": {
+            "background": "{{$global.background}}",
+            "color": "{{$global.fontColor}}",
+            "border": "none",
+            "align": "center"
+          },
+          "header": {
+            "title": "Accueil",
+            "style": {
+              "font": "Roboto",
+              "size": 25,
+              "background": "#2d3436",
+              "color": "white"
+            },
+            "menu": {
+              "image": "file://images/logout.png",
+              "style": {
+                "color": "white"
+              },
+              "action": {
+                "type": "$href",
+                "options": {
+                  "url": "file://ui/login.json",
+                  "transition": "modal",
+                  "view": "jason"
+                }
+              }
+            },
+            "leftButton": {
+              "text": "☰",
+              "style": {
+                "size": 45,
+                "width": 20,
+                "minWidth": 90,
+                "color": "white",
+                "background": "#2d3436"
+              },
+              "action": {
+                "type": "$util.drawer",
+                "style": {
+                  "background": "#ecf0f1",
+                  "textBackground": "#2c3e50",
+                  "color": "#ffffff",
+                  "height": 250
+                },
+                "options": {
+                  "message": "Bienvenue\n{{$global.prenom}} {{$global.nom}}",
+                  "list": "Avantages,Actualités,Vidéo,Contact,Cours en ligne,Scan code promotion,Paramètrages",
+                  "url": "file://ui/advantages.json,file://ui/news.json,file://ui/video.json,file://ui/contact.json,file://ui/coursonline.json,file://ui/qrcode.json,file://ui/about.json"
+                }
+              }
+            }
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "label",
+                  "text": "Histoire et origine de l'Institut",
+                  "style": {
+                    "font": "Roboto-bold",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "L’Institut Poincaré de Carthage est une école privée, située dans le quartier de Carthage Byrsa et fondée en 2014. \n\nAlors connu sous le nom de Carthage Queen Academy for Training, le centre change de nom en 2018.\n\n Le nom de notre école est inspiré du mathématicien français Henri Poincaré, célèbre pour ses travaux en calcul infinitésimal et en optique, mais aussi pour la variété de disciplines auxquelles il a contribué, comme la philosophie, la physique ou encore le génie civil.",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center"
+                  },
+                  "components": [
+                    {
+                      "type": "image",
+                      "url": "file://images/art1.jpg",
+                      "style": {
+                        "width": "70%",
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "label",
+                  "text": "Notre philosophie",
+                  "style": {
+                    "font": "Roboto-bold",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Cette diversité de disciplines est ainsi la force motrice de l’Institut Poincaré. \n\nLes disciplines comme les mathématiques, la physique, mais aussi les langues, l’informatique et d’autres encore constituent la force de notre enseignement.\n\nEn outre, si la diversité des disciplines est une force de l’Institut Poincaré, la diversité des profils que nous accueillons en est également une. L’Institut propose ses services à toutes les tranches d’âge et à tous les profils, particuliers comme professionnels. Rendez-vous sur notre rubrique pour en apprendre plus à ce sujet.\n\nLa vision qu’a l’Institut Poincaré de l’éducation et de l’enseignement est en réalité assez simple : apporter les connaissances nécessaires à l’étudiant pour progresser dans sa discipline. \n\nPour ce faire, le corps enseignant adopte une approche pédagogique basée sur l’intuition et la logique, à l’instar d’Henri Poincaré. \n\nNous considérons, de plus, que l’âge ne représente pas une limite pour l’apprentissage, mais est au contraire une force d’expérience. Nous proposons donc nos services à toutes les tranches d’âge.\n\nEnfin, les formations proposées ont pour but de professionnaliser l’étudiant (particulier comme professionnel), notamment dans le cadre du REVIT (architecture) et des outils informatiques et infographiques. ",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "En résumé",
+                  "style": {
+                    "font": "Roboto-bold",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "les objectifs de l’Institut Poincaré de Carthage sont les suivants:",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Apporter des connaissances complètes à l’étudiant en approfondissant les disciplines enseignées.",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding_left": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Inculquer une méthode de travail qui tient compte de l’intuition de l’étudiant",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding_left": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Accueillir tous les profils d’étudiants, indépendamment de leur âge, de leur genre et de leur parcours scolaire.",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding_left": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Préparer l’étudiant à l’application des connaissances acquises dans le monde du travail.",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding_left": 20
+                  }
+                },
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center"
+                  },
+                  "components": [
+                    {
+                      "type": "label",
+                      "text": "",
+                      "style": {
+                        "height": 5,
+                        "background": "#B08739",
+                        "font": "Roboto",
+                        "width": 150,
+                        "align": "center",
+                        "fontWeight": "bold"
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": 20
+                      }
+                    },
+                    {
+                      "type": "label",
+                      "text": " « C’est avec la logique que nous prouvons et avec l’intuition que nous trouvons. »\n\n- Henri Poincaré",
+                      "style": {
+                        "font": "Roboto-bold",
+                        "size": 22,
+                        "color": "{{$global.fontColor}}",
+                        "padding": 10
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": 20
+                      }
+                    },
+                    {
+                      "type": "label",
+                      "text": "",
+                      "style": {
+                        "height": 5,
+                        "background": "#B08739",
+                        "font": "Roboto",
+                        "width": 150,
+                        "align": "center",
+                        "fontWeight": "bold"
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": 40
+                      }
+                    },
+                    {
+                      "type": "label",
+                      "text": "Vous pouvez cliquer sur le lien ci-dessous pour en apprendre plus sur l’Institut Poincaré et les avantages dont vous pourrez bénéficier :",
+                      "style": {
+                        "font": "Roboto",
+                        "size": 15,
+                        "color": "{{$global.fontColor}}",
+                        "padding_left": 20
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": 60
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Les avantages poincarée",
+                      "style": {
+                        "width": 250,
+                        "height": 50,
+                        "background": "#B08739",
+                        "color": "#ffffff",
+                        "font": "Roboto-Bold",
+                        "corner_radius": 35,
+                        "size": 14
+                      },
+                      "action": {
+                        "type": "$href",
+                        "options": {
+                          "url": "file://ui/advantages.json",
+                          "transition": "push",
+                          "animation": "pushleft",
+                          "view": "jason"
+                        }
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": 60
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "layers": [
+            {
+              "type": "button",
+              "url": "file://images/qrcode.png",
+              "style": {
+                "animation": {
+                  "type": "{{$global.animation}}"
+                },
+                "width": 40,
+                "box-shadow": "10px 10px 5px #888888",
+                "height": 40,
+                "right": 20,
+                "bottom": 190,
+                "background": "#8e44ad",
+                "color": "#ffffff",
+                "font": "Roboto",
+                "size": 30,
+                "corner_radius": 75
+              },
+              "action": {
+                "type": "$global.set",
+                "options": {
+                  "animation": "hide"
+                },
+                "success": {
+                  "type": "$render",
+                  "success": {
+                    "type": "$href",
+                    "options": {
+                      "url": "file://ui/qrcode.json",
+                      "transition": "modal",
+                      "view": "jason"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "button",
+              "url": "file://images/video.png",
+              "style": {
+                "animation": {
+                  "type": "{{$global.animation}}"
+                },
+                "width": 40,
+                "box-shadow": "10px 10px 5px #888888",
+                "height": 40,
+                "right": 20,
+                "bottom": 140,
+                "background": "#27ae60",
+                "color": "#ffffff",
+                "font": "Roboto",
+                "size": 30,
+                "corner_radius": 75
+              },
+              "action": {
+                "type": "$global.set",
+                "options": {
+                  "animation": "hide"
+                },
+                "success": {
+                  "type": "$render",
+                  "success": {
+                    "type": "$href",
+                    "options": {
+                      "url": "file://ui/video.json",
+                      "transition": "push",
+                      "animation": "pushleft",
+                      "view": "jason"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "button",
+              "url": "file://images/about.png",
+              "style": {
+                "animation": {
+                  "type": "{{$global.animation}}"
+                },
+                "width": 40,
+                "box-shadow": "10px 10px 5px #888888",
+                "height": 40,
+                "right": 20,
+                "bottom": 90,
+                "background": "#c0392b",
+                "color": "#ffffff",
+                "font": "Roboto",
+                "size": 30,
+                "corner_radius": 75
+              },
+              "action": {
+                "type": "$global.set",
+                "options": {
+                  "animation": "hide"
+                },
+                "success": {
+                  "type": "$render",
+                  "success": {
+                    "type": "$href",
+                    "options": {
+                      "url": "file://ui/about.json",
+                      "transition": "push",
+                      "animation": "pushleft",
+                      "view": "jason"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "button",
+              "url": "file://images/plus.png",
+              "style": {
+                "width": 60,
+                "box-shadow": "10px 10px 5px #888888",
+                "height": 60,
+                "right": 20,
+                "bottom": 20,
+                "background": "#2980b9",
+                "color": "#ffffff",
+                "font": "Roboto",
+                "size": 30,
+                "corner_radius": 75
+              },
+              "action": {
+                "type": "$global.set",
+                "options": {
+                  "animation": "show"
+                },
+                "success": {
+                  "type": "$render"
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

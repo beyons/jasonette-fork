@@ -1,0 +1,82 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Render dynamic news details page with mixin data for IPC Apps",
+      "actions": {
+        "$load": {
+          "type": "$render"
+        }
+      },
+      "templates": {
+        "body": {
+          "style": {
+            "background": "{{$global.background}}",
+            "color": "{{$global.fontColor}}",
+            "border": "none",
+            "align": "center"
+          },
+          "header": {
+            "title": "{{$params.titreArticle.substring(0,27)+'...'}}",
+            "style": {
+              "font": "Roboto",
+              "size": 22,
+              "background": "#2d3436",
+              "color": "white"
+            },
+            "leftButton": {
+              "text": "<",
+              "style": {
+                "size": 45,
+                "width": 20,
+                "minWidth": 90,
+                "color": "white",
+                "background": "rgba(0,0,0,0)"
+              },
+              "action": {
+                "type": "$back"
+              }
+            }
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "image",
+                  "url": "{{$params.imageArticle}}",
+                  "style": {
+                    "width": "100%"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "{{$params.titreArticle}}",
+                  "style": {
+                    "font": "Roboto-bold",
+                    "size": 20,
+                    "color": "{{$global.fontColor}}",
+                    "padding_left": 20,
+                    "padding_right": 20,
+                    "padding_top": 20,
+                    "padding_bottom": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "{{$params.fullArticle}}",
+                  "style": {
+                    "font": "Roboto",
+                    "color": "{{$global.fontColor}}",
+                    "size": 16,
+                    "padding_left": 20,
+                    "padding_right": 20
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,126 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Splashscreen",
+      "description": "Splashscreen IPC Apps",
+      "styles": {
+        "caption": {
+          "font": "Roboto",
+          "size": 13,
+          "align": "center",
+          "spacing": 15
+        }
+      },
+      "actions": {
+        "$load": {
+          "type": "$network.request",
+          "options": {
+            "url": "https://www.google.fr",
+            "dataType": "html"
+          },
+          "success": {
+            "type": "$timer.start",
+            "options": {
+              "interval": "2",
+              "name": "timer1",
+              "action": {
+                "type": "$href",
+                "options": {
+                  "url": "file://ui/login.json",
+                  "transition": "push",
+                  "animation": "direct",
+                  "view": "jason"
+                }
+              }
+            }
+          },
+          "error": {
+            "type": "$util.alert",
+            "options": {
+              "title": "Erreur !!!",
+              "description": "Veuillez verifier votre connexion !"
+            },
+            "success": {
+              "type": "$util.closeApp"
+            },
+            "error": {
+              "type": "$util.closeApp"
+            }
+          }
+        }
+      }
+    },
+    "body": {
+      "style": {
+        "background": {
+          "type": "html",
+          "url": "file://images/splash.html"
+        },
+        "border": "none"
+      },
+      "sections": [
+        {
+          "items": [
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center"
+              },
+              "components": [
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 100
+                  }
+                },
+                {
+                  "type": "image",
+                  "url": "file://images/AppsIcon.png",
+                  "style": {
+                    "animation": {
+                      "type": "fadeIn"
+                    },
+                    "width": 210,
+                    "align": "center"
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 35
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "layers": [
+        {
+          "type": "image",
+          "url": "file://images/loader.gif",
+          "style": {
+            "width": 70,
+            "height": 70,
+            "left": 20,
+            "right": 20,
+            "bottom": 50,
+            "align": "center"
+          }
+        },
+        {
+          "type": "label",
+          "text": "v.1.0.0 - © OBEH",
+          "style": {
+            "size": 11,
+            "color": "#ecf0f1",
+            "font": "Roboto",
+            "fontWeight": "bold",
+            "right": 10,
+            "bottom": 10
+          }
+        }
+      ]
+    }
+  }
+}

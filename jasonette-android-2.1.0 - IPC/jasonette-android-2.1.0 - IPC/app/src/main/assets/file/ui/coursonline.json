@@ -1,0 +1,207 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Render dynamically On line cours page for IPC Apps",
+      "actions": {
+        "$load": {
+          "type": "$render"
+        }
+      },
+      "templates": {
+        "body": {
+          "style": {
+            "background":  "{{$global.background}}",
+            "border": "none",
+            "color":  "{{$global.fontColor}}",
+            "align": "center"
+          },
+          "header": {
+            "title": "Cours en ligne",
+            "style": {
+              "font": "Roboto",
+              "size": 25,
+              "background": "#2d3436",
+              "color": "white"
+            },
+            "leftButton": {
+              "text": "<",
+              "style": {
+                "size": 45,
+                "width": 20,
+                "minWidth": 90,
+                "color": "white",
+                "background": "rgba(0,0,0,0)"
+              },
+              "action": {
+                "type": "$href",
+                "options": {
+                  "url": "file://ui/home.json",
+                  "transition": "push",
+                  "animation": "pushleft",
+                  "view": "jason"
+                }
+              }
+            }
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center",
+                    "background": "#13C092"
+                  },
+                  "components": [
+                    {
+                      "type": "image",
+                      "url": "file://images/enligne.jpg",
+                      "style": {
+                        "width": "100%",
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 15
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "L'institut poincaré propose a ces étudiants des cours en ligne.\n\n Pour avoir accès a l'une de nos salle de cours, veuillez clique sur l'un des boutons approprié relatif aux salle de cours en ligne.",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 30
+                  }
+                },
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center"
+                  },
+                  "components": [
+                    {
+                      "type": "button",
+                      "text": "Cours S1",
+                      "style": {
+                        "width": 250,
+                        "height": 50,
+                        "background": "#13C092",
+                        "color": "#ffffff",
+                        "font": "Roboto-Bold",
+                        "corner_radius": 35,
+                        "size": 14
+                      },
+                      "action": {
+                        "type": "$href",
+                        "options": {
+                          "url": "https://meet.google.com/ipv-tepo-ydo",
+                          "view": "web"
+                        }
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": 30
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Cours S2",
+                      "style": {
+                        "width": 250,
+                        "height": 50,
+                        "background": "#13C092",
+                        "color": "#ffffff",
+                        "font": "Roboto-Bold",
+                        "corner_radius": 35,
+                        "size": 14
+                      },
+                      "action": {
+                        "type": "$href",
+                        "options": {
+                          "url": "https://meet.google.com/rhr-xgwi-uvo",
+                          "view": "web"
+                        }
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": 30
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Cours S3",
+                      "style": {
+                        "width": 250,
+                        "height": 50,
+                        "background": "#13C092",
+                        "color": "#ffffff",
+                        "font": "Roboto-Bold",
+                        "corner_radius": 35,
+                        "size": 14
+                      },
+                      "action": {
+                        "type": "$href",
+                        "options": {
+                          "url": "https://meet.google.com/ysf-zetu-neh",
+                          "view": "web"
+                        }
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "height": 30
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Cours S4",
+                      "style": {
+                        "width": 250,
+                        "height": 50,
+                        "background": "#13C092",
+                        "color": "#ffffff",
+                        "font": "Roboto-Bold",
+                        "corner_radius": 35,
+                        "size": 14
+                      },
+                      "action": {
+                        "type": "$href",
+                        "options": {
+                          "url": "https://meet.google.com/reo-ehts-mxm",
+                          "view": "web"
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 80
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}
