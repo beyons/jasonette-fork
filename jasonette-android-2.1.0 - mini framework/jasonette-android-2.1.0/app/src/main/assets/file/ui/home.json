@@ -56,7 +56,24 @@
                 "options": {
                   "url": "file://ui/login.json",
                   "transition": "modal",
-                  "view": "jason"
+                  "view": "jason",
+                  "preload": {
+                    "style": {
+                      "background": "#ffffff"
+                    },
+                    "layers": [
+                      {
+                        "type": "image",
+                        "url": "file://images/infinit.gif",
+                        "style": {
+                          "width": "200",
+                          "height": "200",
+                          "top": "50%-100",
+                          "left": "50%-100"
+                        }
+                      }
+                    ]
+                  }
                 }
               }
             },
@@ -302,7 +319,24 @@
                           "url": "file://ui/advantages.json",
                           "transition": "push",
                           "animation": "pushleft",
-                          "view": "parseInt(_0x298a0e(0x1de))"
+                          "view": "jason",
+                          "preload": {
+                            "style": {
+                              "background": "#ffffff"
+                            },
+                            "layers": [
+                              {
+                                "type": "image",
+                                "url": "file://images/infinit.gif",
+                                "style": {
+                                  "width": "200",
+                                  "height": "200",
+                                  "top": "50%-100",
+                                  "left": "50%-100"
+                                }
+                              }
+                            ]
+                          }
                         }
                       }
                     },
@@ -371,7 +405,24 @@
                     "options": {
                       "url": "file://ui/qrcode.json",
                       "transition": "modal",
-                      "view": "jason"
+                      "view": "jason",
+                      "preload": {
+                        "style": {
+                          "background": "#ffffff"
+                        },
+                        "layers": [
+                          {
+                            "type": "image",
+                            "url": "file://images/infinit.gif",
+                            "style": {
+                              "width": "200",
+                              "height": "200",
+                              "top": "50%-100",
+                              "left": "50%-100"
+                            }
+                          }
+                        ]
+                      }
                     }
                   }
                 }
@@ -408,7 +459,24 @@
                       "url": "file://ui/video.json",
                       "transition": "push",
                       "animation": "pushleft",
-                      "view": "jason"
+                      "view": "jason",
+                      "preload": {
+                        "style": {
+                          "background": "#ffffff"
+                        },
+                        "layers": [
+                          {
+                            "type": "image",
+                            "url": "file://images/infinit.gif",
+                            "style": {
+                              "width": "200",
+                              "height": "200",
+                              "top": "50%-100",
+                              "left": "50%-100"
+                            }
+                          }
+                        ]
+                      }
                     }
                   }
                 }
@@ -445,7 +513,24 @@
                       "url": "file://ui/about.json",
                       "transition": "push",
                       "animation": "pushleft",
-                      "view": "jason"
+                      "view": "jason",
+                      "preload": {
+                        "style": {
+                          "background": "#ffffff"
+                        },
+                        "layers": [
+                          {
+                            "type": "image",
+                            "url": "file://images/infinit.gif",
+                            "style": {
+                              "width": "200",
+                              "height": "200",
+                              "top": "50%-100",
+                              "left": "50%-100"
+                            }
+                          }
+                        ]
+                      }
                     }
                   }
                 }

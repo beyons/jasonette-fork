@@ -2,13 +2,17 @@ package com.jasonette.seed.Component;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.RippleDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.TextView;
-
 import com.jasonette.seed.Helper.JasonHelper;
 
 import org.json.JSONObject;
@@ -63,8 +67,11 @@ public class JasonButtonComponent{
 
             view = JasonLabelComponent.build(view, component, parent, context);
 
+
+
             try {
                 JSONObject style = component.getJSONObject("style");
+
 
 
                 /*******
@@ -185,6 +192,7 @@ public class JasonButtonComponent{
             if (view == null) {
                 return new View(context);
             } else {
+
                 return view;
             }
         }
@@ -198,6 +206,9 @@ public class JasonButtonComponent{
         {
             Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
         }
+        // Add ripple effect to button
+        RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(Color.WHITE), view.getBackground(), null);
+        view.setBackground(rippleDrawable);
         return view;
     }
 }

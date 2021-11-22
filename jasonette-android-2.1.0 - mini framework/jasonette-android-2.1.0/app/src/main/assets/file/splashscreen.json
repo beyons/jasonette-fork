@@ -2,7 +2,7 @@
   "$jason": {
     "head": {
       "title": "Splashscreen",
-      "description": "Splashscreen IPC Apps",
+      "description": "Splashscreen Jasonelle Apps",
       "styles": {
         "loading": {
           "width": 70,
@@ -31,15 +31,33 @@
           "success": {
             "type": "$timer.start",
             "options": {
-              "interval": "2",
+              "interval": "3",
               "name": "timer1",
               "action": {
                 "type": "$href",
                 "options": {
                   "url": "file://ui/login.json",
+                  "loading": "true",
                   "transition": "push",
                   "animation": "direct",
-                  "view": "jason"
+                  "view": "jason",
+                  "preload": {
+                    "style": {
+                      "background": "#ffffff"
+                    },
+                    "layers": [
+                      {
+                        "type": "image",
+                        "url": "file://images/infinit.gif",
+                        "style": {
+                          "width": "200",
+                          "height": "200",
+                          "top": "50%-100",
+                          "left": "50%-100"
+                        }
+                      }
+                    ]
+                  }
                 }
               }
             }

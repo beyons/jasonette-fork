@@ -100,8 +100,8 @@ public class JasonUtilAction {
     private Intent callback_intent;  // general purpose intent;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        Manifest.permission.READ_EXTERNAL_STORAGE,
+        Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
     private static Map<String, String> store = new HashMap<>();
@@ -110,23 +110,23 @@ public class JasonUtilAction {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                try {
-                    JSONObject options = action.getJSONObject("options");
-                    if (options.has("keys")) {
-                        JSONArray items = options.getJSONArray("keys");
-                        int len = items.length();
-                        for (int i = 0; i < items.length(); i++) {
-                            JSONObject json = items.getJSONObject(i);
-                            Iterator<String> keys = json.keys();
-                            while (keys.hasNext()) {
-                                String key = keys.next();
-                                store.put(key, json.get(key).toString());
-                            }
+            try {
+                JSONObject options = action.getJSONObject("options");
+                if (options.has("keys")) {
+                    JSONArray items = options.getJSONArray("keys");
+                    int len = items.length();
+                    for (int i = 0; i < items.length(); i++) {
+                        JSONObject json = items.getJSONObject(i);
+                        Iterator<String> keys = json.keys();
+                        while (keys.hasNext()) {
+                            String key = keys.next();
+                            store.put(key, json.get(key).toString());
                         }
                     }
-                } catch (Exception e){
-                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
                 }
+            } catch (Exception e){
+                Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+            }
             }
         });
     }
@@ -134,15 +134,15 @@ public class JasonUtilAction {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                try {
-                    JSONObject options = action.getJSONObject("options");
-                    if (options.has("key")) {
-                        String storeValue = options.getString("key");
-                        JasonHelper.next("success", action, store.get(storeValue), event, context);
-                    }
-                } catch (Exception e){
-                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+            try {
+                JSONObject options = action.getJSONObject("options");
+                if (options.has("key")) {
+                    String storeValue = options.getString("key");
+                    JasonHelper.next("success", action, store.get(storeValue), event, context);
                 }
+            } catch (Exception e){
+                Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+            }
             }
         });
     }
@@ -150,15 +150,15 @@ public class JasonUtilAction {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                try {
-                    JSONObject options = action.getJSONObject("options");
-                    if (options.has("key")) {
-                        String storeValue = options.getString("key");
-                        store.put(storeValue, store.get(storeValue));
-                    }
-                } catch (Exception e){
-                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+            try {
+                JSONObject options = action.getJSONObject("options");
+                if (options.has("key")) {
+                    String storeValue = options.getString("key");
+                    store.put(storeValue, store.get(storeValue));
                 }
+            } catch (Exception e){
+                Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+            }
             }
         });
     }
@@ -166,59 +166,59 @@ public class JasonUtilAction {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                try {
-                    String itemArray[];
-                    itemArray = new String[0];
-                    final String urlArray[];
-                    String[] urlArray1;
-                    urlArray1 = new String[0];
-                    JSONObject options = action.getJSONObject("options");
-                    if (options.has("items")) {
-                        JSONArray items = options.getJSONArray("items");
-                        JSONArray href = options.getJSONArray("href");
-                        int len = items.length();
-                        for (int i=0;i<len;i++){
-                            itemArray = ArrayHelper.push(itemArray, items.get(i).toString());
-                            urlArray1 = ArrayHelper.push(urlArray1, href.get(i).toString());
+            try {
+                String itemArray[];
+                itemArray = new String[0];
+                final String urlArray[];
+                String[] urlArray1;
+                urlArray1 = new String[0];
+                JSONObject options = action.getJSONObject("options");
+                if (options.has("items")) {
+                    JSONArray items = options.getJSONArray("items");
+                    JSONArray href = options.getJSONArray("href");
+                    int len = items.length();
+                    for (int i=0;i<len;i++){
+                        itemArray = ArrayHelper.push(itemArray, items.get(i).toString());
+                        urlArray1 = ArrayHelper.push(urlArray1, href.get(i).toString());
+                    }
+                }
+                urlArray = urlArray1;
+                ActionSheet.Builder builder = ActionSheet.createBuilder(context, ((JasonViewActivity) context).getSupportFragmentManager());
+                builder.setCancelButtonTitle(options.getString("cancel"));
+                builder.setOtherButtonTitles(itemArray);
+                builder.setCancelableOnTouchOutside(true);
+                builder.setListener(new ActionSheet.ActionSheetListener() {
+                    @Override
+                    public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
+                        System.out.println(isCancel);
+                    }
+                    @Override
+                    public void onOtherButtonClick(ActionSheet actionSheet, int index) {
+                        try {
+                            Integer depth;
+                            depth = 0;
+                            String url = urlArray[index];
+                            System.out.println(url);
+                            String params = null;
+                            Intent intent = new Intent(context, JasonViewActivity.class);
+                            intent.putExtra("url", url);
+                            if(params != null) {
+                                intent.putExtra("params", params);
+                            }
+                            intent.putExtra("depth", depth+1);
+                            JSONObject callback = new JSONObject();
+                            callback.put("class", "JasonCallback");
+                            callback.put("method", "href");
+                            JasonHelper.dispatchIntent(null, null, null, context, intent, callback);
+                        } catch (Exception e) {
+                            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
                         }
                     }
-                    urlArray = urlArray1;
-                    ActionSheet.Builder builder = ActionSheet.createBuilder(context, ((JasonViewActivity) context).getSupportFragmentManager());
-                    builder.setCancelButtonTitle(options.getString("cancel"));
-                    builder.setOtherButtonTitles(itemArray);
-                    builder.setCancelableOnTouchOutside(true);
-                    builder.setListener(new ActionSheet.ActionSheetListener() {
-                        @Override
-                        public void onDismiss(ActionSheet actionSheet, boolean isCancel) {
-                            System.out.println(isCancel);
-                        }
-                        @Override
-                        public void onOtherButtonClick(ActionSheet actionSheet, int index) {
-                            try {
-                                Integer depth;
-                                depth = 0;
-                                String url = urlArray[index];
-                                System.out.println(url);
-                                String params = null;
-                                Intent intent = new Intent(context, JasonViewActivity.class);
-                                intent.putExtra("url", url);
-                                if(params != null) {
-                                    intent.putExtra("params", params);
-                                }
-                                intent.putExtra("depth", depth+1);
-                                JSONObject callback = new JSONObject();
-                                callback.put("class", "JasonCallback");
-                                callback.put("method", "href");
-                                JasonHelper.dispatchIntent(null, null, null, context, intent, callback);
-                            } catch (Exception e) {
-                                Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
-                            }
-                        }
-                    });
-                    builder.show();
-                } catch (Exception e){
-                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
-                }
+                });
+                builder.show();
+            } catch (Exception e){
+                Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+            }
             }
         });
     }

@@ -176,7 +176,24 @@
             "url": "file://ui/register.json",
             "transition": "push",
             "animation": "pushleft",
-            "view": "jason"
+            "view": "jason",
+            "preload": {
+              "style": {
+                "background": "#ffffff"
+              },
+              "layers": [
+                {
+                  "type": "image",
+                  "url": "file://images/infinit.gif",
+                  "style": {
+                    "width": "200",
+                    "height": "200",
+                    "top": "50%-100",
+                    "left": "50%-100"
+                  }
+                }
+              ]
+            }
           }
         },
         "showLocalNotification": {
@@ -305,7 +322,7 @@
                     },
                     {
                       "type": "button",
-                      "url": "file://images/facebook-login.png",
+                      "url": "file://images/facebook-login1.png",
                       "class": "btn2",
                       "action": {
                         "type": "$util.facebookAuth",
@@ -385,7 +402,24 @@
                     "options": {
                       "url": "file://ui/password_recover.json",
                       "transition": "modal",
-                      "view": "jason"
+                      "view": "jason",
+                      "preload": {
+                        "style": {
+                          "background": "#ffffff"
+                        },
+                        "layers": [
+                          {
+                            "type": "image",
+                            "url": "file://images/infinit.gif",
+                            "style": {
+                              "width": "200",
+                              "height": "200",
+                              "top": "50%-100",
+                              "left": "50%-100"
+                            }
+                          }
+                        ]
+                      }
                     }
                   }
                 },
