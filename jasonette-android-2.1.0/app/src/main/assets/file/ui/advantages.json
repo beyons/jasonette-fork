@@ -1,0 +1,219 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Render dynamically adventage page for IPC Apps",
+      "actions": {
+        "$load": {
+          "type": "$render"
+        }
+      },
+      "templates": {
+        "body": {
+          "style": {
+            "background":  "{{$global.background}}",
+            "border": "none",
+            "color":  "{{$global.fontColor}}",
+            "align": "center"
+          },
+          "header": {
+            "title": "Nos adventages",
+            "style": {
+              "font": "Roboto",
+              "size": 25,
+              "background": "#2d3436",
+              "color": "white"
+            },
+            "leftButton": {
+              "text": "<",
+              "style": {
+                "size": 45,
+                "width": 20,
+                "minWidth": 90,
+                "color": "white",
+                "background": "#2d3436"
+              },
+              "action": {
+                "type": "$href",
+                "options": {
+                  "url": "file://ui/home.json",
+                  "transition": "push",
+                  "animation": "pushleft",
+                  "view": "jason"
+                }
+              }
+            }
+          },
+          "sections": [
+            {
+              "items": [
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center",
+                    "background": "#FABB38"
+                  },
+                  "components": [
+                    {
+                      "type": "image",
+                      "url": "file://images/149765008_1549758885221140_3577123222831189995_n.jpg",
+                      "style": {
+                        "width": "100%",
+                        "align": "center"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "label",
+                  "text": "Les avantages poincarée",
+                  "style": {
+                    "font": "Roboto-bold",
+                    "size": 22,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "L’Institut Poincaré propose, en plus de sa variété de cours et de formations, des avantages comme :",
+                  "style": {
+                    "font": "Roboto-bold",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Un service d’échange et de tchat entre étudiants.",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding_left": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Un suivi de la part des enseignants exerçant à l’IPC.",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding_left": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Une pré-inscription réalisable en ligne.",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding_left": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Une reconnaissance des diplômes à la fois sur le territoire national tunisien et à l’internationale.",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding_left": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Une plateforme numérique dédiée à l’échange de fichiers et à la consultation de l’emploi du temps.",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding_left": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Un laboratoire de langues en exclusivité.",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding_left": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "L’accès à l’ENT (Espace Numérique de Travail) est déverrouillé pour l’étudiant au moment de son inscription. Un identifiant et un mot de passe lui seront alors délivrés et communiqués par e-mail sur sa boîte personnelle.\n\nUne fois les identifiants acquis, l’étudiant pourra accéder à son ENT personnel en cliquant sur le lien en haut de l’écran ( ).\n\nC’est aussi simple que ça !",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "LinguaLab",
+                  "style": {
+                    "font": "Roboto-bold",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "En rejoignant les programmes de l'Institut Poincaré de Carthage, vous pourrez également profiter du laboratoire numérique de langues. Le principe est assez simple : vous écoutez, vous parlez, vous progressez ! Et le tout avec la machine.",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Inscription",
+                  "style": {
+                    "font": "Roboto-bold",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Avant d’avoir accès à l’Espace Numérique de Travail, l’étudiant doit faire sa pré-inscription en ligne depuis le site Web. Le formulaire d’inscription est trouvable dans la rubrique « M’inscrire » du menu principal (en haut de l’écran) et dans le bas de chaque page du site Web (sur le bouton ).",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Les enseignants pourront, via l’Espace Numérique de Travail, interagir avec les étudiants, qu’il s’agisse de faire part des appréciations, de partager des documents en lien avec la matière enseignée ou encore prévenir les étudiants d’une absence ou d’un événement particulier.",
+                  "style": {
+                    "font": "Roboto",
+                    "size": 15,
+                    "color": "{{$global.fontColor}}",
+                    "padding": 10
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 80
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

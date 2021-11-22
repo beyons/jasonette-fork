@@ -1,0 +1,89 @@
+<script>
+    /////////////////////////////////////////
+    //                  🛸                 //
+    //      JASONELLE MICRO FRAMEWORK      //
+    //      Crossplatform Android/Ios      //
+    //              2020/2021              //
+    /////////////////////////////////////////
+
+    /////////////////////////////////////////
+    //     Fonction d'authentification     //
+    /////////////////////////////////////////
+    var validateEmail = function(email,pass,bd1,bd2,token)
+    {
+        var re = /\S+@\S+\.\S+/;
+        var result = re.test(email);
+
+        if(result == true){
+            if(email== bd1 && pass == bd2) {
+                $agent.trigger("nextPage", {});
+            }
+            else {
+                $agent.trigger("loginError", {});
+            }
+        }
+        else
+        {
+            $agent.trigger("invalidMail", {});
+        }
+    };
+    //////////////////////////////////////////////
+    //    Fonction transformation de la date    //
+    //////////////////////////////////////////////
+    var specifyDate = function(timeStamp)
+    {
+        $agent.response((new Date(parseInt(timeStamp)*1000)).toString());
+    };
+    //////////////////////////////////////////////
+    //    Fonction check dark modes enabling    //
+    //////////////////////////////////////////////
+    var darkCheck = function(background)
+    {
+        console.log(background)
+       if(background == "#ffffff") {
+            $agent.trigger("nightMode", {});
+       }
+       else{
+            $agent.trigger("dayMode", {});
+       }
+    };
+    //////////////////////////////////////////////
+    //     Fonction localNotificationChecker    //
+    //////////////////////////////////////////////
+    var checkNotification = function(localState)
+    {
+        if(localState === "{{$cache.state}}")
+        {
+            $agent.trigger("showLocalNotification", {});
+        }
+        else
+        {
+            if(localState === false)
+            {
+                $agent.trigger("showLocalNotification", {});
+            }
+        }
+    };
+    //////////////////////////////////////////////
+    //  Fonction Create Authentification token  //
+    //////////////////////////////////////////////
+    var createToken = function(nom, prenom, email)
+    {
+        var a = nom+prenom+email;
+        var b = [];
+        for (var i=0; i<25; i++) {
+            var j = (Math.random() * (a.length-1)).toFixed(0);
+            b[i] = a[j];
+        }
+        var token = b.join("");
+        $agent.trigger("saveToken", {"token":token});
+    }
+    //////////////////////////////////////////////
+    //   Fonction Checking button click state   //
+    //////////////////////////////////////////////
+    var checkingState = function(mode)
+    {
+        if(mode == "hide"){ $agent.trigger("showBtn", {}); }
+        else{ $agent.trigger("hideBtn", {}); }
+    }
+</script>
