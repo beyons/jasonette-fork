@@ -21,6 +21,7 @@ import android.hardware.camera2.CameraManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -486,7 +487,6 @@ public class JasonUtilAction {
             try {
                 if (ContextCompat.checkSelfPermission((JasonViewActivity)context,
                         Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-
                     if (ActivityCompat.shouldShowRequestPermissionRationale((Activity)
                             (JasonViewActivity)context, Manifest.permission.CAMERA)) {
                     } else {
@@ -495,7 +495,6 @@ public class JasonUtilAction {
                                 50);
                     }
                 }
-
                 CameraManager camManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
                 String cameraId = null;
                 try {
@@ -504,7 +503,6 @@ public class JasonUtilAction {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
             } catch (Exception e){
                 Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
             }
@@ -521,14 +519,12 @@ public class JasonUtilAction {
             @Override
             public void run() {
             try {
-
                 Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
                 } else {
                     v.vibrate(500);
                 }
-
             } catch (Exception e){
                 Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
             }
@@ -544,27 +540,66 @@ public class JasonUtilAction {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-            try {
-                ConnectivityManager conMan = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-                NetworkInfo netInfo = conMan.getActiveNetworkInfo();
-                if (netInfo != null && netInfo.getType() == ConnectivityManager.TYPE_WIFI) {
-                    Log.d("WifiReceiver", "Have Wifi Connection");
-                    try {
-                        JasonHelper.next("success", action, true, event, context);
-                    } catch (Exception e) {
-                        Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                try {
+                    ConnectivityManager conMan = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+                    NetworkInfo netInfo = conMan.getActiveNetworkInfo();
+                    if (netInfo != null && netInfo.getType() == ConnectivityManager.TYPE_WIFI) {
+                        Log.d("WifiReceiver", "Have Wifi Connection");
+                        try {
+                            JasonHelper.next("success", action, true, event, context);
+                        } catch (Exception e) {
+                            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                        }
+                    } else {
+                        Log.d("WifiReceiver", "Don't have Wifi Connection");
+                        try {
+                            JasonHelper.next("success", action, false, event, context);
+                        } catch (Exception e) {
+                            Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                        }
                     }
-                } else {
-                    Log.d("WifiReceiver", "Don't have Wifi Connection");
-                    try {
-                        JasonHelper.next("success", action, false, event, context);
-                    } catch (Exception e) {
-                        Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
-                    }
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
                 }
-            } catch (Exception e){
-                Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
             }
+        });
+    }
+    public void changeWifiState(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    JSONObject options = action.getJSONObject("options");
+                    String state = options.get("state").toString();
+                    if(state == "true") {
+                        WifiManager wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+                        wifi.setWifiEnabled(true);
+                    }
+                    if(state == "false") {
+                        WifiManager wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+                        wifi.setWifiEnabled(false);
+                    }
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
+            }
+        });
+    }
+    public void changeBluetoothState(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+                    if (mBluetoothAdapter.isEnabled()) {
+                        mBluetoothAdapter.disable();
+                    }
+                    else {
+                        mBluetoothAdapter.enable();
+                    }
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                }
             }
         });
     }
@@ -593,12 +628,9 @@ public class JasonUtilAction {
             public void run() {
             try {
                 JSONObject options = action.getJSONObject("options");
-
                 String path = Environment.getExternalStorageDirectory() + "/"
                         + options.get("filename").toString();
-
                 File file = new File(path);
-
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_SEND);
                 intent.setType(options.get("mime").toString());
