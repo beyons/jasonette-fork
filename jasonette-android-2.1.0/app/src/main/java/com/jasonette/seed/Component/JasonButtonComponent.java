@@ -207,8 +207,20 @@ public class JasonButtonComponent{
             Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
         }
         // Add ripple effect to button
-        RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(Color.WHITE), view.getBackground(), null);
-        view.setBackground(rippleDrawable);
+        JSONObject style = JasonHelper.style(component, context);
+        try {
+            if(style.has("rippleColor")){
+                int bgColor = JasonHelper.parse_color(style.getString("rippleColor"));
+                RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(bgColor), view.getBackground(), null);
+                view.setBackground(rippleDrawable);
+            }
+            else{
+                RippleDrawable rippleDrawable = new RippleDrawable(ColorStateList.valueOf(Color.WHITE), view.getBackground(), null);
+                view.setBackground(rippleDrawable);
+            }
+        }
+        catch(Exception e){System.out.println(""+e);}
+
         return view;
     }
 }

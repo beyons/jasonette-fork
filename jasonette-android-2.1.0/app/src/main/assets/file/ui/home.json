@@ -95,7 +95,7 @@
                   "height": 250
                 },
                 "options": {
-                  "image": "https://www.easytutoriel.com/wp-content/uploads/2021/09/fond-d-ecran-anime-windows-11-10-tutoriel-facile.jpg",
+                  "message": "Bienvenue\n{{$params.emailParam}}",
                   "list": "Avantages,Actualités,Vidéo,Contact,Cours en ligne,Scan code promotion,Paramètrages",
                   "url": "file://ui/advantages.json,file://ui/news.json,file://ui/video.json,file://ui/contact.json,file://ui/coursonline.json,file://ui/qrcode.json,file://ui/about.json"
                 }

@@ -60,7 +60,6 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.baoyz.actionsheet.ActionSheet;
-import com.bumptech.glide.Glide;
 import com.github.florent37.androidnosql.NoSql;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.safetynet.SafetyNet;
@@ -487,6 +486,7 @@ public class JasonUtilAction {
             try {
                 if (ContextCompat.checkSelfPermission((JasonViewActivity)context,
                         Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+
                     if (ActivityCompat.shouldShowRequestPermissionRationale((Activity)
                             (JasonViewActivity)context, Manifest.permission.CAMERA)) {
                     } else {
@@ -495,6 +495,7 @@ public class JasonUtilAction {
                                 50);
                     }
                 }
+
                 CameraManager camManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
                 String cameraId = null;
                 try {
@@ -503,6 +504,7 @@ public class JasonUtilAction {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
             } catch (Exception e){
                 Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
             }
@@ -519,12 +521,14 @@ public class JasonUtilAction {
             @Override
             public void run() {
             try {
+
                 Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
                 } else {
                     v.vibrate(500);
                 }
+
             } catch (Exception e){
                 Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
             }
@@ -575,7 +579,7 @@ public class JasonUtilAction {
                         WifiManager wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
                         wifi.setWifiEnabled(true);
                     }
-                    if(state == "false") {
+                    else {
                         WifiManager wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
                         wifi.setWifiEnabled(false);
                     }
@@ -594,7 +598,8 @@ public class JasonUtilAction {
                     if (mBluetoothAdapter.isEnabled()) {
                         mBluetoothAdapter.disable();
                     }
-                    else {
+                    else
+                    {
                         mBluetoothAdapter.enable();
                     }
                 } catch (Exception e){
@@ -628,9 +633,12 @@ public class JasonUtilAction {
             public void run() {
             try {
                 JSONObject options = action.getJSONObject("options");
+
                 String path = Environment.getExternalStorageDirectory() + "/"
                         + options.get("filename").toString();
+
                 File file = new File(path);
+
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_SEND);
                 intent.setType(options.get("mime").toString());
@@ -1033,7 +1041,6 @@ public class JasonUtilAction {
                     String background =  style.get("background").toString();
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(context,android.R.style.Widget_Material_Light);
-                    builder.setIcon(R.mipmap.ic_launcher);
                     builder.setItems(items, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int item) {
                             try {
@@ -1061,11 +1068,6 @@ public class JasonUtilAction {
                     int textcolor = JasonHelper.parse_color(style.getString("color"));
                     int textbackground = JasonHelper.parse_color(style.getString("textBackground"));
                     int height =  style.getInt("height");
-
-                    ImageView im = new ImageView(context);
-                    im.setPadding(0, 0, 0, 0);
-                    Glide.with(context).load("file:///android_asset/file/images/fond.jpg").into(im);
-
                     TextView textView = new TextView(context);
                     textView.setText(message);
                     textView.setPadding(20, 20, 20, 20);
@@ -1078,10 +1080,9 @@ public class JasonUtilAction {
                     final AlertDialog dialog = builder.create();
                     int color = JasonHelper.parse_color(style.getString("background"));
                     dialog.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, color));
-
-                    //dialog.setCustomTitle(textView);
-                    dialog.setCustomTitle(im);
-
+                    //dialog.getWindow().setBackgroundDrawableResource(R.color.colorPrimaryDark);
+                    //dialog.setTitle("fsxqfdqs");
+                    dialog.setCustomTitle(textView);
                     if (dialog.getWindow() != null)
                         dialog.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
                     dialog.setOnShowListener( new DialogInterface.OnShowListener() {

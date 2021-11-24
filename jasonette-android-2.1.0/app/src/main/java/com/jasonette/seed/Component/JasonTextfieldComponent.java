@@ -119,7 +119,7 @@ public class JasonTextfieldComponent {
                     } else if(keyboard.equalsIgnoreCase("phone")) {
                         ((EditText) view).setInputType(InputType.TYPE_CLASS_PHONE);
                     } else if(keyboard.equalsIgnoreCase("url")) {
-                        ((EditText) view).setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                        ((EditText) view).setInputType(InputType.TYPE_TEXT_VARIATION_URI);
                     } else if(keyboard.equalsIgnoreCase("email")) {
                         ((EditText) view).setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
                     }

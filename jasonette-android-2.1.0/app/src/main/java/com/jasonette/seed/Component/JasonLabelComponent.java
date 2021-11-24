@@ -101,7 +101,6 @@ public class JasonLabelComponent {
                     } else {
                         ((TextView) view).setTypeface(null, Typeface.NORMAL);
                     }
-
                 }
 
                 if (style.has("size")) {
