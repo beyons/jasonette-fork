@@ -46,11 +46,11 @@ dependencies {
     debugImplementation 'com.facebook.stetho:stetho-timber:1.5.1'
     //noinspection GradleCompatible
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.squareup.okhttp3:okhttp:4.2.0'
     implementation 'com.github.bumptech.glide:glide:4.10.0'
     implementation 'jp.wasabeef:glide-transformations:2.0.1'
     implementation 'com.eclipsesource.j2v8:j2v8:5.0.103@aar'
+    //implementation 'com.eclipsesource.j2v8:j2v8:4.8.4@aar'
     //implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     //implementation 'com.android.support:design:27.1.1'
