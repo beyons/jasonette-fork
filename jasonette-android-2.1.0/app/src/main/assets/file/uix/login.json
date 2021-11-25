@@ -1,0 +1,209 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Beautiful login form",
+      "description": "Beautiful login form made with jasonelle",
+      "styles": {
+
+      },
+      "agents": {
+
+      },
+      "actions" : {
+
+      }
+    },
+    "body": {
+      "style": {
+        "border": "none",
+        "background": {
+          "type": "html",
+          "text": "<body style='margin:0;'><img src='https://i.pinimg.com/736x/76/40/df/7640dffafb474aabc7ef37f659117c22.jpg' style='width:100%;height:100%;object-fit:cover'></body>"
+        }
+      },
+      "sections": [
+        {
+          "items": [
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center"
+              },
+              "components": [
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 50
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "My Account",
+                  "style":{
+                    "size": 27,
+                    "color": "#ffffff",
+                    "font": "Courier-Bold",
+                    "width": "70%",
+                    "align": "center",
+                    "fontWeight": "bold"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "space",
+              "style": {
+                "height": 20
+              }
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%"
+              },
+              "components": [
+                {
+                  "type": "space",
+                  "style": {
+                    "align": "center",
+                    "height": 30
+                  }
+                },
+                {
+                  "type": "image",
+                  "url": "file://images/userLink.png",
+                  "style": {
+                    "width": "140",
+                    "height": "140"
+                  }
+                },
+                {
+                  "type": "vertical",
+                  "style": {
+                    "align": "center",
+                    "background": "white",
+                    "width": "90%"
+                  },
+                  "components": [
+                    {
+                      "type": "space",
+                      "style": {
+                        "align": "center",
+                        "height": 50,
+                        "elevation": 20
+                      }
+                    },
+                    {
+                      "type": "textfield",
+                      "name": "Login",
+                      "keyborad": "email",
+                      "placeholder": " Login",
+                      "style": {
+                        "borderColor": "#34495e",
+                        "placeholder_color": "#34495e",
+                        "color": "#2c3e50",
+                        "font": "Roboto",
+                        "align": "left",
+                        "drawable": "2131230876",
+                        "drawableColor": "#34495e",
+                        "width": "80%",
+                        "height": 50,
+                        "padding": 15,
+                        "size": 17
+                      }
+                    },
+                    {
+                      "type": "vertical",
+                      "style": {
+                        "align": "center",
+                        "width": "80%"
+                      },
+                      "components": [
+                        {
+                          "type": "space",
+                          "style": {
+                            "align": "center",
+                            "height": 10
+                          }
+                        },
+                        {
+                          "type": "switch",
+                          "name": "activate",
+                          "value": "false",
+                          "style": {
+                            "color": "#2c3e50"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "type": "textfield",
+                      "name": "Password",
+                      "keyborad": "email",
+                      "placeholder": " Password",
+                      "style": {
+                        "borderColor": "#2980b9",
+                        "placeholder_color": "#34495e",
+                        "color": "#2c3e50",
+                        "font": "Roboto",
+                        "align": "left",
+                        "width": "80%",
+                        "secure": "true",
+                        "drawable": "2131230875",
+                        "drawableColor": "#34495e",
+                        "height": 50,
+                        "padding": 15,
+                        "size": 17
+                      }
+                    },
+                    {
+                      "type": "label",
+                      "text": "Forgot password?",
+                      "style":{
+                        "size": 15,
+                        "color": "#34495e",
+                        "font": "Roboto",
+                        "width": "70%",
+                        "align": "right"
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "align": "center",
+                        "height": 45
+                      }
+                    },
+                    {
+                      "type": "button",
+                      "text": "Sign-In",
+                      "style": {
+                        "width": "80%",
+                        "height": 50,
+                        "align": "center",
+                        "background": "#d35400",
+                        "color": "#ffffff",
+                        "rippleColor": "#ecf0f1",
+                        "font": "Roboto-Bold",
+                        "size": 15,
+                        "elevation": 20
+                      }
+                    },
+                    {
+                      "type": "space",
+                      "style": {
+                        "align": "center",
+                        "height": 50
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

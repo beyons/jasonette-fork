@@ -66,13 +66,8 @@ public class JasonButtonComponent{
             // label button
 
             view = JasonLabelComponent.build(view, component, parent, context);
-
-
-
             try {
                 JSONObject style = component.getJSONObject("style");
-
-
 
                 /*******
                  * ALIGN : By default align center

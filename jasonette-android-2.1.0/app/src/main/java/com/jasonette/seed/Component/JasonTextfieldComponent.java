@@ -2,7 +2,11 @@ package com.jasonette.seed.Component;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -20,6 +24,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.jasonette.seed.Core.JasonViewActivity;
 import com.jasonette.seed.Helper.JasonHelper;
+import com.jasonette.seed.R;
 
 import org.json.JSONObject;
 
@@ -173,6 +178,22 @@ public class JasonTextfieldComponent {
                     }
                 });
 
+                if (style.has("drawable")) {
+
+                    int drawable = style.getInt("drawable");
+                    int drawableColor = JasonHelper.parse_color(style.getString("drawableColor"));
+                    System.out.println("--"+R.drawable.ic_baseline_lock_24);
+                    System.out.println("--"+R.drawable.ic_baseline_person_24);
+                    Drawable image = context.getResources().getDrawable(drawable);
+                    image.setColorFilter(new
+                            PorterDuffColorFilter(drawableColor, PorterDuff.Mode.MULTIPLY));
+                    int h = image.getIntrinsicHeight();
+                    int w = image.getIntrinsicWidth();
+                    image.setBounds( 0, 0, w, h );
+
+                    ((TextView) view).setCompoundDrawables( image, null, null, null);
+                }
+
                 // The order is important => Must set the secure mode first and then set the font because Android sets the typeface to monospace by default when password mode
                 if(style.has("secure")){
                     ((EditText)view).setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
@@ -213,6 +234,7 @@ public class JasonTextfieldComponent {
                         }
                     }
                 }
+
 
                 view.requestLayout();
                 return view;
