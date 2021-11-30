@@ -1,0 +1,203 @@
+:toc: macro
+:toc-title: Table of Contents
+:toclevels: 6
+
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on https://keepachangelog.com/en/1.0.0/[Keep a Changelog],
+and this project adheres to http://sentimentalversioning.org/[Sentimental Versioning].
+
+toc::[]
+
+## 2.1.0
+
+This version have minor fixes and updates.
+
+### Added
+
+- Ability to use mixin with _POST_ requests. Example:
+
+```json
+{"@": "https://example.com[POST]"}
+``` 
+Would fetch the url using _POST_ instead of _GET_ (Useful for _Bubble_ or similar systems).
+
+- Ability to show ATTracking alert in iOS >= 14.5:
+Set `tracking_enabled` to true inside _settings.plist_.
+
+### Changed
+
+- Bumped to minimum iOS version `12.0`.
+
+### Fixed
+
+- Crash when passing `href` with a non object.
+- Crash in iOS 14.
+- Push notifications were using code that was non deterministic to obtain the token. Now the token is parsed correctly.
+- Random Crashes due to updating the UI in a background thread.
+- Removed deprecation warnings when using `[[UIApplication sharedApplication] openURL:]`.
+- Problems when using Tabbars.
+
+### Updated
+
+- Updated to `AFNetworking` 4.0.1 (was 3.2.1).
+- Updated to `FLEX` 4.1.1 (was 3.0.0).
+- Updated to `SocketRocket` 0.5.2 (was 0.5.1).
+- Updated to `SWTableViewCell` 0.3.8 (was 0.3.7)
+
+### People
+
+Huge thanks to the following persons that helped in this release:
+
+- Mike from https://www.fus-ed.com/ (Sponsored Firebase extension for iOS and other fixes).
+- https://github.com/vini-brito[Vinicius Brito] (Requested and sponsored the Mixin POST feature).
+- _@TT Multi_ in Telegram Group (Sponsored some Cookies and Coffee).
+- Dooble Team (Sponsored ATTracking update in iOS).
+- All the wonderful people in the https://t.me/jasonelle[Jasonelle Telegram Community].
+
+## https://github.com/jasonelle/jasonelle/releases/tag/v2.0[2.0.0]
+
+This version was released in November 2019.
+
+### Added
+
+- New Logger for Native Code. Makes easier to Spot Errors. See xcode/Jasonette/Logger/README.md[xcode/Jasonette/Logger/README.md] For more details.
+
+- Added `JasonNetworking.h` to enable configuring `AFHTTPSessionManager` and `AFJSONResponseSerializer`.
+
+- Docs on how to implement extensions.
+
+- Added http://uncrustify.sourceforge.net/[`uncrustify`] config for code style standarization.
+
+- Added new option in `href` to load a `web` with `reader mode`.
+  Based on the code by `@seletz`.
+
+```json
+{
+  "options": {
+    "reader": true
+  }
+}
+```
+
+- Added `$orientation` system event
+  that triggers when the orientation changes.
+
+- Added `$env.view.params` variable that holds the query params inside the url.
+  Example `https://example.com?param1=1&params2=true`. Will show `param1` and `param2` as properties inside the params dictionary. (Only for for internet addresses. _file://_ does not work.)
+
+- Added `$agent.logger` to `agent.js` that can call the system logger.
+  Methods: `$agent.logger.log`, `$agent.logger.debug`, `$agent.logger.info`, `$agent.logger.warn`, `$agent.logger.error`. As replacements of `console.log` methods for webviews.
+
+- Added optional `nonce` to url in `settings.plist`. Now is easier to invalidate server cache if needed.
+
+### Changed
+
+- Bumped to minimum iOS version `9.0`.
+
+- Improved `JasonComponentFactory.h` to take in consideration `Swift` extensions.
+
+- Establish `AppDelegate.h` as main _App Delegate_ instead of `JasonAppDelegate.h`. The later will serve as a wrapper.
+
+- Improved Code Organization.
+
+- Improved Networking Code.
+
+### Fixed
+
+- Fixed Crash on parsing local json files with wrong syntax.
+
+- Fixed Crash when no `$jason` property is present in json.
+
+- Fixed Crash when url contained html content in a json expected return.
+
+- Fixed Blank Screen when no `url` is found in `settings.plist`.
+
+- Fixed Blank Screen if you click a `Tab Item` more than once.
+
+- Fixed `WKWebView` orientation change not working. Based on the code by `@ricardojlpinto`.
+
+- Fixed Crash when using`$vision` on simulator.
+
+- Fixed not finding class when using non standard naming in extensions (now searches in lowercase too).
+
+- Fixed Crash in iOS 10 when using webcontainers. It crashed because before iOS 11 the observers to notifications does not autorelease. Solved using `INTUAutoRemoveObserver`.
+
+- Fixed Random Crash. The property `styles` in `JasonViewController` was not initialized
+  in some use cases. Now is lazy allocated
+  to prevent random crashes.
+
+- Fixed Crash when using iOS 13.
+
+### Updated
+
+- Updated to `AFNetworking` 3.2.1 (was 3.1.0).
+
+- Updated to `UICKeyChainStore` 2.1.2 (was 2.1.0).
+
+- Updated to `IQAudioRecorderController` 1.2.3 (was 1.2.0).
+
+- Updated to `SBJsonWriter` 5.0.0 (was 4.0.2).
+
+- Updated to `libPhoneNumber-iOS` 0.9.15 (was 0.8.13).
+
+- Updated to `JDStatusBarNotification` 1.6.0 (was 1.5.3).
+
+- Updated to `APAddressBook` 0.3.2 (was 0.2.3).
+
+- Updated to `MBProgressHUD` 1.1.0 (was 1.0.0).
+
+- Updated to `NSGIF` 1.2.4 (was 1.2).
+
+- Updated to `NSHash` 1.2.0 (was 1.1.0).
+
+- Updated to `DTCoreText` 1.6.23 (was 1.6.17).
+
+- Updated to `DTFoundation` 1.7.14 (was 1.7.10).
+
+- Updated to `FreeStreamer` 4.0.0 (was 3.5.7).
+
+- Updated to `JSCoreBom` 1.1.2 (was 1.1.1).
+
+- Updated to `OMGHTTPURLRQ` 3.2.4 (was 3.1.2).
+
+- Updated to `FLEX 3.0.0` (was 2.4.0).
+
+- Updated to `CYRTextView` 0.4.1 (was 0.4.0).
+
+- Updated to `HMSegmentedControl` 1.5.5 (was 1.5.2).
+
+- Updated to `INTULocationManager` 4.3.2 (was 4.2.0).
+
+### Removed
+
+- `UIWebview` Dependencies. Since Apple will stop accepting apps that use that API.
+
+### Notes
+
+- This version is a complete overhaul focusing on
+  modularization of the code and update of the libraries, improving the quality of the framework, maintaining the same json api.
+
+- The next version will be re engineered so it will be easier to maintain and find bugs. New arquitecture and possible adopting Swift Language.
+
+### People
+
+Huge thanks to the following persons that helped in this release:
+
+- https://github.com/takakeiji[Adán Miranda]: Helped with some guidance over iOS code.
+
+- `BSG`: Detected layout error in WKWebViews in iOS >= 11.
+
+- `John Mark`: Wrote a great tutorial in Bubble.is forums.
+
+- https://devschile.cl[Devs Chile]: Chilean commmunity of developers.
+
+- `Phillip`: Suggested the `nonce` addition.
+
+More people here https://jasonelle.com/docs/[https://jasonelle.com/docs/].
+
+## https://github.com/jasonelle/jasonelle/releases/tag/v1.0[1.0]
+
+First version of the _Jasonette_ Mobile Framework. This version was the same as the latest development version of https://github.com/jasonette/jasonette-ios[Ethan's Jasonette].
