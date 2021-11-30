@@ -182,8 +182,9 @@ public class JasonTextfieldComponent {
 
                     int drawable = style.getInt("drawable");
                     int drawableColor = JasonHelper.parse_color(style.getString("drawableColor"));
-                    System.out.println("--"+R.drawable.ic_baseline_lock_24);
-                    System.out.println("--"+R.drawable.ic_baseline_person_24);
+                    //System.out.println("--"+R.drawable.ic_baseline_search_24);
+                    //System.out.println("--"+R.drawable.ic_baseline_lock_24);
+                    //System.out.println("--"+R.drawable.ic_baseline_person_24);
                     Drawable image = context.getResources().getDrawable(drawable);
                     image.setColorFilter(new
                             PorterDuffColorFilter(drawableColor, PorterDuff.Mode.MULTIPLY));
@@ -191,7 +192,7 @@ public class JasonTextfieldComponent {
                     int w = image.getIntrinsicWidth();
                     image.setBounds( 0, 0, w, h );
 
-                    ((TextView) view).setCompoundDrawables( image, null, null, null);
+                    ((TextView) view).setCompoundDrawables(image, null, null, null);
                 }
 
                 // The order is important => Must set the secure mode first and then set the font because Android sets the typeface to monospace by default when password mode
@@ -234,7 +235,9 @@ public class JasonTextfieldComponent {
                         }
                     }
                 }
-
+                if(style.has("elevation")){
+                    ((TextView) view).setElevation(style.getInt("elevation"));
+                }
 
                 view.requestLayout();
                 return view;

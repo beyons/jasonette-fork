@@ -10,9 +10,12 @@ import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.RippleDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -2729,8 +2732,21 @@ public class JasonViewActivity extends AppCompatActivity implements ActivityComp
                         // int size = JasonHelper.parse_color(leftButton.getString("size"));
                         NamBarBtnVar.setTextSize(TypedValue.COMPLEX_UNIT_PX, Float.parseFloat(leftButton.getJSONObject("style").getString("size")));
                         NamBarBtnVar.setPaddingRelative(0,0,0,0);
+
                         if(leftButton.has("text")){
                             NamBarBtnVar.setText(leftButton.getString("text"));
+                        }
+                        else{
+                            int drawable = leftButton.getInt("id");
+                            Drawable image = this.getResources().getDrawable(drawable);
+                            //System.out.println("--"+R.drawable.ic_baseline_supervised_user_circle_24);
+                            int c = JasonHelper.parse_color(leftButton.getJSONObject("style").getString("color"));
+                            image.setColorFilter(new
+                                    PorterDuffColorFilter(c, PorterDuff.Mode.MULTIPLY));
+                            int h = image.getIntrinsicHeight();
+                            int w = image.getIntrinsicWidth();
+                            image.setBounds( 0, 0, w, h );
+                            NamBarBtnVar.setCompoundDrawables(image,null,null,null);
                         }
 
                         if(leftButton.has("style") && leftButton.getJSONObject("style").has("background")){

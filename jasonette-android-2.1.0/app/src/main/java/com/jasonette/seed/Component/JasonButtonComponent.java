@@ -4,7 +4,10 @@ import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.RippleDrawable;
 import android.graphics.drawable.StateListDrawable;
 import android.util.Log;
@@ -14,6 +17,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.TextView;
 import com.jasonette.seed.Helper.JasonHelper;
+import com.jasonette.seed.R;
 
 import org.json.JSONObject;
 
@@ -133,6 +137,25 @@ public class JasonButtonComponent{
                             ((TextView) view).setVisibility(View.VISIBLE);
                         }
                     }
+                }
+
+                /*******
+                 * Drawable: Add drawable icon
+                 ******/
+                if (style.has("drawable")) {
+
+                    int drawable = style.getInt("drawable");
+                    int drawableColor = JasonHelper.parse_color(style.getString("drawableColor"));
+                    //System.out.println("--"+ R.drawable.ic_baseline_list_24);
+
+                    Drawable image = context.getResources().getDrawable(drawable);
+                    image.setColorFilter(new
+                            PorterDuffColorFilter(drawableColor, PorterDuff.Mode.MULTIPLY));
+                    int h = image.getIntrinsicHeight();
+                    int w = image.getIntrinsicWidth();
+                    image.setBounds( 0, 0, w, h );
+
+                    ((TextView) view).setCompoundDrawables(image, null, null, null);
                 }
 
                 /*******

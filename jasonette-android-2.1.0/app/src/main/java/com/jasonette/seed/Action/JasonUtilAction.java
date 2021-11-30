@@ -8,10 +8,12 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.TimePickerDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -106,6 +108,26 @@ public class JasonUtilAction {
     };
 
     private static Map<String, String> store = new HashMap<>();
+
+    public void openStreetMap(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    PackageManager pm = context.getPackageManager();
+                    Intent intent = pm.getLaunchIntentForPackage("com.google.android.street");
+                    ApplicationInfo info = context.getPackageManager().getApplicationInfo(
+                            "com.google.android.street", PackageManager.GET_UNINSTALLED_PACKAGES);
+
+                    ContextCompat.startActivity((JasonViewActivity)context,intent,null);
+                    JasonHelper.next("success", action, true, event, context);
+                } catch (Exception e){
+                    Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+                    JasonHelper.next("error", action, false, event, context);
+                }
+            }
+        });
+    }
 
     public void setState(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
         new Handler(Looper.getMainLooper()).post(new Runnable() {
