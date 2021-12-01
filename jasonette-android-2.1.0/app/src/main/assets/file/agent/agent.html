@@ -7,7 +7,7 @@
     /////////////////////////////////////////
 
     /////////////////////////////////////////
-    //     Fonction d'authentification     //
+    //     Function d'authentification     //
     /////////////////////////////////////////
     var validateEmail = function(email,pass,bd1,bd2,token)
     {
@@ -28,14 +28,14 @@
         }
     };
     //////////////////////////////////////////////
-    //    Fonction transformation de la date    //
+    //    Function transformation de la date    //
     //////////////////////////////////////////////
     var specifyDate = function(timeStamp)
     {
         $agent.response((new Date(parseInt(timeStamp)*1000)).toString());
     };
     //////////////////////////////////////////////
-    //    Fonction check dark modes enabling    //
+    //    Function check dark modes enabling    //
     //////////////////////////////////////////////
     var darkCheck = function(background)
     {
@@ -47,7 +47,7 @@
        }
     };
     //////////////////////////////////////////////
-    //     Fonction localNotificationChecker    //
+    //     Function localNotificationChecker    //
     //////////////////////////////////////////////
     var checkNotification = function(localState)
     {
@@ -64,7 +64,7 @@
         }
     };
     //////////////////////////////////////////////
-    //  Fonction Create Authentification token  //
+    //  Function Create Authentification token  //
     //////////////////////////////////////////////
     var createToken = function(nom, prenom, email)
     {
@@ -78,7 +78,7 @@
         $agent.trigger("saveToken", {"token":token});
     }
     //////////////////////////////////////////////
-    //   Fonction Checking button click state   //
+    //   Function Checking button click state   //
     //////////////////////////////////////////////
     var checkingState = function(mode)
     {

@@ -1,0 +1,13 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fast-xml-parser/4.0.0-beta.3/fxparser.js"></script>
+<script>
+    var parsing = function(url) {
+        fetch(url, {method: "GET"})
+        .then(response => response.json())
+        .then(function(response){
+            const parser = new XMLParser();
+            let jObj = parser.parse(response);
+            agent.response(jObj);
+        })
+        .catch(err => agent.response(err));
+    }
+</script>

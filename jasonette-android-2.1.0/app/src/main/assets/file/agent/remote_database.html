@@ -1,0 +1,58 @@
+    //////////////////////////////////////////////
+    //                     🛸                   //
+    //          Javascript library for          //
+    //         Remote database Database         //
+    //           BEY Ons 2020 - 2021            //
+    //////////////////////////////////////////////
+
+    //////////////////////////////////////////////
+    //      Function Add data to remote DBA     //
+    //////////////////////////////////////////////
+    var insertData = function(url,object) {
+        fetch(url, {
+            method: "POST",
+            body:  JSON.stringify(object)
+        })
+        .then(response => response.json())
+        .then(function(response){})
+        .catch(err => agent.response(err));
+    }
+
+    //////////////////////////////////////////////
+    //  Function Retrieve data from remote DBA  //
+    //////////////////////////////////////////////
+    var retrieveData = function(url,id) {
+        fetch(url, {
+            method: "GET",
+            body:  {id: id.toString()}
+        })
+        .then(response => response.json())
+        .then(function(response){})
+        .catch(err => agent.response(err));
+    }
+
+    //////////////////////////////////////////////
+    //    Function Update data from remote DBA  //
+    //////////////////////////////////////////////
+    var updateData = function(url,object) {
+        fetch(url, {
+            method: "UPDATE",
+            body:  JSON.stringify(object)
+        })
+        .then(response => response.json())
+        .then(function(response){})
+        .catch(err => agent.response(err));
+    }
+
+    //////////////////////////////////////////////
+    //   Function Delete data from remote DBA   //
+    //////////////////////////////////////////////
+    var delete = function(url,id) {
+        fetch(url, {
+            method: "DELETE",
+            body:  {id: id.toString()}
+        })
+        .then(response => response.json())
+        .then(function(response){})
+        .catch(err => agent.response(err));
+    }

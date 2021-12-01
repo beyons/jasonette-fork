@@ -19,6 +19,7 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.graphics.Point;
+import android.graphics.drawable.Drawable;
 import android.hardware.camera2.CameraManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -79,6 +80,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -178,6 +180,24 @@ public class JasonUtilAction {
                 if (options.has("key")) {
                     String storeValue = options.getString("key");
                     store.put(storeValue, store.get(storeValue));
+                }
+            } catch (Exception e){
+                Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
+            }
+            }
+        });
+    }
+    public void nfc(final JSONObject action, final JSONObject data, final JSONObject event, final Context context){
+        new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+            try {
+                android.nfc.NfcAdapter mNfcAdapter= android.nfc.NfcAdapter.getDefaultAdapter(context);
+                if (!mNfcAdapter.isEnabled()) {
+                    JasonHelper.next("success", action, true, event, context);
+                }
+                else {
+                    JasonHelper.next("success", action, false, event, context);
                 }
             } catch (Exception e){
                 Log.d("Warning", e.getStackTrace()[0].getMethodName() + " : " + e.toString());
@@ -1060,7 +1080,7 @@ public class JasonUtilAction {
                     final String[] uri = urlName;
                     JSONObject style = new JSONObject();
                     style = action.getJSONObject("style");
-                    String background =  style.get("background").toString();
+                    int height =  style.getInt("height");
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(context,android.R.style.Widget_Material_Light);
                     builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -1069,7 +1089,6 @@ public class JasonUtilAction {
                                 Integer depth;
                                 depth = 0;
                                 String url = uri[item];
-
                                 String params = null;
                                 Intent intent = new Intent(context, JasonViewActivity.class);
                                 intent.putExtra("url", url);
@@ -1087,24 +1106,37 @@ public class JasonUtilAction {
                         }
                     });
 
-                    int textcolor = JasonHelper.parse_color(style.getString("color"));
-                    int textbackground = JasonHelper.parse_color(style.getString("textBackground"));
-                    int height =  style.getInt("height");
-                    TextView textView = new TextView(context);
-                    textView.setText(message);
-                    textView.setPadding(20, 20, 20, 20);
-                    textView.setGravity(Gravity.BOTTOM);
-                    textView.setTextSize(15F);
-                    textView.setHeight(height);
-                    textView.setBackgroundColor(textbackground);
-                    textView.setTextColor(textcolor);
 
                     final AlertDialog dialog = builder.create();
-                    int color = JasonHelper.parse_color(style.getString("background"));
-                    dialog.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, color));
-                    //dialog.getWindow().setBackgroundDrawableResource(R.color.colorPrimaryDark);
-                    //dialog.setTitle("fsxqfdqs");
-                    dialog.setCustomTitle(textView);
+                    if(style.has("background")){
+                        String background =  style.get("background").toString();
+                        int textcolor = JasonHelper.parse_color(style.getString("color"));
+                        int textbackground = JasonHelper.parse_color(style.getString("textBackground"));
+                        TextView textView = new TextView(context);
+                        textView.setText(message);
+                        textView.setPadding(20, 20, 20, 20);
+                        textView.setGravity(Gravity.BOTTOM);
+                        textView.setTextSize(15F);
+                        textView.setHeight(height);
+                        textView.setBackgroundColor(textbackground);
+                        textView.setTextColor(textcolor);
+                        int color = JasonHelper.parse_color(style.getString("background"));
+                        dialog.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, color));
+                        dialog.setCustomTitle(textView);
+                    }
+                    else{
+                        ImageView myImage = new ImageView(context);
+                        InputStream stream = null;
+                        String fileUrl = style.getString("image");
+                        String replaceString=fileUrl.replace("file://","file/");//replaces all occurrences of 'a' to 'e'
+                        stream = context.getAssets().open(replaceString);
+                        Drawable d = Drawable.createFromStream(stream, null);
+                        myImage.setImageDrawable(d);
+                        myImage.setPadding(0,0,0,0);
+                        myImage.setAdjustViewBounds(true);
+                        dialog.setCustomTitle(myImage);
+                    }
+
                     if (dialog.getWindow() != null)
                         dialog.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
                     dialog.setOnShowListener( new DialogInterface.OnShowListener() {

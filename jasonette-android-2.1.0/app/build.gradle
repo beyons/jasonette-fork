@@ -14,7 +14,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion '28.0.3'
     defaultConfig {
-        applicationId "com.beyons.poincaree"
+        applicationId "com.beyons.jasonelle"
         minSdkVersion 26
         // Android 8 is the minimum required for the playstore
         targetSdkVersion 29

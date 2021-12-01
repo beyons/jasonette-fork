@@ -44,7 +44,18 @@
                     "rippleColor": "#3498db"
                   },
                   "action": {
-                    "type": "$util.openStreetMap"
+                    "type": "$util.drawer",
+                    "style": {
+                      "image": "file://images/sodexo.jpg",
+                      "textBackground": "#f39c12",
+                      "color": "red",
+                      "height": 250
+                    },
+                    "options": {
+                      "message": "Bienvenue\n{{$params.emailParam}}",
+                      "list": "Informations personelles,Aide,Contactez-nous,Sécurité,Langues,Gestions des notifications,Mentions légales,Évaluer-nous sur google play",
+                      "url": ",,,,,,,"
+                    }
                   }
                 },
 
@@ -70,7 +81,7 @@
                     "height": 40,
                     "drawable": "2131230877",
                     "drawableColor": "#95a5a6",
-                    "elevation": 20,
+                    "elevation": 10,
                     "corner_radius": 35,
                     "size": 15
                   }
@@ -119,7 +130,7 @@
               }],
               "style": {
                 "width": "100%",
-                "height": "100%-344"
+                "height": "100%-362"
               }
             },
             {
@@ -132,224 +143,319 @@
                 "color": "white",
                 "align": "center",
                 "font": "Roboto-Bold"
+              },
+              "action": {
+                "type": "$href",
+                "options": {
+                  "url": "file://uix/login.json",
+                  "transition": "modal",
+                  "view": "jason",
+                  "preload": {
+                    "style": {
+                      "background": "#ffffff"
+                    },
+                    "layers": [
+                      {
+                        "type": "image",
+                        "url": "file://images/infinit.gif",
+                        "style": {
+                          "width": "200",
+                          "height": "200",
+                          "top": "50%-100",
+                          "left": "50%-100"
+                        }
+                      }
+                    ]
+                  }
+                }
               }
             },
             {
-              "type": "horizontal",
+              "type": "space",
+              "style": {
+                "height": 20
+              }
+            }
+          ]
+        },
+        {
+          "type": "horizontal",
+          "items": [
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "30",
+                "background": "white",
+                "height": 115,
+                "bottom": 170
+              },
               "components": [
                 {
-                  "type": "vertical",
+                  "type": "label",
+                  "text": "",
                   "style": {
-                    "align": "center",
                     "width": "30",
-                    "background": "white",
-                    "height": 115,
-                    "bottom": 170
-                  },
-                  "components": [
-                    {
-                      "type": "label",
-                      "text": "",
-                      "style": {
-                        "width": "30",
-                        "color": "white",
-                        "align": "center",
-                        "font": "Roboto"
-                      }
-                    }
-                  ]
+                    "color": "red",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%-90",
+                "background": "#ecf0f1",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
                 },
                 {
-                  "type": "vertical",
+                  "type": "label",
+                  "text": "GOURMANDISE",
                   "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
                     "align": "center",
-                    "width": "100%-90",
-                    "background": "#ecf0f1",
-                    "height": 115,
-                    "bottom": 170
-                  },
-                  "components": [
-                    {
-                      "type": "label",
-                      "text": "RESTAURANT",
-                      "style": {
-                        "width": "100% - 70",
-                        "color": "#ff6b81",
-                        "align": "center",
-                        "font": "Roboto"
-                      }
-                    },
-                    {
-                      "type": "label",
-                      "text": "GOURMANDISE",
-                      "style": {
-                        "width": "100% - 70",
-                        "color": "#1e3799",
-                        "align": "center",
-                        "font": "Roboto-Bold"
-                      }
-                    },
-                    {
-                      "type": "label",
-                      "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
-                      "style": {
-                        "width": "100% - 70",
-                        "color": "#1e3799",
-                        "align": "center",
-                        "font": "Roboto"
-                      }
-                    }
-                  ]
+                    "font": "Roboto-Bold"
+                  }
                 },
                 {
-                  "type": "vertical",
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
                   "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
                     "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "30",
+                "background": "white",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "",
+                  "style": {
                     "width": "30",
-                    "background": "white",
-                    "height": 115,
-                    "bottom": 170
-                  },
-                  "components": [
-                    {
-                      "type": "label",
-                      "text": "",
-                      "style": {
-                        "width": "30",
-                        "color": "white",
-                        "align": "center",
-                        "font": "Roboto"
-                      }
-                    }
-                  ]
+                    "color": "red",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%-90",
+                "background": "#ecf0f1",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
                 },
                 {
-                  "type": "vertical",
+                  "type": "label",
+                  "text": "GOURMANDISE",
                   "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
                     "align": "center",
-                    "width": "100%-90",
-                    "background": "#ecf0f1",
-                    "height": 115,
-                    "bottom": 170
-                  },
-                  "components": [
-                    {
-                      "type": "label",
-                      "text": "RESTAURANT",
-                      "style": {
-                        "width": "100% - 70",
-                        "color": "#ff6b81",
-                        "align": "center",
-                        "font": "Roboto"
-                      }
-                    },
-                    {
-                      "type": "label",
-                      "text": "GOURMANDISE",
-                      "style": {
-                        "width": "100% - 70",
-                        "color": "#1e3799",
-                        "align": "center",
-                        "font": "Roboto-Bold"
-                      }
-                    },
-                    {
-                      "type": "label",
-                      "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
-                      "style": {
-                        "width": "100% - 70",
-                        "color": "#1e3799",
-                        "align": "center",
-                        "font": "Roboto"
-                      }
-                    }
-                  ]
+                    "font": "Roboto-Bold"
+                  }
                 },
                 {
-                  "type": "vertical",
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
                   "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
                     "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "30",
+                "background": "white",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "",
+                  "style": {
                     "width": "30",
-                    "background": "white",
-                    "height": 115,
-                    "bottom": 170
-                  },
-                  "components": [
-                    {
-                      "type": "label",
-                      "text": "",
-                      "style": {
-                        "width": "30",
-                        "color": "red",
-                        "align": "center",
-                        "font": "Roboto"
-                      }
-                    }
-                  ]
+                    "color": "red",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%-90",
+                "background": "#ecf0f1",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
                 },
                 {
-                  "type": "vertical",
+                  "type": "label",
+                  "text": "GOURMANDISE",
                   "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
                     "align": "center",
-                    "width": "100%-90",
-                    "background": "#ecf0f1",
-                    "height": 115,
-                    "bottom": 170
-                  },
-                  "components": [
-                    {
-                      "type": "label",
-                      "text": "RESTAURANT",
-                      "style": {
-                        "width": "100% - 70",
-                        "color": "#ff6b81",
-                        "align": "center",
-                        "font": "Roboto"
-                      }
-                    },
-                    {
-                      "type": "label",
-                      "text": "GOURMANDISE",
-                      "style": {
-                        "width": "100% - 70",
-                        "color": "#1e3799",
-                        "align": "center",
-                        "font": "Roboto-Bold"
-                      }
-                    },
-                    {
-                      "type": "label",
-                      "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
-                      "style": {
-                        "width": "100% - 70",
-                        "color": "#1e3799",
-                        "align": "center",
-                        "font": "Roboto"
-                      }
-                    }
-                  ]
+                    "font": "Roboto-Bold"
+                  }
                 },
                 {
-                  "type": "vertical",
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
                   "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
                     "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "30",
+                "background": "white",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "",
+                  "style": {
                     "width": "30",
-                    "background": "white",
-                    "height": 115,
-                    "bottom": 170
-                  },
-                  "components": [
-                    {
-                      "type": "label",
-                      "text": "",
-                      "style": {
-                        "width": "30",
-                        "color": "red",
-                        "align": "center",
-                        "font": "Roboto"
-                      }
-                    }
-                  ]
+                    "color": "red",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%-90",
+                "background": "#ecf0f1",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "30",
+                "background": "white",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "",
+                  "style": {
+                    "width": "30",
+                    "color": "red",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
                 }
               ]
             }
@@ -401,7 +507,7 @@
       "footer": {
         "tabs": {
           "style": {
-            "background": "rgba(255,255,255,0.8)",
+            "background": "#ecf0f1",
             "color:disabled": "#cecece",
             "color": "#ff6b81"
           },
@@ -412,14 +518,14 @@
               "style": {
                 "height": "21"
               },
-              "url": "file://uix/sodexoHybride.json"
+              "url": "file://uix/sodexo.json"
             }, {
               "image": "https://cdn-icons-png.flaticon.com/512/259/259552.png",
               "text": "Ma carte",
               "style": {
                 "height": "21"
               },
-              "url": "file://uix/sodexo.json"
+              "url": "file://uix/macarte.json"
             }
           ]
         }

@@ -476,6 +476,7 @@ public class ItemAdapter extends RecyclerView.Adapter <ItemAdapter.ViewHolder>{
                         JSONObject component = components.getJSONObject(i);
                         if (component.getString("type").equalsIgnoreCase("vertical") || component.getString("type").equalsIgnoreCase("horizontal")) {
                             LinearLayout childLayout = (LinearLayout)layout.getChildAt(i);
+
                             buildLayout(childLayout, component, item, ++level);
                             if (i > 0) {
                                 add_spacing(childLayout, item, item.getString("type"));
