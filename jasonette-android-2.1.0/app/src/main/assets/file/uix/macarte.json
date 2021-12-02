@@ -191,8 +191,8 @@
                   "type":  "image",
                   "url": "https://i.dlpng.com/static/png/5460589-filter-filtering-filters-icon-png-and-vector-for-free-download-filter-png-512_512_preview.png",
                   "style": {
-                    "width": "20",
-                    "height": "20",
+                    "width": 20,
+                    "height": 20,
                     "elevation": 20,
                     "color": "#8e44ad"
                   }
@@ -222,6 +222,80 @@
               },
               "components": [
                 {
+                  "type":  "image",
+                  "url": "http://cdn.onlinewebfonts.com/svg/img_552315.png",
+                  "style": {
+                    "width": 30,
+                    "height": 30,
+                    "elevation": 20,
+                    "color": "#1abc9c"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "  Rechargement",
+                  "style": {
+                    "align": "left",
+                    "font": "Roboto",
+                    "width": "100% - 140",
+                    "color": "#1e3799"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "+100,000 dt",
+                  "style": {
+                    "align": "left",
+                    "font": "Roboto",
+                    "color": "#1abc9c",
+                    "width": 100
+                  }
+                }
+              ]
+            },
+            {
+              "type": "horizontal",
+              "style": {
+                "align": "left",
+                "width": "100%",
+                "height": 70,
+                "background": "white"
+              },
+              "components": [
+                {
+                  "type": "space",
+                  "style": {
+                    "width": 10
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "",
+                  "style": {
+                    "font": "Roboto",
+                    "background": "#1abc9c",
+                    "width": 2,
+                    "height": 30
+                  }
+                }
+              ]
+            },
+            {
+              "type": "space",
+              "style": {
+                "width": 30
+              }
+            },
+            {
+              "type": "horizontal",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 70,
+                "background": "white"
+              },
+              "components": [
+                {
                   "type": "space",
                   "style": {
                     "width": "5%"
@@ -232,15 +306,15 @@
                   "text": "Envoyer les transacations par email",
                   "style": {
                     "width": "90%",
-                    "height": 50,
+                    "height": 40,
                     "background": "#ffffff",
                     "color": "#1e3799",
                     "border_color": "#1e3799",
                     "font": "Roboto",
-                    "elevation": 20,
                     "rippleColor": "#ff6b81",
                     "border_width": 2,
-                    "size": 12
+                    "size": 12,
+                    "corner_radius": 20
                   }
                 },
                 {

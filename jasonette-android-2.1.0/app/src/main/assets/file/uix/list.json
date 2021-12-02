@@ -1,0 +1,797 @@
+{
+  "$jason": {
+    "head": {
+      "title": "Sodexo like UI",
+      "description": "Sodexo like Ui made with Jasonelle",
+      "styles": {
+
+      },
+      "agents": {
+
+      },
+      "actions" : {
+
+      }
+    },
+    "body": {
+      "style": {
+        "font": "Roboto",
+        "size": 25,
+        "background": "white"
+      },
+      "sections": [
+        {
+          "type": "vertical",
+          "style": {
+            "align": "center",
+            "width": "100%"
+          },
+          "items": [
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 185
+              },
+              "components": [
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 40
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "Endroit(s) prés de moi",
+                  "style": {
+                    "font": "Roboto-Bold",
+                    "color": "#1e3799",
+                    "size": 16
+                  }
+                },
+                {
+                  "type": "space",
+                  "style": {
+                    "height": 20
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            },
+            {
+              "type": "vertical",
+              "style": {
+                "align": "center",
+                "width": "100%",
+                "height": 115,
+                "bottom": 170
+              },
+              "components": [
+                {
+                  "type": "label",
+                  "text": "RESTAURANT",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#ff6b81",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "GOURMANDISE",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto-Bold"
+                  }
+                },
+                {
+                  "type": "label",
+                  "text": "B-2 Imm. Miramar Business,\nCentre urbain nord.",
+                  "style": {
+                    "width": "100% - 70",
+                    "color": "#1e3799",
+                    "align": "center",
+                    "font": "Roboto"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "layers": [
+        {
+          "type": "button",
+          "url": "file://images/568140.png",
+          "style": {
+            "width": 40,
+            "height": 40,
+            "top": 15,
+            "left": 20,
+            "padding": 10,
+            "background": "#ffffff",
+            "color": "red",
+            "font": "Roboto",
+            "rippleColor": "#bdc3c7",
+            "size": 30,
+            "corner_radius": 75
+          },
+          "action": {
+            "type": "$ok"
+          }
+        },
+        {
+          "type": "button",
+          "text": "MAPS",
+          "style": {
+            "width": 100,
+            "height": 40,
+            "right": 20,
+            "drawable": "2131230878",
+            "drawableColor": "#1e3799",
+            "bottom": 150,
+            "padding": 10,
+            "background": "#ffffff",
+            "color": "#1e3799",
+            "font": "Roboto-Bold",
+            "rippleColor": "#1e3799",
+            "size": 15,
+            "elevation": 20,
+            "corner_radius": 75
+          },
+          "action": {
+            "type": "$ok"
+          }
+        }
+      ]
+    }
+  }
+}

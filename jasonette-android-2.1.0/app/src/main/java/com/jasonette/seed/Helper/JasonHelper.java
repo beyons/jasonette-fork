@@ -14,6 +14,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.jasonette.seed.Core.JasonViewActivity;
 import com.jasonette.seed.Launcher.Launcher;
+import com.jasonette.seed.R;
 
 import org.hjson.JsonValue;
 import org.json.JSONArray;
@@ -354,6 +355,9 @@ public class JasonHelper {
             requestCode = -1;
         }
 
+
+
+
         try {
             // handler looks like this:
             /*
@@ -381,11 +385,18 @@ public class JasonHelper {
         if (intent != null) {
             // Start the activity
             ((JasonViewActivity) context).startActivityForResult(intent, requestCode);
+            try {
+                JSONObject json2 = action.getJSONObject("options");
+                if (json2.toString().contains("modal")) {
+                    ((JasonViewActivity) context).overridePendingTransition(R.anim.slide_out_bottom,R.anim.no_animation);
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         } else {
             // if intent is null,
             // it means we are manually going to deal with opening a new Intent
         }
-
     }
 
     // dispatchIntent method
@@ -431,10 +442,16 @@ public class JasonHelper {
             ((JasonViewActivity) context).startActivityForResult(intent, requestCode);
             if(direction.equals("pushleft"))
                 ((JasonViewActivity) context).overridePendingTransition(android.R.anim.slide_in_left,android.R.anim.slide_out_right);
-            else if(direction.equals("direct"))
-                ((JasonViewActivity) context).overridePendingTransition(0,0);
             else if(direction.equals("fade"))
                 ((JasonViewActivity) context).overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+            else if(direction.equals("slide"))
+                ((JasonViewActivity) context).overridePendingTransition(android.R.anim.slide_in_left,R.anim.no_animation);
+            else if(direction.equals("modals"))
+                ((JasonViewActivity) context).overridePendingTransition(R.anim.slide_out_bottom,R.anim.slide_in_bottom);
+            else if(direction.equals("scale"))
+                ((JasonViewActivity) context).overridePendingTransition(R.anim.scale_from_corner,R.anim.scale_to_corner);
+            else
+                ((JasonViewActivity) context).overridePendingTransition(0,0);
 
         } else {
             // if intent is null,

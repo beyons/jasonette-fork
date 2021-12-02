@@ -17,7 +17,8 @@
       "style": {
         "font": "Roboto",
         "size": 25,
-        "background": "white"
+        "background": "white",
+        "border": "none"
       },
       "sections": [
         {
@@ -501,6 +502,10 @@
             "size": 15,
             "elevation": 20,
             "corner_radius": 75
+          },
+          "href": {
+            "url": "file://uix/list.json",
+            "transition": "modal"
           }
         }
       ],
@@ -508,7 +513,7 @@
         "tabs": {
           "style": {
             "background": "#ecf0f1",
-            "color:disabled": "#cecece",
+            "color:disabled": "#1e3799",
             "color": "#ff6b81"
           },
           "items": [
