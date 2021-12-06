@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -24,6 +26,7 @@ import com.jasonette.seed.Component.JasonComponentFactory;
 import com.jasonette.seed.Component.JasonImageComponent;
 import com.jasonette.seed.Core.JasonViewActivity;
 import com.jasonette.seed.Helper.JasonHelper;
+import com.jasonette.seed.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -400,8 +403,15 @@ public class ItemAdapter extends RecyclerView.Adapter <ItemAdapter.ViewHolder>{
                 layout = new LinearLayout(context);
             }
 
-            return layout;
+            if (json.has("animation")) {
+                Animation animation = null;
+                animation = AnimationUtils.loadAnimation(layout.getContext(), R.anim.fab_slide_in_from_left);
+                animation.setDuration(300);
+                layout.startAnimation(animation);
+                animation = null;
+            }
 
+            return layout;
         }
 
         class BackgroundImage implements Target<Drawable> {

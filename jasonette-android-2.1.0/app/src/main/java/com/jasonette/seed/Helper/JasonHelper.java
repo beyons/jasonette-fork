@@ -452,12 +452,10 @@ public class JasonHelper {
                 ((JasonViewActivity) context).overridePendingTransition(R.anim.scale_from_corner,R.anim.scale_to_corner);
             else
                 ((JasonViewActivity) context).overridePendingTransition(0,0);
-
         } else {
             // if intent is null,
             // it means we are manually going to deal with opening a new Intent
         }
-
     }
 
 
