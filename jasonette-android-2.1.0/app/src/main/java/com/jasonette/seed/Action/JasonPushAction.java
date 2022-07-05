@@ -5,8 +5,8 @@ import android.util.Log;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.iid.*;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.jasonette.seed.Core.JasonViewActivity;
 import com.jasonette.seed.Helper.JasonHelper;
 import com.jasonette.seed.Launcher.Launcher;
@@ -23,16 +23,16 @@ import androidx.annotation.NonNull;
 public class JasonPushAction {
     public void register(final JSONObject action, JSONObject data, final JSONObject event, Context context) {
 
-        FirebaseInstanceId.getInstance().getInstanceId()
-                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(
+                new OnCompleteListener<String>() {
                     @Override
-                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                    public void onComplete(@NonNull Task<String> task) {
                         if (!task.isSuccessful()) {
                             Log.w("Instance", "getInstanceId failed", task.getException());
                             return;
                         }
                         // Get new Instance ID token
-                        String refreshedToken = task.getResult().getToken();
+                        String refreshedToken = task.getResult();
                         if(refreshedToken != null){
                             // Token exists => already registered => Immediately trigger $push.onregister
                             try {
@@ -48,8 +48,8 @@ public class JasonPushAction {
                             // Token doesn't exist => ignore => JasonPushRegisterService will take care of $push.onregister
                         }
                     }
-                });
-
+                }
+        );
 
         JasonHelper.next("success", action, data, event, context);
     }

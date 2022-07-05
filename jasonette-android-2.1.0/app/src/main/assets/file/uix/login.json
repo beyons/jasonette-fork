@@ -36,12 +36,6 @@
               ]
             },
             {
-              "type": "space",
-              "style": {
-                "height": 20
-              }
-            },
-            {
               "type": "vertical",
               "style": {
                 "align": "center",

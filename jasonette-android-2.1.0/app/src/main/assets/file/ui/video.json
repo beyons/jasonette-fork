@@ -29,7 +29,7 @@
               "color": "white"
             },
             "leftButton": {
-              "text": "<",
+              "text": "retour",
               "style": {
                 "size": 45,
                 "width": 20,

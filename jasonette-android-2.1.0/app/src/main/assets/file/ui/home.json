@@ -89,8 +89,8 @@
               "action": {
                 "type": "$util.drawer",
                 "style": {
-                  "background": "#ecf0f1",
-                  "textBackground": "#f39c12",
+                  "image": "file://images/sodexo.jpg",
+                  "textBackground": "#ecf0f1",
                   "color": "#ffffff",
                   "height": 250
                 },

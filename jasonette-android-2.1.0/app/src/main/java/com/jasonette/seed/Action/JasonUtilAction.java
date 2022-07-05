@@ -19,6 +19,7 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.LightingColorFilter;
 import android.graphics.Point;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.hardware.camera2.CameraManager;
 import android.net.ConnectivityManager;
@@ -57,6 +58,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
@@ -877,6 +879,12 @@ public class JasonUtilAction {
 
                     // get the code or token
                     String TOKEN_REQUEST = "https://www.facebook.com/dialog/oauth?client_id="+ APP_ID +"&redirect_uri=" + RAW_REDIRECT_URI + "&display=popup&scope=email&response_type=token";
+
+                    // Open custom Chrom Tabs
+                    // CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+                    // CustomTabsIntent customTabsIntent = builder.build();
+                    // customTabsIntent.launchUrl(context, Uri.parse(TOKEN_REQUEST));
+
                     final Dialog custon_dialog = new Dialog(context);
                     custon_dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
                     WebView wv = new WebView(context);
@@ -906,6 +914,7 @@ public class JasonUtilAction {
                     layout.addView(wv); // Notice this is an add method
                     custon_dialog.setContentView(layout);
                     custon_dialog.show();
+
                 }
             }
             catch (Exception e) {
@@ -1074,6 +1083,7 @@ public class JasonUtilAction {
                     String list =  options.get("list").toString();
                     String url =  options.get("url").toString();
                     String message =  options.get("message").toString();
+                    String design =  options.get("design").toString();
                     String[] listName = list.split(",");
                     String[] items = listName;
                     String[] urlName = url.split(",");
@@ -1082,7 +1092,12 @@ public class JasonUtilAction {
                     style = action.getJSONObject("style");
                     int height =  style.getInt("height");
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context,android.R.style.Widget_Material_Light);
+                    // Menu style 'dialog' or 'menu'
+                    int dialogStyle;
+                    if( design.equals("dialog") == true) dialogStyle = android.R.style.ThemeOverlay_Material_Dialog_Alert;
+                    else dialogStyle = android.R.style.Widget_Material_Light;
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context, dialogStyle);
                     builder.setItems(items, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int item) {
                             try {
@@ -1105,7 +1120,6 @@ public class JasonUtilAction {
                             }
                         }
                     });
-
 
                     final AlertDialog dialog = builder.create();
                     if(style.has("background")){
@@ -1139,6 +1153,7 @@ public class JasonUtilAction {
 
                     if (dialog.getWindow() != null)
                         dialog.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
+
                     dialog.setOnShowListener( new DialogInterface.OnShowListener() {
                         @Override
                         public void onShow(DialogInterface arg0) {
@@ -1152,6 +1167,7 @@ public class JasonUtilAction {
                     lp.copyFrom(dialog.getWindow().getAttributes());
                     lp.width = (int) (getScreenWidth(((JasonViewActivity) context)) * .7);
                     lp.height = WindowManager.LayoutParams.MATCH_PARENT;
+
                     dialog.getWindow().setAttributes(lp);
                     dialog.getWindow().setGravity(Gravity.START);
                     dialog.getWindow().getDecorView().setTop(-120);

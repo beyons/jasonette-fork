@@ -146,7 +146,9 @@
               "animation": "pushleft",
               "view": "jason",
               "params":{
-                "emailParam": "{{$get.login}}"
+                "emailParam": "{{$get.login}}",
+                "userName": "{{$global.nom}}",
+                "userSurname": "{{$global.prenom}}"
               }
             }
           }
@@ -248,7 +250,7 @@
                 {
                   "type": "space",
                   "style": {
-                    "height": 210
+                    "height": 90
                   }
                 },
                 {
@@ -329,7 +331,7 @@
                         "type": "$util.facebookAuth",
                         "options": {
                           "APP_ID": "633565873881541",
-                          "REDIRECT_URL": "https://www.facebook.com/connect/login_success.html"
+                          "REDIRECT_URL": "https://beyons.alwaysdata.net/facebook/login_success.html"
                         },
                         "success": {
                           "type": "$global.set",

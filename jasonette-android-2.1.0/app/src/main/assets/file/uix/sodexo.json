@@ -55,7 +55,8 @@
                     "options": {
                       "message": "Bienvenue\n{{$params.emailParam}}",
                       "list": "Informations personelles,Aide,Contactez-nous,Sécurité,Langues,Gestions des notifications,Mentions légales,Évaluer-nous sur google play",
-                      "url": ",,,,,,,"
+                      "url": ",,,,,,,",
+                      "design": "dialog"
                     }
                   }
                 },
@@ -110,7 +111,7 @@
               "text": "",
               "style": {
                 "background": "#dddddd",
-                "height": 1,
+                "height": 2,
                 "width": "100%"
               }
             },
@@ -472,14 +473,14 @@
             "height": 40,
             "right": 20,
             "bottom": 360,
-            "padding": 10,
+            "padding": 8,
             "drawable": "2131230875",
             "drawableColor": "#1e3799",
             "background": "#ffffff",
             "color": "#1e3799",
             "font": "Roboto",
-            "rippleColor": "#1e3799",
-            "size": 30,
+            "rippleColor": "#27ae60",
+            "size": 40,
             "elevation": 20,
             "corner_radius": 75
           }
@@ -498,7 +499,7 @@
             "background": "#ffffff",
             "color": "#1e3799",
             "font": "Roboto-Bold",
-            "rippleColor": "#1e3799",
+            "rippleColor": "#9b59b6",
             "size": 15,
             "elevation": 20,
             "corner_radius": 75
