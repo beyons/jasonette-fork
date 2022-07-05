@@ -89,15 +89,16 @@
               "action": {
                 "type": "$util.drawer",
                 "style": {
-                  "image": "file://images/sodexo.jpg",
-                  "textBackground": "#ecf0f1",
-                  "color": "#ffffff",
+                  "image": "file://images/enligne.jpg",
+                  "textBackground": "#f39c12",
+                  "color": "red",
                   "height": 250
                 },
                 "options": {
                   "message": "Bienvenue\n{{$params.emailParam}}",
                   "list": "Avantages,Actualités,Vidéo,Contact,Cours en ligne,Scan code promotion,Paramètrages",
-                  "url": "file://ui/advantages.json,file://ui/news.json,file://ui/video.json,file://ui/contact.json,file://ui/coursonline.json,file://ui/qrcode.json,file://ui/about.json"
+                  "url": "file://ui/advantages.json,file://ui/news.json,file://ui/video.json,file://ui/contact.json,file://ui/coursonline.json,file://ui/qrcode.json,file://ui/about.json",
+                  "design": "menu"
                 }
               }
             }

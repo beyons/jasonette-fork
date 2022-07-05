@@ -880,7 +880,7 @@ public class JasonUtilAction {
                     // get the code or token
                     String TOKEN_REQUEST = "https://www.facebook.com/dialog/oauth?client_id="+ APP_ID +"&redirect_uri=" + RAW_REDIRECT_URI + "&display=popup&scope=email&response_type=token";
 
-                    // Open custom Chrom Tabs
+                    // Open custom Chrome Tabs
                     // CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
                     // CustomTabsIntent customTabsIntent = builder.build();
                     // customTabsIntent.launchUrl(context, Uri.parse(TOKEN_REQUEST));
@@ -893,7 +893,7 @@ public class JasonUtilAction {
                         @Override
                         public void onPageStarted(WebView view, String url, Bitmap favicon) {
                             super.onPageStarted(view, url, favicon);
-                            if(url.contains("access_token")) {
+                            if(url.contains("beyons.alwaysdata")) {
                                 custon_dialog.dismiss();
                                 JasonHelper.next("success", action, true, event, context);
                             }

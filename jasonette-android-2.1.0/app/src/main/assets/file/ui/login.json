@@ -250,7 +250,7 @@
                 {
                   "type": "space",
                   "style": {
-                    "height": 90
+                    "height": 70
                   }
                 },
                 {
@@ -286,7 +286,7 @@
                 {
                   "type": "space",
                   "style": {
-                    "height": 50
+                    "height": 20
                   }
                 },
                 {
@@ -320,7 +320,7 @@
                     {
                       "type": "space",
                       "style": {
-                        "width": "10"
+                        "width": 10
                       }
                     },
                     {
@@ -374,7 +374,7 @@
                 {
                   "type": "space",
                   "style": {
-                    "height": 30
+                    "height": 20
                   }
                 },
                 {
